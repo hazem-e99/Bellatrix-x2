@@ -15,25 +15,21 @@ const About = () => {
     {
       title: 'Innovation',
       description: 'We embrace cutting-edge technologies and creative thinking to solve complex business challenges.',
-      icon: '💡',
       color: 'from-blue-500 to-cyan-500'
     },
     {
       title: 'Excellence',
       description: 'We deliver exceptional quality in every project, exceeding client expectations consistently.',
-      icon: '⭐',
       color: 'from-purple-500 to-pink-500'
     },
     {
       title: 'Integrity',
       description: 'We act with honesty and transparency, building trust through ethical business practices.',
-      icon: '🤝',
       color: 'from-green-500 to-teal-500'
     },
     {
       title: 'Partnership',
       description: 'We work closely with our clients as trusted partners in their digital transformation journey.',
-      icon: '🚀',
       color: 'from-orange-500 to-red-500'
     }
   ];
@@ -73,38 +69,32 @@ const About = () => {
     {
       year: '2008',
       title: 'Company Founded',
-      description: 'Bellatrix was established with a vision to transform businesses through technology.',
-      icon: '🏗️'
+      description: 'Bellatrix was established with a vision to transform businesses through technology.'
     },
     {
       year: '2012',
       title: 'First 100 Clients',
-      description: 'Reached our first major milestone of serving 100 satisfied clients.',
-      icon: '🎯'
+      description: 'Reached our first major milestone of serving 100 satisfied clients.'
     },
     {
       year: '2016',
       title: 'NetSuite Gold Partner',
-      description: 'Achieved NetSuite Gold Partner status, recognizing our expertise.',
-      icon: '🥇'
+      description: 'Achieved NetSuite Gold Partner status, recognizing our expertise.'
     },
     {
       year: '2020',
       title: 'Global Expansion',
-      description: 'Expanded operations to serve clients across multiple continents.',
-      icon: '🌍'
+      description: 'Expanded operations to serve clients across multiple continents.'
     },
     {
       year: '2023',
       title: '500+ Projects',
-      description: 'Successfully completed over 500 implementation projects.',
-      icon: '🚀'
+      description: 'Successfully completed over 500 implementation projects.'
     },
     {
       year: '2024',
       title: 'AI Integration',
-      description: 'Pioneered AI-powered solutions for enhanced business intelligence.',
-      icon: '🤖'
+      description: 'Pioneered AI-powered solutions for enhanced business intelligence.'
     }
   ];
 
@@ -112,25 +102,21 @@ const About = () => {
     {
       title: 'Industry Expertise',
       description: 'Deep understanding of various industries and their unique challenges.',
-      icon: '🏭',
       stats: '15+ Industries'
     },
     {
       title: 'Proven Methodology',
       description: 'Time-tested implementation methodology ensuring project success.',
-      icon: '📋',
       stats: '98% Success Rate'
     },
     {
       title: 'Ongoing Support',
       description: '24/7 support and maintenance services for continuous optimization.',
-      icon: '🛠️',
       stats: '24/7 Support'
     },
     {
       title: 'Custom Solutions',
       description: 'Tailored solutions designed specifically for your business needs.',
-      icon: '🎨',
       stats: '100% Custom'
     }
   ];
@@ -285,16 +271,16 @@ const About = () => {
                   <div className="text-2xl font-bold text-blue-600">500+</div>
                   <div className="text-sm text-gray-600">Projects Completed</div>
                 </div>
-                <div className="bg-green-50 p-4 rounded-xl border border-green-100">
-                  <div className="text-2xl font-bold text-green-600">98%</div>
+                <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                  <div className="text-2xl font-bold text-blue-600">98%</div>
                   <div className="text-sm text-gray-600">Client Satisfaction</div>
                 </div>
-                <div className="bg-purple-50 p-4 rounded-xl border border-purple-100">
-                  <div className="text-2xl font-bold text-purple-600">15+</div>
+                <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                  <div className="text-2xl font-bold text-blue-600">15+</div>
                   <div className="text-sm text-gray-600">Years Experience</div>
                 </div>
-                <div className="bg-orange-50 p-4 rounded-xl border border-orange-100">
-                  <div className="text-2xl font-bold text-orange-600">50+</div>
+                <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                  <div className="text-2xl font-bold text-blue-600">50+</div>
                   <div className="text-sm text-gray-600">Expert Team</div>
                 </div>
               </div>
@@ -449,7 +435,6 @@ const About = () => {
               >
                 <div className={`absolute inset-0 bg-gradient-to-r ${value.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}></div>
                 <div className="relative">
-                  <div className="text-5xl mb-6">{value.icon}</div>
                   <h3 className="text-2xl font-bold text-white mb-4">{value.title}</h3>
                   <p className="text-gray-300 leading-relaxed text-lg">{value.description}</p>
                 </div>
@@ -481,7 +466,6 @@ const About = () => {
                 transition={{ delay: index * 0.1 }}
                 className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group"
               >
-                <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
                 <h3 className="text-xl font-bold text-gray-800 mb-4">{item.title}</h3>
                 <p className="text-gray-600 leading-relaxed mb-4">{item.description}</p>
                 <div className="bg-blue-50 text-blue-600 font-bold py-2 px-4 rounded-full text-sm">
@@ -517,34 +501,21 @@ const About = () => {
             </p>
           </div>
           
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-400 to-cyan-400 rounded-full"></div>
-            
-            <div className="space-y-12">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {milestones.map((milestone, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.2 }}
-                  className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 group"
                 >
-                  <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                    <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
-                      <div className="text-3xl mb-4">{milestone.icon}</div>
-                      <div className="text-2xl font-bold text-cyan-400 mb-2">{milestone.year}</div>
-                      <h3 className="text-xl font-bold text-white mb-3">{milestone.title}</h3>
-                      <p className="text-gray-300 leading-relaxed">{milestone.description}</p>
-                    </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-cyan-400 mb-2">{milestone.year}</div>
+                    <h3 className="text-xl font-bold text-white mb-3">{milestone.title}</h3>
+                    <p className="text-gray-300 leading-relaxed text-sm">{milestone.description}</p>
                   </div>
-                  
-                  {/* Timeline Node */}
-                  <div className="relative z-10 w-2/12 flex justify-center">
-                    <div className="w-6 h-6 bg-cyan-400 rounded-full border-4 border-white shadow-lg"></div>
-                  </div>
-                  
-                  <div className="w-5/12"></div>
                 </motion.div>
               ))}
             </div>
@@ -553,7 +524,7 @@ const About = () => {
       </section>
 
       {/* Ready to Build Something Great Section */}
-      <section className="bg-gray-50 py-20 light-section">
+      <section className="bg-white py-20 light-section">
         <div className="container mx-auto px-6">
           <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl p-12 text-white text-center">
             <div className="max-w-4xl mx-auto">
@@ -567,39 +538,27 @@ const About = () => {
               
               <div className="grid md:grid-cols-3 gap-8 mb-12">
                 <div className="text-center">
-                  <div className="text-4xl mb-4">🚀</div>
                   <h4 className="text-xl font-bold mb-2">Quick Start</h4>
                   <p className="opacity-90">Get started with a free consultation</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl mb-4">🎯</div>
                   <h4 className="text-xl font-bold mb-2">Tailored Solutions</h4>
                   <p className="opacity-90">Custom solutions for your business</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl mb-4">🏆</div>
                   <h4 className="text-xl font-bold mb-2">Proven Results</h4>
                   <p className="opacity-90">98% client satisfaction rate</p>
                 </div>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={openContactModal}
-                  className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  Start Free Consultation
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300"
-                >
-                  View Our Portfolio
-                </motion.button>
-              </div>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={openContactModal}
+                className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                Start Free Consultation
+              </motion.button>
             </div>
           </div>
         </div>
