@@ -1,27 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
+import ContactForm from '../ContactForm';
+import Modal from '../Modal';
 
 const About = () => {
-  const [activeSection, setActiveSection] = useState('about');
-  const [scrollY, setScrollY] = useState(0);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const sections = [
-    { id: 'about', label: 'About Bellatrix', icon: '🏢' },
-    { id: 'journey', label: 'Our Journey', icon: '🚀' },
-    { id: 'team', label: 'Meet Our Team', icon: '👥' },
-    { id: 'values', label: 'Our Values', icon: '💎' },
-    { id: 'sets-apart', label: 'What Sets Us Apart', icon: '⭐' },
-    { id: 'milestones', label: 'Our Milestones', icon: '🏆' },
-    { id: 'cta', label: 'Build Something Great', icon: '🔥' }
-  ];
+  const openContactModal = () => setIsContactModalOpen(true);
+  const closeContactModal = () => setIsContactModalOpen(false);
 
   const values = [
     {
@@ -152,7 +140,7 @@ const About = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         {/* Background Video */}
         <video
           autoPlay
@@ -198,7 +186,7 @@ const About = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => setActiveSection('about')}
+              onClick={() => document.getElementById('about-section').scrollIntoView({ behavior: 'smooth' })}
               className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Discover Our Story
@@ -218,393 +206,416 @@ const About = () => {
         </motion.div>
       </section>
 
-      {/* Navigation Tabs */}
-      <section className="sticky top-20 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 py-4 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-center overflow-x-auto">
-            <div className="flex space-x-1 min-w-max">
-              {sections.map((section) => (
-                <button
-                  key={section.id}
-                  onClick={() => setActiveSection(section.id)}
-                  className={`flex items-center space-x-2 px-4 py-3 rounded-full font-medium transition-all duration-300 whitespace-nowrap ${
-                    activeSection === section.id
-                      ? 'bg-blue-600 text-white shadow-lg transform scale-105'
-                      : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
-                  }`}
+      {/* About Bellatrix Section */}
+      <section id="about-section" className="bg-gray-50 py-20 light-section">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
+              About <span className="text-blue-600">Bellatrix</span>
+            </h2>
+            <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
+              We are a leading Oracle NetSuite consultancy dedicated to transforming businesses through 
+              innovative technology solutions and strategic digital transformation initiatives.
+            </p>
+          </div>
+          
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            {/* Image - Left Side */}
+            <div className="flex-1 flex justify-center">
+              <div className="relative group max-w-xl">
+                <div className="absolute -inset-8 opacity-30 group-hover:opacity-60 transition-all duration-700">
+                  <div className="absolute -inset-6 bg-gradient-to-r from-blue-600/20 via-cyan-500/30 to-blue-600/20 rounded-3xl blur-2xl"></div>
+                  <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/15 via-purple-500/20 to-cyan-500/15 rounded-2xl blur-xl"></div>
+                  <div className="absolute -inset-2 bg-gradient-to-tr from-white/10 via-blue-300/20 to-white/10 rounded-xl blur-lg"></div>
+                </div>
+                
+                <div className="relative bg-gradient-to-br from-gray-900/10 via-blue-900/5 to-gray-900/10 rounded-3xl p-6 backdrop-blur-md border border-white/30 shadow-2xl group-hover:shadow-blue-500/20 transition-all duration-500">
+                  <div className="relative bg-gradient-to-br from-white/5 via-transparent to-blue-500/5 rounded-2xl p-4 border border-white/20">
+                    <img 
+                      src="/images/ourProServices.png" 
+                      alt="About Bellatrix - Professional Services" 
+                      className="w-full h-auto rounded-xl shadow-2xl brightness-105 contrast-110 saturate-105 group-hover:brightness-110 group-hover:contrast-115 group-hover:saturate-110 transition-all duration-500 filter drop-shadow-xl"
+                    />
+                    
+                    <div className="absolute inset-4 rounded-xl bg-gradient-to-tr from-blue-500/5 via-transparent via-transparent to-cyan-400/5 pointer-events-none"></div>
+                    <div className="absolute inset-4 rounded-xl bg-gradient-to-bl from-transparent via-white/3 to-transparent pointer-events-none"></div>
+                  </div>
+                  
+                  <div className="absolute top-3 right-3">
+                    <div className="relative">
+                      <div className="w-4 h-4 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse shadow-lg"></div>
+                      <div className="absolute inset-0 w-4 h-4 bg-blue-400/30 rounded-full animate-ping"></div>
+                    </div>
+                  </div>
+                  
+                  <div className="absolute bottom-6 left-6">
+                    <div className="relative">
+                      <div className="w-3 h-3 bg-gradient-to-r from-cyan-300 to-blue-400 rounded-full animate-pulse shadow-md"></div>
+                      <div className="absolute -inset-1 w-5 h-5 bg-cyan-400/20 rounded-full animate-ping"></div>
+                    </div>
+                  </div>
+                  
+                  <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-blue-400/40 rounded-tl-3xl"></div>
+                  <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-cyan-400/40 rounded-tr-3xl"></div>
+                  <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-blue-400/40 rounded-bl-3xl"></div>
+                  <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-cyan-400/40 rounded-br-3xl"></div>
+                </div>
+                
+                <div className="absolute -bottom-3 -right-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-4 py-2 rounded-xl shadow-lg text-sm font-bold opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="flex items-center space-x-2">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
+                    <span>Industry Leader</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Content - Right Side */}
+            <div className="flex-1 space-y-6">
+              <h3 className="text-3xl font-bold text-gray-800">Our Mission</h3>
+              <p className="text-gray-600 leading-relaxed text-lg">
+                To empower businesses worldwide with cutting-edge Oracle NetSuite solutions that drive 
+                operational excellence, enhance productivity, and accelerate growth. We believe in 
+                creating lasting partnerships that deliver measurable value and sustainable success.
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                  <div className="text-2xl font-bold text-blue-600">500+</div>
+                  <div className="text-sm text-gray-600">Projects Completed</div>
+                </div>
+                <div className="bg-green-50 p-4 rounded-xl border border-green-100">
+                  <div className="text-2xl font-bold text-green-600">98%</div>
+                  <div className="text-sm text-gray-600">Client Satisfaction</div>
+                </div>
+                <div className="bg-purple-50 p-4 rounded-xl border border-purple-100">
+                  <div className="text-2xl font-bold text-purple-600">15+</div>
+                  <div className="text-sm text-gray-600">Years Experience</div>
+                </div>
+                <div className="bg-orange-50 p-4 rounded-xl border border-orange-100">
+                  <div className="text-2xl font-bold text-orange-600">50+</div>
+                  <div className="text-sm text-gray-600">Expert Team</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Journey Section */}
+      <section className="py-20 relative overflow-hidden" style={{backgroundColor: '#001038'}}>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full">
+            <svg width="100%" height="100%" viewBox="0 0 100 100" className="text-blue-300">
+              <pattern id="journeyGrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="1" cy="1" r="1" fill="currentColor" opacity="0.3"/>
+              </pattern>
+              <rect width="100%" height="100%" fill="url(#journeyGrid)" />
+            </svg>
+          </div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+              Our <span className="text-cyan-400">Journey</span>
+            </h2>
+            <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
+              From humble beginnings to becoming a trusted Oracle NetSuite partner, 
+              our journey has been marked by innovation, growth, and unwavering commitment to excellence.
+            </p>
+          </div>
+          
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            <div className="flex-1 space-y-6">
+              <h3 className="text-3xl font-bold text-white">The Beginning</h3>
+              <p className="text-gray-300 leading-relaxed text-lg">
+                Founded in 2008 with a vision to bridge the gap between complex enterprise software 
+                and real business needs. Our founders recognized that many businesses were struggling 
+                to fully leverage their technology investments.
+              </p>
+              <h3 className="text-3xl font-bold text-white">Growth & Evolution</h3>
+              <p className="text-gray-300 leading-relaxed text-lg">
+                Over the years, we've evolved from a small consulting firm to a comprehensive 
+                digital transformation partner, helping hundreds of organizations across various 
+                industries unlock their full potential.
+              </p>
+              <div className="bg-gradient-to-r from-blue-600/20 to-cyan-600/20 p-6 rounded-xl border border-blue-400/30 backdrop-blur-sm">
+                <h4 className="font-bold text-cyan-300 mb-2">Today</h4>
+                <p className="text-gray-300">
+                  We continue to innovate and expand our services, staying at the forefront of 
+                  technology trends while maintaining our core values of excellence and integrity.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex-1 flex justify-center">
+              <div className="relative group">
+                <div className="relative bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-4 backdrop-blur-sm border border-white/20 shadow-2xl">
+                  <img 
+                    src="/images/solution.jpg" 
+                    alt="Our Journey - Digital Innovation" 
+                    className="w-full h-auto lg:max-w-md rounded-xl shadow-lg brightness-110 contrast-110 saturate-110 group-hover:scale-105 transition-all duration-500"
+                  />
+                  <div className="absolute inset-4 rounded-xl bg-gradient-to-t from-transparent via-transparent to-white/10 pointer-events-none"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Meet Our Team Section */}
+      <section className="bg-gray-50 py-20 light-section">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
+              Meet Our <span className="text-blue-600">Team</span>
+            </h2>
+            <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
+              Our diverse team of experts brings together decades of experience in enterprise 
+              software, business consulting, and digital transformation.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {teamMembers.map((member, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
+              >
+                <div className="relative overflow-hidden">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">{member.name}</h3>
+                  <p className="text-blue-600 font-medium mb-3">{member.role}</p>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4">{member.bio}</p>
+                  <div className="space-y-1">
+                    {member.expertise.map((skill, i) => (
+                      <span key={i} className="inline-block bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded-full mr-1">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Values Section */}
+      <section className="py-20 relative overflow-hidden" style={{backgroundColor: '#001038'}}>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full">
+            <svg width="100%" height="100%" viewBox="0 0 100 100" className="text-blue-300">
+              <pattern id="valuesGrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="1" cy="1" r="1" fill="currentColor" opacity="0.3"/>
+              </pattern>
+              <rect width="100%" height="100%" fill="url(#valuesGrid)" />
+            </svg>
+          </div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+              Our <span className="text-cyan-400">Values</span>
+            </h2>
+            <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
+              These core values guide everything we do and shape how we interact with our clients, 
+              partners, and each other.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {values.map((value, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="group relative p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300"
+              >
+                <div className={`absolute inset-0 bg-gradient-to-r ${value.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}></div>
+                <div className="relative">
+                  <div className="text-5xl mb-6">{value.icon}</div>
+                  <h3 className="text-2xl font-bold text-white mb-4">{value.title}</h3>
+                  <p className="text-gray-300 leading-relaxed text-lg">{value.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What Sets Us Apart Section */}
+      <section className="bg-gray-50 py-20 light-section">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
+              What Sets Us <span className="text-blue-600">Apart</span>
+            </h2>
+            <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
+              Our unique combination of expertise, methodology, and commitment to excellence 
+              makes us the preferred choice for Oracle NetSuite implementations.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {differentiators.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group"
+              >
+                <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
+                <h3 className="text-xl font-bold text-gray-800 mb-4">{item.title}</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">{item.description}</p>
+                <div className="bg-blue-50 text-blue-600 font-bold py-2 px-4 rounded-full text-sm">
+                  {item.stats}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Milestones Section */}
+      <section className="py-20 relative overflow-hidden" style={{backgroundColor: '#001038'}}>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full">
+            <svg width="100%" height="100%" viewBox="0 0 100 100" className="text-blue-300">
+              <pattern id="milestonesGrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="1" cy="1" r="1" fill="currentColor" opacity="0.3"/>
+              </pattern>
+              <rect width="100%" height="100%" fill="url(#milestonesGrid)" />
+            </svg>
+          </div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+              Our <span className="text-cyan-400">Milestones</span>
+            </h2>
+            <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
+              Key achievements and milestones that mark our journey of growth, 
+              innovation, and commitment to excellence.
+            </p>
+          </div>
+          
+          <div className="relative">
+            {/* Timeline Line */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-400 to-cyan-400 rounded-full"></div>
+            
+            <div className="space-y-12">
+              {milestones.map((milestone, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.2 }}
+                  className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
                 >
-                  <span className="text-lg">{section.icon}</span>
-                  <span className="text-sm md:text-base">{section.label}</span>
-                </button>
+                  <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
+                    <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                      <div className="text-3xl mb-4">{milestone.icon}</div>
+                      <div className="text-2xl font-bold text-cyan-400 mb-2">{milestone.year}</div>
+                      <h3 className="text-xl font-bold text-white mb-3">{milestone.title}</h3>
+                      <p className="text-gray-300 leading-relaxed">{milestone.description}</p>
+                    </div>
+                  </div>
+                  
+                  {/* Timeline Node */}
+                  <div className="relative z-10 w-2/12 flex justify-center">
+                    <div className="w-6 h-6 bg-cyan-400 rounded-full border-4 border-white shadow-lg"></div>
+                  </div>
+                  
+                  <div className="w-5/12"></div>
+                </motion.div>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Content Sections */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <AnimatePresence mode="wait">
-          {/* About Bellatrix Section */}
-          {activeSection === 'about' && (
-            <motion.div
-              key="about"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="space-y-16"
-            >
-              <div className="text-center">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">About Bellatrix</h2>
-                <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                  We are a leading Oracle NetSuite consultancy dedicated to transforming businesses through 
-                  innovative technology solutions and strategic digital transformation initiatives.
-                </p>
-              </div>
+      {/* Ready to Build Something Great Section */}
+      <section className="bg-gray-50 py-20 light-section">
+        <div className="container mx-auto px-6">
+          <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl p-12 text-white text-center">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+                Ready to Build Something <span className="text-cyan-200">Great?</span>
+              </h2>
+              <p className="text-xl mb-8 opacity-90 leading-relaxed">
+                Let's collaborate to transform your business with innovative Oracle NetSuite solutions 
+                that drive growth, efficiency, and success.
+              </p>
               
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="space-y-6">
-                  <h3 className="text-3xl font-bold text-gray-800">Our Mission</h3>
-                  <p className="text-gray-600 leading-relaxed text-lg">
-                    To empower businesses worldwide with cutting-edge Oracle NetSuite solutions that drive 
-                    operational excellence, enhance productivity, and accelerate growth. We believe in 
-                    creating lasting partnerships that deliver measurable value and sustainable success.
-                  </p>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
-                      <div className="text-2xl font-bold text-blue-600">500+</div>
-                      <div className="text-sm text-gray-600">Projects Completed</div>
-                    </div>
-                    <div className="bg-green-50 p-4 rounded-xl border border-green-100">
-                      <div className="text-2xl font-bold text-green-600">98%</div>
-                      <div className="text-sm text-gray-600">Client Satisfaction</div>
-                    </div>
-                    <div className="bg-purple-50 p-4 rounded-xl border border-purple-100">
-                      <div className="text-2xl font-bold text-purple-600">15+</div>
-                      <div className="text-sm text-gray-600">Years Experience</div>
-                    </div>
-                    <div className="bg-orange-50 p-4 rounded-xl border border-orange-100">
-                      <div className="text-2xl font-bold text-orange-600">50+</div>
-                      <div className="text-sm text-gray-600">Expert Team</div>
-                    </div>
-                  </div>
+              <div className="grid md:grid-cols-3 gap-8 mb-12">
+                <div className="text-center">
+                  <div className="text-4xl mb-4">🚀</div>
+                  <h4 className="text-xl font-bold mb-2">Quick Start</h4>
+                  <p className="opacity-90">Get started with a free consultation</p>
                 </div>
-                <div className="relative">
-                  <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                    <img
-                      src="/images/ourProServices.png"
-                      alt="About Bellatrix"
-                      className="w-full h-auto object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent"></div>
-                  </div>
+                <div className="text-center">
+                  <div className="text-4xl mb-4">🎯</div>
+                  <h4 className="text-xl font-bold mb-2">Tailored Solutions</h4>
+                  <p className="opacity-90">Custom solutions for your business</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl mb-4">🏆</div>
+                  <h4 className="text-xl font-bold mb-2">Proven Results</h4>
+                  <p className="opacity-90">98% client satisfaction rate</p>
                 </div>
               </div>
-            </motion.div>
-          )}
-
-          {/* Our Journey Section */}
-          {activeSection === 'journey' && (
-            <motion.div
-              key="journey"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="space-y-16"
-            >
-              <div className="text-center">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Our Journey</h2>
-                <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                  From humble beginnings to becoming a trusted Oracle NetSuite partner, 
-                  our journey has been marked by innovation, growth, and unwavering commitment to excellence.
-                </p>
-              </div>
               
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="relative">
-                  <img
-                    src="/images/solution.jpg"
-                    alt="Our Journey"
-                    className="rounded-2xl shadow-2xl w-full"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent rounded-2xl"></div>
-                </div>
-                <div className="space-y-6">
-                  <h3 className="text-3xl font-bold text-gray-800">The Beginning</h3>
-                  <p className="text-gray-600 leading-relaxed text-lg">
-                    Founded in 2008 with a vision to bridge the gap between complex enterprise software 
-                    and real business needs. Our founders recognized that many businesses were struggling 
-                    to fully leverage their technology investments.
-                  </p>
-                  <h3 className="text-3xl font-bold text-gray-800">Growth & Evolution</h3>
-                  <p className="text-gray-600 leading-relaxed text-lg">
-                    Over the years, we've evolved from a small consulting firm to a comprehensive 
-                    digital transformation partner, helping hundreds of organizations across various 
-                    industries unlock their full potential.
-                  </p>
-                  <div className="bg-gradient-to-r from-blue-50 to-cyan-50 p-6 rounded-xl border border-blue-100">
-                    <h4 className="font-bold text-blue-800 mb-2">Today</h4>
-                    <p className="text-blue-700">
-                      We continue to innovate and expand our services, staying at the forefront of 
-                      technology trends while maintaining our core values of excellence and integrity.
-                    </p>
-                  </div>
-                </div>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={openContactModal}
+                  className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  Start Free Consultation
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300"
+                >
+                  View Our Portfolio
+                </motion.button>
               </div>
-            </motion.div>
-          )}
+            </div>
+          </div>
+        </div>
+      </section>
 
-          {/* Meet Our Team Section */}
-          {activeSection === 'team' && (
-            <motion.div
-              key="team"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="space-y-16"
-            >
-              <div className="text-center">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Meet Our Team</h2>
-                <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                  Our diverse team of experts brings together decades of experience in enterprise 
-                  software, business consulting, and digital transformation.
-                </p>
-              </div>
-              
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {teamMembers.map((member, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
-                  >
-                    <div className="relative overflow-hidden">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-gray-800 mb-2">{member.name}</h3>
-                      <p className="text-blue-600 font-medium mb-3">{member.role}</p>
-                      <p className="text-gray-600 text-sm leading-relaxed mb-4">{member.bio}</p>
-                      <div className="space-y-1">
-                        {member.expertise.map((skill, i) => (
-                          <span key={i} className="inline-block bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded-full mr-1">
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-
-          {/* Our Values Section */}
-          {activeSection === 'values' && (
-            <motion.div
-              key="values"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="space-y-16"
-            >
-              <div className="text-center">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Our Values</h2>
-                <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                  These core values guide everything we do and shape how we interact with our clients, 
-                  partners, and each other.
-                </p>
-              </div>
-              
-              <div className="grid md:grid-cols-2 gap-8">
-                {values.map((value, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="group relative p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300"
-                  >
-                    <div className={`absolute inset-0 bg-gradient-to-r ${value.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}></div>
-                    <div className="relative">
-                      <div className="text-5xl mb-6">{value.icon}</div>
-                      <h3 className="text-2xl font-bold text-gray-800 mb-4">{value.title}</h3>
-                      <p className="text-gray-600 leading-relaxed text-lg">{value.description}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-
-          {/* What Sets Us Apart Section */}
-          {activeSection === 'sets-apart' && (
-            <motion.div
-              key="sets-apart"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="space-y-16"
-            >
-              <div className="text-center">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">What Sets Us Apart</h2>
-                <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                  Our unique combination of expertise, methodology, and commitment to excellence 
-                  makes us the preferred choice for Oracle NetSuite implementations.
-                </p>
-              </div>
-              
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {differentiators.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group"
-                  >
-                    <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-4">{item.title}</h3>
-                    <p className="text-gray-600 leading-relaxed mb-4">{item.description}</p>
-                    <div className="bg-blue-50 text-blue-600 font-bold py-2 px-4 rounded-full text-sm">
-                      {item.stats}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-
-          {/* Our Milestones Section */}
-          {activeSection === 'milestones' && (
-            <motion.div
-              key="milestones"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="space-y-16"
-            >
-              <div className="text-center">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Our Milestones</h2>
-                <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                  Key achievements and milestones that mark our journey of growth, 
-                  innovation, and commitment to excellence.
-                </p>
-              </div>
-              
-              <div className="relative">
-                {/* Timeline Line */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-400 to-cyan-400 rounded-full"></div>
-                
-                <div className="space-y-12">
-                  {milestones.map((milestone, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.2 }}
-                      className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
-                    >
-                      <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                        <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
-                          <div className="text-3xl mb-4">{milestone.icon}</div>
-                          <div className="text-2xl font-bold text-blue-600 mb-2">{milestone.year}</div>
-                          <h3 className="text-xl font-bold text-gray-800 mb-3">{milestone.title}</h3>
-                          <p className="text-gray-600 leading-relaxed">{milestone.description}</p>
-                        </div>
-                      </div>
-                      
-                      {/* Timeline Node */}
-                      <div className="relative z-10 w-2/12 flex justify-center">
-                        <div className="w-6 h-6 bg-blue-600 rounded-full border-4 border-white shadow-lg"></div>
-                      </div>
-                      
-                      <div className="w-5/12"></div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          )}
-
-          {/* Ready to Build Something Great Section */}
-          {activeSection === 'cta' && (
-            <motion.div
-              key="cta"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="space-y-16"
-            >
-              <div className="text-center">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Ready to Build Something Great?</h2>
-                <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                  Let's collaborate to transform your business with innovative Oracle NetSuite solutions 
-                  that drive growth, efficiency, and success.
-                </p>
-              </div>
-              
-              <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl p-12 text-white text-center">
-                <div className="max-w-4xl mx-auto">
-                  <h3 className="text-3xl md:text-4xl font-bold mb-6">Start Your Transformation Journey</h3>
-                  <p className="text-xl mb-8 opacity-90">
-                    Join hundreds of successful businesses that have transformed their operations with our expertise.
-                  </p>
-                  
-                  <div className="grid md:grid-cols-3 gap-8 mb-12">
-                    <div className="text-center">
-                      <div className="text-4xl mb-4">🚀</div>
-                      <h4 className="text-xl font-bold mb-2">Quick Start</h4>
-                      <p className="opacity-90">Get started with a free consultation</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-4xl mb-4">🎯</div>
-                      <h4 className="text-xl font-bold mb-2">Tailored Solutions</h4>
-                      <p className="opacity-90">Custom solutions for your business</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-4xl mb-4">🏆</div>
-                      <h4 className="text-xl font-bold mb-2">Proven Results</h4>
-                      <p className="opacity-90">98% client satisfaction rate</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                    >
-                      Start Free Consultation
-                    </motion.button>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300"
-                    >
-                      View Our Portfolio
-                    </motion.button>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+      {/* Contact Modal */}
+      <Modal
+        isOpen={isContactModalOpen}
+        onClose={closeContactModal}
+        title="Contact Us"
+        subtitle="Let's discuss your project needs"
+      >
+        <div className="p-2">
+          <ContactForm />
+        </div>
+      </Modal>
 
       <Footer />
     </div>
