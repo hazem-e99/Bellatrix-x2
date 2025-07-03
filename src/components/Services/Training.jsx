@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import ContactForm from "../ContactForm";
+import Modal from '../../components/Modal';
 
 const Training = () => {
     const [isProgramModalOpen, setIsProgramModalOpen] = useState(false);
@@ -122,6 +124,7 @@ const Training = () => {
 
     // Helper function to render SVG icons
     const renderIcon = (iconPath, className = "w-7 h-7 text-white") => {
+        if (!iconPath || typeof iconPath !== 'string') return null;
         const paths = iconPath.split(' M').filter(Boolean);
         return (
             <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -764,7 +767,7 @@ const Training = () => {
                                         } rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg`}>
                                             {renderIcon(module.icon, "w-6 h-6 text-white")}
                                         </div>
-                                        <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300">
+                                        <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-600 transition-colors duration-300">
                                             {module.title}
                                         </h3>
                                         <p className="text-sm text-gray-300 leading-relaxed mb-4">
@@ -907,346 +910,144 @@ const Training = () => {
                 </div>
 
                 {/* Program Details Modal */}
-                {isProgramModalOpen && selectedProgram && (
-                    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
-                        <div className="bg-white/10 backdrop-blur-xl rounded-2xl max-w-4xl w-full h-auto relative transform transition-all duration-300 scale-100 shadow-2xl max-h-[90vh] overflow-y-auto border border-white/20 custom-scrollbar" style={{backgroundColor: '#001038', backdropFilter: 'blur(20px)'}}>
-                            {/* Header */}
-                            <div className="rounded-t-2xl p-6 text-white relative border-b border-white/20" style={{backgroundColor: '#001038'}}>
-                                <button 
-                                    onClick={closeProgramModal}
-                                    className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full"
-                                >
-                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </button>
-                                
-                                <div className="flex items-center">
-                                    <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mr-4 backdrop-blur-sm">
-                                        {renderIcon(selectedProgram.icon)}
-                                    </div>
-                                    <div>
-                                        <h3 className="text-xl font-bold mb-1 text-white">{selectedProgram.title}</h3>
-                                        <p className="text-gray-300 text-sm">{selectedProgram.shortDescription}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            {/* Content */}
-                            <div className="p-6" style={{backgroundColor: '#001038'}}>
-                                <div className="mb-6">
-                                    <h4 className="text-lg font-bold text-white mb-3">Program Overview</h4>
-                                    <p className="text-gray-300 leading-relaxed">
-                                        {selectedProgram.longDescription}
-                                    </p>
-                                </div>
-
-                                {/* Program Features */}
-                                <div className="mb-6">
-                                    <h4 className="text-lg font-bold text-white mb-3">What You'll Learn</h4>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                        <div className="flex items-start space-x-3">
-                                            <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                                            <span className="text-gray-300 leading-relaxed text-sm">Hands-on practical exercises</span>
-                                        </div>
-                                        <div className="flex items-start space-x-3">
-                                            <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                                            <span className="text-gray-300 leading-relaxed text-sm">Real-world case studies</span>
-                                        </div>
-                                        <div className="flex items-start space-x-3">
-                                            <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                                            <span className="text-gray-300 leading-relaxed text-sm">Expert instructor guidance</span>
-                                        </div>
-                                        <div className="flex items-start space-x-3">
-                                            <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                                            <span className="text-gray-300 leading-relaxed text-sm">Certification preparation</span>
-                                        </div>
-                                        <div className="flex items-start space-x-3">
-                                            <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                                            <span className="text-gray-300 leading-relaxed text-sm">Interactive learning materials</span>
-                                        </div>
-                                        <div className="flex items-start space-x-3">
-                                            <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                                            <span className="text-gray-300 leading-relaxed text-sm">Post-training support</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Training Details */}
-                                <div className="bg-white/5 border border-white/20 rounded-xl p-5 mb-6">
-                                    <h4 className="text-base font-bold text-white mb-3">Training Details</h4>
-                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                        <div className="text-center">
-                                            <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                                <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                </svg>
-                                            </div>
-                                            <h5 className="font-semibold text-white mb-1 text-xs">Duration</h5>
-                                            <p className="text-xs text-blue-400 font-bold">2-5 Days Intensive</p>
-                                        </div>
-                                        <div className="text-center">
-                                            <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                                <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                                </svg>
-                                            </div>
-                                            <h5 className="font-semibold text-white mb-1 text-xs">Format</h5>
-                                            <p className="text-xs text-blue-400 font-bold">In-Person / Virtual</p>
-                                        </div>
-                                        <div className="text-center">
-                                            <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                                <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                </svg>
-                                            </div>
-                                            <h5 className="font-semibold text-white mb-1 text-xs">Certificate</h5>
-                                            <p className="text-xs text-blue-400 font-bold">Completion Certificate</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                {/* CTA Button */}
-                                <div className="text-center">
-                                    <button 
-                                        onClick={openContactModal}
-                                        className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                                    >
-                                        Contact Us for This Program
-                                    </button>
-                                </div>
-                            </div>
+                <Modal
+                  isOpen={isProgramModalOpen && selectedProgram}
+                  onClose={closeProgramModal}
+                  icon={renderIcon(selectedProgram?.icon)}
+                  title={selectedProgram?.title}
+                  subtitle={selectedProgram?.shortDescription}
+                >
+                  <div className="mb-6">
+                    <h4 className="text-lg font-bold text-gray-800 mb-3">Program Overview</h4>
+                    <p className="text-gray-700 leading-relaxed">
+                      {selectedProgram?.longDescription}
+                    </p>
+                  </div>
+                  {/* Program Features */}
+                  <div className="mb-6">
+                    <h4 className="text-lg font-bold text-gray-800 mb-3">What You'll Learn</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {selectedProgram?.features && selectedProgram.features.map((feature, index) => (
+                        <div key={index} className="flex items-start space-x-3">
+                          <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                          <span className="text-gray-700 leading-relaxed text-sm">{feature}</span>
                         </div>
+                      ))}
                     </div>
-                )}
-
+                  </div>
+                  {/* Training Details */}
+                  <div className="bg-gray-50 border border-gray-100 rounded-xl p-5 mb-6">
+                    <h4 className="text-base font-bold text-gray-800 mb-3">Training Details</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div className="text-center">
+                        <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center mx-auto mb-2">
+                          <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        </div>
+                        <h5 className="font-semibold text-gray-800 mb-1 text-xs">Duration</h5>
+                        <p className="text-xs text-blue-400 font-bold">2-5 Days Intensive</p>
+                      </div>
+                      <div className="text-center">
+                        <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center mx-auto mb-2">
+                          <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                          </svg>
+                        </div>
+                        <h5 className="font-semibold text-gray-800 mb-1 text-xs">Format</h5>
+                        <p className="text-xs text-blue-400 font-bold">In-Person / Virtual</p>
+                      </div>
+                      <div className="text-center">
+                        <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center mx-auto mb-2">
+                          <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        </div>
+                        <h5 className="font-semibold text-gray-800 mb-1 text-xs">Certificate</h5>
+                        <p className="text-xs text-blue-400 font-bold">Completion Certificate</p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* CTA Button */}
+                  <div className="text-center">
+                    <button 
+                      onClick={openContactModal}
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    >
+                      Contact Us for This Program
+                    </button>
+                  </div>
+                </Modal>
                 {/* Feature Details Modal */}
-                {isFeatureModalOpen && selectedFeature && (
-                    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
-                        <div className="bg-white/10 backdrop-blur-xl rounded-2xl max-w-4xl w-full h-auto relative transform transition-all duration-300 scale-100 shadow-2xl max-h-[85vh] overflow-y-auto border border-white/20 custom-scrollbar" style={{backgroundColor: '#001038', backdropFilter: 'blur(20px)'}}>
-                            {/* Header */}
-                            <div className="rounded-t-2xl p-6 text-white relative border-b border-white/20" style={{backgroundColor: '#001038'}}>
-                                <button 
-                                    onClick={closeFeatureModal}
-                                    className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full"
-                                >
-                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </button>
-                                
-                                <div className="flex items-center">
-                                    <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mr-4 backdrop-blur-sm">
-                                        {renderIcon(selectedFeature.icon)}
-                                    </div>
-                                    <div>
-                                        <h3 className="text-xl font-bold mb-1 text-white">{selectedFeature.title}</h3>
-                                        <p className="text-gray-300 text-sm">{selectedFeature.shortDescription}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            {/* Content */}
-                            <div className="p-6" style={{backgroundColor: '#001038'}}>
-                                {/* Detailed Description */}
-                                <div className="mb-6">
-                                    <h4 className="text-lg font-bold text-white mb-3">Detailed Overview</h4>
-                                    <p className="text-gray-300 leading-relaxed">
-                                        {selectedFeature.detailedDescription}
-                                    </p>
-                                </div>
-
-                                {/* Benefits & Features */}
-                                <div className="mb-6">
-                                    <h4 className="text-lg font-bold text-white mb-3">Key Benefits</h4>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                        {selectedFeature.benefits.map((benefit, index) => (
-                                            <div key={index} className="flex items-start space-x-3">
-                                                <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                                                <span className="text-gray-300 leading-relaxed text-sm">{benefit}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* Statistics */}
-                                <div className="bg-white/5 border border-white/20 rounded-xl p-5 mb-6">
-                                    <h4 className="text-base font-bold text-white mb-3">Key Statistics</h4>
-                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                        {Object.entries(selectedFeature.statistics).map(([key, value], index) => (
-                                            <div key={index} className="text-center">
-                                                <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                                    <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                                                    </svg>
-                                                </div>
-                                                <h5 className="font-semibold text-white mb-1 capitalize text-xs">{key.replace(/([A-Z])/g, ' $1').trim()}</h5>
-                                                <p className="text-xs text-blue-400 font-bold">{value}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                                
-                                {/* CTA Buttons */}
-                                <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                                    <button 
-                                        onClick={openContactModal}
-                                        className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                                    >
-                                        Get More Information
-                                    </button>
-                                    <button 
-                                        onClick={closeFeatureModal}
-                                        className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-6 py-2.5 rounded-lg font-semibold transition-all duration-300"
-                                    >
-                                        Close
-                                    </button>
-                                </div>
-                            </div>
+                <Modal
+                  isOpen={isFeatureModalOpen && selectedFeature}
+                  onClose={closeFeatureModal}
+                  icon={renderIcon(selectedFeature?.icon)}
+                  title={selectedFeature?.title}
+                  subtitle={selectedFeature?.shortDescription}
+                >
+                  <div className="mb-6">
+                    <h4 className="text-lg font-bold text-gray-800 mb-3">Detailed Overview</h4>
+                    <p className="text-gray-700 leading-relaxed">
+                      {selectedFeature?.detailedDescription}
+                    </p>
+                  </div>
+                  {/* Benefits & Features */}
+                  <div className="mb-6">
+                    <h4 className="text-lg font-bold text-gray-800 mb-3">Key Benefits</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {selectedFeature?.benefits && selectedFeature.benefits.map((benefit, index) => (
+                        <div key={index} className="flex items-start space-x-3">
+                          <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                          <span className="text-gray-700 leading-relaxed text-sm">{benefit}</span>
                         </div>
+                      ))}
                     </div>
-                )}
-
+                  </div>
+                  {/* Statistics */}
+                  <div className="bg-gray-50 border border-gray-100 rounded-xl p-5 mb-6">
+                    <h4 className="text-base font-bold text-gray-800 mb-3">Key Statistics</h4>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      {selectedFeature?.statistics && Object.entries(selectedFeature.statistics).map(([key, value], index) => (
+                        <div key={index} className="text-center">
+                          <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center mx-auto mb-2">
+                            <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </svg>
+                          </div>
+                          <h5 className="font-semibold text-gray-800 mb-1 capitalize text-xs">{key.replace(/([A-Z])/g, ' $1').trim()}</h5>
+                          <p className="text-xs text-blue-400 font-bold">{value}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  {/* CTA Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                    <button 
+                      onClick={openContactModal}
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    >
+                      Get More Information
+                    </button>
+                    <button 
+                      onClick={closeFeatureModal}
+                      className="bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-200 px-6 py-2.5 rounded-lg font-semibold transition-all duration-300"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </Modal>
                 {/* Contact Modal */}
-                {isContactModalOpen && (
-                    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-                        <div className="bg-white/10 backdrop-blur-xl rounded-2xl max-w-3xl w-full h-auto relative transform transition-all duration-300 scale-100 shadow-2xl border border-white/20" style={{backgroundColor: '#001038', backdropFilter: 'blur(20px)'}}>
-                            {/* Header */}
-                            <div className="rounded-t-2xl p-4 text-white relative border-b border-white/20" style={{backgroundColor: '#001038'}}>
-                                <button 
-                                    onClick={closeContactModal}
-                                    className="absolute top-3 right-3 text-white/80 hover:text-white transition-colors p-1 hover:bg-white/10 rounded-full"
-                                >
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </button>
-                                
-                                <div className="text-center">
-                                    <h3 className="text-xl font-bold mb-1 text-white">Contact Us</h3>
-                                    <p className="text-gray-300 text-sm">Let's discuss your training needs</p>
-                                </div>
-                            </div>
-                            
-                            {/* Form Content */}
-                            <div className="p-6" style={{backgroundColor: '#001038'}}>
-                                <form className="space-y-4">
-                                    {/* Main Fields in Two Columns */}
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        {/* Left Column - Contact Info */}
-                                        <div className="space-y-3">
-                                            <h4 className="text-base font-semibold text-white mb-2 border-b border-white/20 pb-1">Contact Information</h4>
-                                            
-                                            <div>
-                                                <label className="text-sm font-medium text-gray-300">Full Name *</label>
-                                                <input 
-                                                    type="text" 
-                                                    className="w-full px-3 py-2 mt-1 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400"
-                                                    placeholder="John Doe"
-                                                    required
-                                                />
-                                            </div>
-                                            
-                                            <div>
-                                                <label className="text-sm font-medium text-gray-300">Email Address *</label>
-                                                <input 
-                                                    type="email" 
-                                                    className="w-full px-3 py-2 mt-1 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400"
-                                                    placeholder="john@company.com"
-                                                    required
-                                                />
-                                            </div>
-                                            
-                                            <div>
-                                                <label className="text-sm font-medium text-gray-300">Phone Number</label>
-                                                <input 
-                                                    type="tel" 
-                                                    className="w-full px-3 py-2 mt-1 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400"
-                                                    placeholder="+1 (555) 123-4567"
-                                                />
-                                            </div>
-                                        </div>
-                                        
-                                        {/* Right Column - Training Info */}
-                                        <div className="space-y-3">
-                                            <h4 className="text-base font-semibold text-white mb-2 border-b border-white/20 pb-1">Training Details</h4>
-                                            
-                                            <div>
-                                                <label className="text-sm font-medium text-gray-300">Company Name</label>
-                                                <input 
-                                                    type="text" 
-                                                    className="w-full px-3 py-2 mt-1 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400"
-                                                    placeholder="Your Company Inc."
-                                                />
-                                            </div>
-                                            
-                                            <div>
-                                                <label className="text-sm font-medium text-gray-300">Training Format</label>
-                                                <select className="w-full px-3 py-2 mt-1 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-300 text-white">
-                                                    <option value="" className="bg-gray-800 text-white">Select Format</option>
-                                                    <option value="in-person" className="bg-gray-800 text-white">In-Person Training</option>
-                                                    <option value="virtual" className="bg-gray-800 text-white">Virtual Training</option>
-                                                    <option value="hybrid" className="bg-gray-800 text-white">Hybrid Training</option>
-                                                    <option value="flexible" className="bg-gray-800 text-white">Flexible Schedule</option>
-                                                </select>
-                                            </div>
-                                            
-                                            <div>
-                                                <label className="text-sm font-medium text-gray-300">Number of Participants</label>
-                                                <select className="w-full px-3 py-2 mt-1 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-300 text-white">
-                                                    <option value="" className="bg-gray-800 text-white">Select Number</option>
-                                                    <option value="1-5" className="bg-gray-800 text-white">1-5 People</option>
-                                                    <option value="6-10" className="bg-gray-800 text-white">6-10 People</option>
-                                                    <option value="11-20" className="bg-gray-800 text-white">11-20 People</option>
-                                                    <option value="20+" className="bg-gray-800 text-white">20+ People</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    {/* Selected Program Display */}
-                                    {selectedProgram && (
-                                        <div className="bg-white/5 border border-white/20 rounded-lg p-4">
-                                            <h4 className="text-sm font-medium text-white mb-2">Selected Training Program:</h4>
-                                            <div className="flex items-center space-x-3">
-                                                <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                                                    {renderIcon(selectedProgram.icon)}
-                                                </div>
-                                                <div>
-                                                    <p className="text-white font-medium">{selectedProgram.title}</p>
-                                                    <p className="text-gray-300 text-sm">{selectedProgram.shortDescription}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )}
-                                    
-                                    {/* Message Section - Full Width */}
-                                    <div>
-                                        <label className="text-sm font-medium text-gray-300">Additional Requirements</label>
-                                        <textarea 
-                                            rows="3" 
-                                            className="w-full px-3 py-2 mt-1 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-300 resize-none text-white placeholder-gray-400"
-                                            placeholder="Tell us about your specific training needs, timeline, or any special requirements..."
-                                        ></textarea>
-                                    </div>
-                                    
-                                    {/* Submit Section */}
-                                    <div className="flex items-center justify-between pt-3 border-t border-white/20">
-                                        <p className="text-xs text-gray-400">
-                                            ✓ Free consultation • ✓ Custom training plan
-                                        </p>
-                                        <button 
-                                            type="submit"
-                                            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors duration-300"
-                                        >
-                                            Send Training Request
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                )}
+                <Modal
+                  isOpen={isContactModalOpen}
+                  onClose={closeContactModal}
+                  title="Contact Us"
+                  subtitle="Let's discuss your project needs"
+                >
+                  <div className="p-2">
+                    <ContactForm />
+                  </div>
+                </Modal>
             </div>
         </>
     );

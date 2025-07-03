@@ -56,7 +56,7 @@ function LandingPage() {
 
   return (
     <div className="bg-gray-900 text-white">
-      <Navbar   services={data.services.services}  industries={data.industries.industries} />
+      <Navbar   services={data.services.services}  industries={data.industries.industries}  solutions={data.solutions.solutions} />
       
       {/* Hero Section */}
       {data?.hero && (

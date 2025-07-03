@@ -9,6 +9,8 @@ import {
   CheckCircle,
   TrendingUp,
 } from "@mui/icons-material";
+import ContactForm from "./ContactForm";
+import Modal from './Modal';
 
 // Icon mapping for dynamic icon rendering
 const iconMap = {
@@ -48,7 +50,7 @@ const Services = ({ services = [], sectionHeader = {}, viewAllButton = {} }) => 
   const displayedServices = showAllServices ? services : services.slice(0, 4);
 
   return (
-    <div className="bg-gray-50 py-12">
+    <div className="bg-gray-50 py-12 light-section">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-10">
@@ -182,7 +184,7 @@ const Services = ({ services = [], sectionHeader = {}, viewAllButton = {} }) => 
                   <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">{service.title}</h3>
                   <p className="text-sm text-gray-600 mb-2">{service.description}</p>
                   <div className="mt-3">
-                    <span className="text-xs text-blue-600 font-medium">Click to learn more</span>
+                    <span className="text-s text-blue-600 font-medium">Click to learn more</span>
                   </div>
                 </div>
               ))}
@@ -205,231 +207,86 @@ const Services = ({ services = [], sectionHeader = {}, viewAllButton = {} }) => 
       </div>
 
       {/* Service Modal */}
-      {isServiceModalOpen && selectedService && (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
-          <div className="bg-white/10 backdrop-blur-xl rounded-2xl max-w-4xl w-full h-auto relative transform transition-all duration-300 scale-100 shadow-2xl max-h-[85vh] overflow-y-auto border border-white/20" style={{backgroundColor: '#001038', backdropFilter: 'blur(20px)'}}>
-            {/* Header */}
-            <div className="rounded-t-2xl p-6 text-white relative border-b border-white/20" style={{backgroundColor: '#001038'}}>
-              <button 
-                onClick={closeServiceModal}
-                className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+      <Modal
+        isOpen={isServiceModalOpen && selectedService}
+        onClose={closeServiceModal}
+        icon={iconMap[selectedService?.icon]}
+        title={selectedService?.title}
+        subtitle={selectedService?.description}
+      >
+        <div className="mb-6">
+          <h4 className="text-lg font-bold text-gray-800 mb-3">Service Overview</h4>
+          <p className="text-gray-700 leading-relaxed">
+            {selectedService?.longDescription || selectedService?.description}
+          </p>
+        </div>
+        {/* Service Features */}
+        <div className="mb-6">
+          <h4 className="text-lg font-bold text-gray-800 mb-3">What We Offer</h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {selectedService?.details && selectedService.details.map((detail, index) => (
+              <div key={index} className="flex items-start space-x-3">
+                <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                <span className="text-gray-700 leading-relaxed text-sm">{detail}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* Service Details */}
+        <div className="bg-gray-50 border border-gray-100 rounded-xl p-5 mb-6">
+          <h4 className="text-base font-bold text-gray-800 mb-3">Service Details</h4>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="text-center">
+              <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center mx-auto mb-2">
+                <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
-              </button>
-              
-              <div className="flex items-center">
-                <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mr-4 backdrop-blur-sm">
-                  {iconMap[selectedService.icon] || <SettingsOutlined fontSize="large" style={{ color: 'white' }} />}
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-1 text-white">{selectedService.title}</h3>
-                  <p className="text-gray-300 text-sm">{selectedService.description}</p>
-                </div>
               </div>
+              <h5 className="font-semibold text-gray-800 mb-1 text-xs">Delivery</h5>
+              <p className="text-xs text-blue-400 font-bold">Fast & Reliable</p>
             </div>
-            
-            {/* Content */}
-            <div className="p-6" style={{backgroundColor: '#001038'}}>
-              <div className="mb-6">
-                <h4 className="text-lg font-bold text-white mb-3">Service Overview</h4>
-                <p className="text-gray-300 leading-relaxed">
-                  {selectedService.longDescription || selectedService.description}
-                </p>
+            <div className="text-center">
+              <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center mx-auto mb-2">
+                <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
               </div>
-
-              {/* Service Features */}
-              <div className="mb-6">
-                <h4 className="text-lg font-bold text-white mb-3">What We Offer</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {selectedService.details && selectedService.details.map((detail, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                      <span className="text-gray-300 leading-relaxed text-sm">{detail}</span>
-                    </div>
-                  ))}
-                </div>
+              <h5 className="font-semibold text-gray-800 mb-1 text-xs">Quality</h5>
+              <p className="text-xs text-blue-400 font-bold">Professional Grade</p>
+            </div>
+            <div className="text-center">
+              <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center mx-auto mb-2">
+                <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
               </div>
-
-              {/* Service Details */}
-              <div className="bg-white/5 border border-white/20 rounded-xl p-5 mb-6">
-                <h4 className="text-base font-bold text-white mb-3">Service Details</h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="text-center">
-                    <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center mx-auto mb-2">
-                      <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                      </svg>
-                    </div>
-                    <h5 className="font-semibold text-white mb-1 text-xs">Delivery</h5>
-                    <p className="text-xs text-blue-400 font-bold">Fast & Reliable</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center mx-auto mb-2">
-                      <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
-                    <h5 className="font-semibold text-white mb-1 text-xs">Quality</h5>
-                    <p className="text-xs text-blue-400 font-bold">Professional Grade</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center mx-auto mb-2">
-                      <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
-                    <h5 className="font-semibold text-white mb-1 text-xs">Support</h5>
-                    <p className="text-xs text-blue-400 font-bold">24/7 Available</p>
-                  </div>
-                </div>
-              </div>
-              
-              {/* CTA Button */}
-              <div className="text-center">
-                <button 
-                  onClick={openContactModal}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                >
-                  Contact Us for This Service
-                </button>
-              </div>
+              <h5 className="font-semibold text-gray-800 mb-1 text-xs">Support</h5>
+              <p className="text-xs text-blue-400 font-bold">24/7 Available</p>
             </div>
           </div>
         </div>
-      )}
+        {/* CTA Button */}
+        <div className="text-center">
+          <button 
+            onClick={openContactModal}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
+          >
+            Contact Us for This Service
+          </button>
+        </div>
+      </Modal>
 
       {/* Contact Modal */}
-      {isContactModalOpen && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white/10 backdrop-blur-xl rounded-2xl max-w-3xl w-full h-auto relative transform transition-all duration-300 scale-100 shadow-2xl border border-white/20" style={{backgroundColor: '#001038', backdropFilter: 'blur(20px)'}}>
-            {/* Header */}
-            <div className="rounded-t-2xl p-4 text-white relative border-b border-white/20" style={{backgroundColor: '#001038'}}>
-              <button 
-                onClick={closeContactModal}
-                className="absolute top-3 right-3 text-white/80 hover:text-white transition-colors p-1 hover:bg-white/10 rounded-full"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-              
-              <div className="text-center">
-                <h3 className="text-xl font-bold mb-1 text-white">Contact Us</h3>
-                <p className="text-gray-300 text-sm">Let's discuss your project needs</p>
-              </div>
-            </div>
-            
-            {/* Form Content */}
-            <div className="p-6" style={{backgroundColor: '#001038'}}>
-              <form className="space-y-4">
-                {/* Main Fields in Two Columns */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {/* Left Column - Contact Info */}
-                  <div className="space-y-3">
-                    <h4 className="text-base font-semibold text-white mb-2 border-b border-white/20 pb-1">Contact Information</h4>
-                    
-                    <div>
-                      <label className="text-sm font-medium text-gray-300">Full Name *</label>
-                      <input 
-                        type="text" 
-                        className="w-full px-3 py-2 mt-1 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400"
-                        placeholder="John Doe"
-                        required
-                      />
-                    </div>
-                    
-                    <div>
-                      <label className="text-sm font-medium text-gray-300">Email Address *</label>
-                      <input 
-                        type="email" 
-                        className="w-full px-3 py-2 mt-1 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400"
-                        placeholder="john@company.com"
-                        required
-                      />
-                    </div>
-                    
-                    <div>
-                      <label className="text-sm font-medium text-gray-300">Phone Number</label>
-                      <input 
-                        type="tel" 
-                        className="w-full px-3 py-2 mt-1 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400"
-                        placeholder="+1 (555) 123-4567"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Right Column - Project Info */}
-                  <div className="space-y-3">
-                    <h4 className="text-base font-semibold text-white mb-2 border-b border-white/20 pb-1">Project Information</h4>
-                    
-                    <div>
-                      <label className="text-sm font-medium text-gray-300">Company Name</label>
-                      <input 
-                        type="text" 
-                        className="w-full px-3 py-2 mt-1 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400"
-                        placeholder="Your Company"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label className="text-sm font-medium text-gray-300">Service Interest</label>
-                      <select className="w-full px-3 py-2 mt-1 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-300 text-white">
-                        <option value="" className="bg-gray-800">Select a service</option>
-                        <option value="implementation" className="bg-gray-800">NetSuite Implementation</option>
-                        <option value="optimization" className="bg-gray-800">System Optimization</option>
-                        <option value="integration" className="bg-gray-800">Third-Party Integration</option>
-                        <option value="migration" className="bg-gray-800">Data Migration</option>
-                        <option value="support" className="bg-gray-800">Technical Support</option>
-                      </select>
-                    </div>
-                    
-                    <div>
-                      <label className="text-sm font-medium text-gray-300">Budget Range</label>
-                      <select className="w-full px-3 py-2 mt-1 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-300 text-white">
-                        <option value="" className="bg-gray-800">Select budget range</option>
-                        <option value="under-10k" className="bg-gray-800">Under $10,000</option>
-                        <option value="10k-25k" className="bg-gray-800">$10,000 - $25,000</option>
-                        <option value="25k-50k" className="bg-gray-800">$25,000 - $50,000</option>
-                        <option value="50k-100k" className="bg-gray-800">$50,000 - $100,000</option>
-                        <option value="over-100k" className="bg-gray-800">Over $100,000</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Message Field - Full Width */}
-                <div>
-                  <label className="text-sm font-medium text-gray-300">Project Description</label>
-                  <textarea 
-                    rows="4"
-                    className="w-full px-3 py-2 mt-1 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400 resize-none"
-                    placeholder="Tell us about your project requirements..."
-                  ></textarea>
-                </div>
-
-                {/* Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
-                  <button 
-                    type="submit"
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                  >
-                    Send Message
-                  </button>
-                  <button 
-                    type="button"
-                    onClick={closeContactModal}
-                    className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-6 py-2.5 rounded-lg font-semibold transition-all duration-300"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
+      <Modal
+        isOpen={isContactModalOpen}
+        onClose={closeContactModal}
+        title="Contact Us"
+        subtitle="Let's discuss your project needs"
+      >
+        <div className="p-2">
+          <ContactForm />
         </div>
-      )}
+      </Modal>
     </div>
   );
 };

@@ -8,7 +8,7 @@ const services = [
 
 const ProfessionalServices = () => {
   return (
-    <section className="py-20 px-4 bg-blue-900">
+    <section className="py-20 px-4 bg-blue-900 light-section">
       <div className="container mx-auto">
         <h2 className="text-4xl font-bold text-center mb-12 text-white">Professional Services</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

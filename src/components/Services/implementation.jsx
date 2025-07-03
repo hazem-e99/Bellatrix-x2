@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ContactForm from "../ContactForm";
 
 const Implementation = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -115,11 +116,11 @@ const Implementation = () => {
                 </div>
 
                 {/* Scroll Indicator */}
-                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
                     <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
                         <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-scroll-indicator"></div>
                     </div>
-                </div>
+                </div> */}
             </div>
 
             {/* Our Implementation Process Section */}
@@ -463,95 +464,26 @@ const Implementation = () => {
 
             {/* Modal */}
             {isModalOpen && (
-                <div className="fixed inset-0 bg-black/10 flex items-center justify-center z-50 p-4">
-                    <div className="bg-white/10 backdrop-blur-xl rounded-2xl max-w-3xl w-full h-auto relative transform transition-all duration-300 scale-100 shadow-2xl border border-white/20" style={{backgroundColor: '#001038', backdropFilter: 'blur(20px)'}}>
+                <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50 p-4">
+                    <div className="bg-white rounded-2xl max-w-3xl w-full h-auto relative transform transition-all duration-300 scale-100 shadow-2xl border border-gray-200">
                         {/* Header */}
-                        <div className="rounded-t-2xl p-4 text-white relative border-b border-white/20" style={{backgroundColor: '#001038'}}>
+                        <div className="rounded-t-2xl p-4 text-gray-800 relative border-b border-gray-200 bg-white">
                             <button 
                                 onClick={closeModal}
-                                className="absolute top-3 right-3 text-white/80 hover:text-white transition-colors p-1 hover:bg-white/10 rounded-full"
+                                className="absolute top-3 right-3 text-gray-400 hover:text-gray-700 transition-colors p-1 hover:bg-gray-100 rounded-full"
                             >
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                             </button>
-                            
                             <div className="text-center">
-                                <h3 className="text-xl font-bold mb-1 text-white">{data.modalContent.title}</h3>
-                                <p className="text-gray-300 text-sm">{data.modalContent.subtitle}</p>
+                                <h3 className="text-xl font-bold mb-1 text-blue-900">{data.modalContent.title}</h3>
+                                <p className="text-gray-500 text-sm">{data.modalContent.subtitle}</p>
                             </div>
                         </div>
-                        
                         {/* Form Content */}
-                        <div className="p-6" style={{backgroundColor: '#001038'}}>
-                            <form className="space-y-4">
-                                {/* Main Fields in Two Columns */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    {/* Left Column - Contact Info */}
-                                    <div className="space-y-3">
-                                        <h4 className="text-base font-semibold text-white mb-2 border-b border-white/20 pb-1">{data.modalContent.formFields.contactInfo.title}</h4>
-                                        
-                                        {data.modalContent.formFields.contactInfo.fields.map((field, index) => (
-                                            <div key={index}>
-                                                <label className="text-sm font-medium text-gray-300">{field.label}</label>
-                                                <input 
-                                                    type={field.type} 
-                                                    className="w-full px-3 py-2 mt-1 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400"
-                                                    placeholder={field.placeholder}
-                                                    required={field.required}
-                                                />
-                                            </div>
-                                        ))}
-                                    </div>
-                                    
-                                    {/* Right Column - Company Info */}
-                                    <div className="space-y-3">
-                                        <h4 className="text-base font-semibold text-white mb-2 border-b border-white/20 pb-1">{data.modalContent.formFields.companyInfo.title}</h4>
-                                        
-                                        {data.modalContent.formFields.companyInfo.fields.map((field, index) => (
-                                            <div key={index}>
-                                                <label className="text-sm font-medium text-gray-300">{field.label}</label>
-                                                {field.type === 'select' ? (
-                                                    <select className="w-full px-3 py-2 mt-1 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-300 text-white">
-                                                        {field.options.map((option, i) => (
-                                                            <option key={i} value={option.toLowerCase().replace(/\s+/g, '-')} className="bg-gray-800 text-white">{option}</option>
-                                                        ))}
-                                                    </select>
-                                                ) : (
-                                                    <input 
-                                                        type={field.type} 
-                                                        className="w-full px-3 py-2 mt-1 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-300 text-white placeholder-gray-400"
-                                                        placeholder={field.placeholder}
-                                                    />
-                                                )}
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                                
-                                {/* Message Section - Full Width */}
-                                <div>
-                                    <label className="text-sm font-medium text-gray-300">{data.modalContent.formFields.message.label}</label>
-                                    <textarea 
-                                        rows="3" 
-                                        className="w-full px-3 py-2 mt-1 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-300 resize-none text-white placeholder-gray-400"
-                                        placeholder={data.modalContent.formFields.message.placeholder}
-                                    ></textarea>
-                                </div>
-                                
-                                {/* Submit Section */}
-                                <div className="flex items-center justify-between pt-3 border-t border-white/20">
-                                    <p className="text-xs text-gray-400">
-                                        {data.modalContent.formFields.submitNote}
-                                    </p>
-                                    <button 
-                                        type="submit"
-                                        className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors duration-300"
-                                    >
-                                        {data.modalContent.formFields.submitText}
-                                    </button>
-                                </div>
-                            </form>
+                        <div className="p-6 bg-[#f7fafc]">
+                            <ContactForm />
                         </div>
                     </div>
                 </div>
