@@ -42,10 +42,11 @@
           "System architecture planning",
           "Change management strategy"
         ],
-        "stats": "92% client satisfaction rate"
+        "stats": "92% client satisfaction rate",
+        "link": "#"
       },
       {
-        "title": "Flawless Implementation",
+        "title": "Implementation",
         "description": "End-to-end deployment with minimal disruption to operations",
         "icon": "BuildOutlined",
         "color": "#0EA5E9",
@@ -55,10 +56,11 @@
           "Configuration best practices",
           "Go-live support"
         ],
-        "stats": "40% faster than industry average"
+        "stats": "40% faster than industry average",
+        "link": "/Implementation"
       },
       {
-        "title": "Adaptive Training",
+        "title": "Training",
         "description": "Customized learning paths for all user levels and roles",
         "icon": "SchoolOutlined",
         "color": "#8B5CF6",
@@ -68,7 +70,8 @@
           "Custom documentation",
           "Ongoing certification"
         ],
-        "stats": "85% faster user adoption"
+        "stats": "85% faster user adoption",
+        "link": "/Training"
       },
       {
         "title": "Tailored Customization",
@@ -81,7 +84,8 @@
           "Advanced reporting",
           "Third-party integrations"
         ],
-        "stats": "300+ custom solutions delivered"
+        "stats": "300+ custom solutions delivered",
+        "link": "#"
       },
       {
         "title": "Seamless Integration",
@@ -94,7 +98,8 @@
           "Data synchronization",
           "Real-time analytics"
         ],
-        "stats": "99.9% integration uptime"
+        "stats": "99.9% integration uptime",
+        "link": "#"
       }
     ],
     "sectionHeader": {

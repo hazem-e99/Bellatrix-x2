@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ContactForm from "../ContactForm";
+import Navbar from "../Navbar";
 import Modal from '../../components/Modal';
 
 const Training = () => {
@@ -141,8 +142,33 @@ const Training = () => {
         );
     };
 
+    // Services data for navbar
+    const services = [
+      {
+        title: "Strategic Consultation",
+        link: "#"
+      },
+      {
+        title: "Implementation",
+        link: "/Implementation"
+      },
+      {
+        title: "Training",
+        link: "/Training"
+      },
+      {
+        title: "Tailored Customization",
+        link: "#"
+      },
+      {
+        title: "Seamless Integration",
+        link: "#"
+      }
+    ];
+
     return (
         <>
+            <Navbar services={services} />
             <style dangerouslySetInnerHTML={{
                 __html: `
                     @keyframes fadeInUp {
