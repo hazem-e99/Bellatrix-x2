@@ -7,11 +7,13 @@ import Modal from '../Modal';
 
 const About = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [cardsPerScreen, setCardsPerScreen] = useState(3);
+  const [slideOffset, setSlideOffset] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
 
   const openContactModal = () => setIsContactModalOpen(true);
   const closeContactModal = () => setIsContactModalOpen(false);
 
-<<<<<<< HEAD
   // Services data for navbar
   const services = [
     {
@@ -36,8 +38,6 @@ const About = () => {
     }
   ];
 
-=======
->>>>>>> 0bc71ff04f122e89843d311cc8aebc1eecd94fcf
   const values = [
     {
       title: 'Innovation',
@@ -65,40 +65,27 @@ const About = () => {
     {
       name: 'Sarah Johnson',
       role: 'Chief Executive Officer',
-<<<<<<< HEAD
       image: '/public/images/ourteam/1.jpg',
-=======
-      image: '/images/indleaders.jpg',
->>>>>>> 0bc71ff04f122e89843d311cc8aebc1eecd94fcf
       bio: 'Visionary leader with 20+ years in enterprise software solutions.',
       expertise: ['Strategic Planning', 'Business Development', 'Leadership']
     },
     {
       name: 'Michael Chen',
       role: 'Chief Technology Officer',
-<<<<<<< HEAD
       image: '/public/images/ourteam/2.jpg',
-=======
-      image: '/images/indleaders.jpg',
->>>>>>> 0bc71ff04f122e89843d311cc8aebc1eecd94fcf
       bio: 'Technology expert specializing in NetSuite implementations and cloud solutions.',
       expertise: ['NetSuite Development', 'Cloud Architecture', 'System Integration']
     },
     {
       name: 'Emily Rodriguez',
       role: 'Head of Operations',
-<<<<<<< HEAD
       image: '/public/images/ourteam/3.jpg',
-=======
-      image: '/images/indleaders.jpg',
->>>>>>> 0bc71ff04f122e89843d311cc8aebc1eecd94fcf
       bio: 'Operations specialist ensuring seamless project delivery and client success.',
       expertise: ['Project Management', 'Process Optimization', 'Quality Assurance']
     },
     {
       name: 'David Kim',
       role: 'Lead Consultant',
-<<<<<<< HEAD
       image: '/public/images/ourteam/1.jpg',
       bio: 'Senior consultant with expertise in business process optimization.',
       expertise: ['Business Analysis', 'Process Design', 'Training']
@@ -128,11 +115,6 @@ const About = () => {
     }
     return 3; // default for SSR
   };
-
-  // State for current cards per screen
-  const [cardsPerScreen, setCardsPerScreen] = useState(3);
-  const [slideOffset, setSlideOffset] = useState(0);
-  const [isHovering, setIsHovering] = useState(false);
 
   // Update cards per screen on window resize
   useEffect(() => {
@@ -172,14 +154,6 @@ const About = () => {
     return () => cancelAnimationFrame(animationId);
   }, [needsCarousel, cardsPerScreen, teamMembers.length, isHovering]);
 
-=======
-      image: '/images/indleaders.jpg',
-      bio: 'Senior consultant with expertise in business process optimization.',
-      expertise: ['Business Analysis', 'Process Design', 'Training']
-    }
-  ];
-
->>>>>>> 0bc71ff04f122e89843d311cc8aebc1eecd94fcf
   const milestones = [
     {
       year: '2008',
@@ -238,11 +212,7 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-<<<<<<< HEAD
       <Navbar services={services} />
-=======
-      <Navbar />
->>>>>>> 0bc71ff04f122e89843d311cc8aebc1eecd94fcf
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -281,20 +251,12 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-<<<<<<< HEAD
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white animate-slide-up mb-4">
-              About Bellatrix
-            </h1>
-            <p className="text-lg md:text-2xl text-gray-200 max-w-2xl mb-8 animate-fade-in delay-200">
-              Empowering businesses with innovative Oracle NetSuite solutions, digital transformation, and expert consulting.
-=======
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
               About Bellatrix
             </h1>
             <p className="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed max-w-4xl mx-auto">
               Empowering businesses worldwide with innovative Oracle NetSuite solutions, 
               expert consulting, and transformative digital experiences that drive sustainable growth.
->>>>>>> 0bc71ff04f122e89843d311cc8aebc1eecd94fcf
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -345,11 +307,7 @@ const About = () => {
                 <div className="relative bg-gradient-to-br from-gray-900/10 via-blue-900/5 to-gray-900/10 rounded-3xl p-6 backdrop-blur-md border border-white/30 shadow-2xl group-hover:shadow-blue-500/20 transition-all duration-500">
                   <div className="relative bg-gradient-to-br from-white/5 via-transparent to-blue-500/5 rounded-2xl p-4 border border-white/20">
                     <img 
-<<<<<<< HEAD
-                      src="/images/aboutBellatrix.jpg" 
-=======
                       src="/images/ourProServices.png" 
->>>>>>> 0bc71ff04f122e89843d311cc8aebc1eecd94fcf
                       alt="About Bellatrix - Professional Services" 
                       className="w-full h-auto rounded-xl shadow-2xl brightness-105 contrast-110 saturate-105 group-hover:brightness-110 group-hover:contrast-115 group-hover:saturate-110 transition-all duration-500 filter drop-shadow-xl"
                     />
@@ -437,11 +395,7 @@ const About = () => {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
               Our <span className="text-cyan-400">Journey</span>
-<<<<<<< HEAD
-          </h2>
-=======
             </h2>
->>>>>>> 0bc71ff04f122e89843d311cc8aebc1eecd94fcf
             <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
               From humble beginnings to becoming a trusted Oracle NetSuite partner, 
               our journey has been marked by innovation, growth, and unwavering commitment to excellence.
@@ -475,21 +429,13 @@ const About = () => {
               <div className="relative group">
                 <div className="relative bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-4 backdrop-blur-sm border border-white/20 shadow-2xl">
                   <img 
-<<<<<<< HEAD
-                    src="/images/OurJourney.jpg" 
-=======
                     src="/images/solution.jpg" 
->>>>>>> 0bc71ff04f122e89843d311cc8aebc1eecd94fcf
                     alt="Our Journey - Digital Innovation" 
                     className="w-full h-auto lg:max-w-md rounded-xl shadow-lg brightness-110 contrast-110 saturate-110 group-hover:scale-105 transition-all duration-500"
                   />
                   <div className="absolute inset-4 rounded-xl bg-gradient-to-t from-transparent via-transparent to-white/10 pointer-events-none"></div>
                 </div>
-<<<<<<< HEAD
-            </div>
-=======
               </div>
->>>>>>> 0bc71ff04f122e89843d311cc8aebc1eecd94fcf
             </div>
           </div>
         </div>
@@ -508,7 +454,6 @@ const About = () => {
             </p>
           </div>
           
-<<<<<<< HEAD
           <div className="relative overflow-hidden">
             {/* Team Cards Container */}
             <div className="max-w-7xl mx-auto">
@@ -527,274 +472,78 @@ const About = () => {
                     onMouseEnter={() => setIsHovering(true)}
                     onMouseLeave={() => setIsHovering(false)}
                   >
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-800 mb-2">{member.name}</h3>
-                    <p className="text-blue-600 font-medium mb-3">{member.role}</p>
-                    <p className="text-gray-600 text-sm leading-relaxed mb-4">{member.bio}</p>
-                    <div className="space-y-1">
-                      {member.expertise.map((skill, i) => (
-                        <span key={i} className="inline-block bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded-full mr-1">
-                          {skill}
-                        </span>
-                      ))}
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-800 mb-2">{member.name}</h3>
+                      <p className="text-blue-600 font-medium mb-3">{member.role}</p>
+                      <p className="text-gray-600 text-sm leading-relaxed mb-4">{member.bio}</p>
+                      <div className="space-y-1">
+                        {member.expertise.map((skill, i) => (
+                          <span key={i} className="inline-block bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded-full mr-1">
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-=======
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
-              >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">{member.name}</h3>
-                  <p className="text-blue-600 font-medium mb-3">{member.role}</p>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">{member.bio}</p>
-                  <div className="space-y-1">
-                    {member.expertise.map((skill, i) => (
-                      <span key={i} className="inline-block bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded-full mr-1">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Our Values Section */}
-      <section className="py-20 relative overflow-hidden" style={{backgroundColor: '#001038'}}>
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-full h-full">
-            <svg width="100%" height="100%" viewBox="0 0 100 100" className="text-blue-300">
-              <pattern id="valuesGrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                <circle cx="1" cy="1" r="1" fill="currentColor" opacity="0.3"/>
-              </pattern>
-              <rect width="100%" height="100%" fill="url(#valuesGrid)" />
-            </svg>
-          </div>
-        </div>
-
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-              Our <span className="text-cyan-400">Values</span>
-            </h2>
-            <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
-              These core values guide everything we do and shape how we interact with our clients, 
-              partners, and each other.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            {values.map((value, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="group relative p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300"
-              >
-                <div className={`absolute inset-0 bg-gradient-to-r ${value.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}></div>
-                <div className="relative">
-                  <h3 className="text-2xl font-bold text-white mb-4">{value.title}</h3>
-                  <p className="text-gray-300 leading-relaxed text-lg">{value.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* What Sets Us Apart Section */}
-      <section className="bg-gray-50 py-20 light-section">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
-              What Sets Us <span className="text-blue-600">Apart</span>
-            </h2>
-            <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              Our unique combination of expertise, methodology, and commitment to excellence 
-              makes us the preferred choice for Oracle NetSuite implementations.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {differentiators.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group"
-              >
-                <h3 className="text-xl font-bold text-gray-800 mb-4">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed mb-4">{item.description}</p>
-                <div className="bg-blue-50 text-blue-600 font-bold py-2 px-4 rounded-full text-sm">
-                  {item.stats}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Our Milestones Section */}
-      <section className="py-20 relative overflow-hidden" style={{backgroundColor: '#001038'}}>
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-full h-full">
-            <svg width="100%" height="100%" viewBox="0 0 100 100" className="text-blue-300">
-              <pattern id="milestonesGrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                <circle cx="1" cy="1" r="1" fill="currentColor" opacity="0.3"/>
-              </pattern>
-              <rect width="100%" height="100%" fill="url(#milestonesGrid)" />
-            </svg>
-          </div>
-        </div>
-
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-              Our <span className="text-cyan-400">Milestones</span>
-            </h2>
-            <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
-              Key achievements and milestones that mark our journey of growth, 
-              innovation, and commitment to excellence.
-            </p>
-          </div>
-          
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {milestones.map((milestone, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 group"
-                >
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-cyan-400 mb-2">{milestone.year}</div>
-                    <h3 className="text-xl font-bold text-white mb-3">{milestone.title}</h3>
-                    <p className="text-gray-300 leading-relaxed text-sm">{milestone.description}</p>
-                  </div>
-                </motion.div>
-              ))}
->>>>>>> 0bc71ff04f122e89843d311cc8aebc1eecd94fcf
-            </div>
-          </div>
-        </div>
-      </section>
-
-<<<<<<< HEAD
-      {/* Our Values Section */}
-      <section className="py-20 relative overflow-hidden" style={{backgroundColor: '#001038'}}>
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-full h-full">
-            <svg width="100%" height="100%" viewBox="0 0 100 100" className="text-blue-300">
-              <pattern id="valuesGrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                <circle cx="1" cy="1" r="1" fill="currentColor" opacity="0.3"/>
-              </pattern>
-              <rect width="100%" height="100%" fill="url(#valuesGrid)" />
-            </svg>
-          </div>
-        </div>
-
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-              Our <span className="text-cyan-400">Values</span>
-            </h2>
-            <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
-              These core values guide everything we do and shape how we interact with our clients, 
-              partners, and each other.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            {values.map((value, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="group relative p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300"
-              >
-                <div className={`absolute inset-0 bg-gradient-to-r ${value.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}></div>
-                <div className="relative">
-                  <h3 className="text-2xl font-bold text-white mb-4">{value.title}</h3>
-                  <p className="text-gray-300 leading-relaxed text-lg">{value.description}</p>
-                </div>
-              </motion.div>
-            ))}
-=======
-      {/* Ready to Build Something Great Section */}
-      <section className="bg-white py-20 light-section">
-        <div className="container mx-auto px-6">
-          <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl p-12 text-white text-center">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-                Ready to Build Something <span className="text-cyan-200">Great?</span>
-              </h2>
-              <p className="text-xl mb-8 opacity-90 leading-relaxed">
-                Let's collaborate to transform your business with innovative Oracle NetSuite solutions 
-                that drive growth, efficiency, and success.
-              </p>
-              
-              <div className="grid md:grid-cols-3 gap-8 mb-12">
-                <div className="text-center">
-                  <h4 className="text-xl font-bold mb-2">Quick Start</h4>
-                  <p className="opacity-90">Get started with a free consultation</p>
-                </div>
-                <div className="text-center">
-                  <h4 className="text-xl font-bold mb-2">Tailored Solutions</h4>
-                  <p className="opacity-90">Custom solutions for your business</p>
-                </div>
-                <div className="text-center">
-                  <h4 className="text-xl font-bold mb-2">Proven Results</h4>
-                  <p className="opacity-90">98% client satisfaction rate</p>
-                </div>
+                ))}
               </div>
-              
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={openContactModal}
-                className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                Start Free Consultation
-              </motion.button>
             </div>
->>>>>>> 0bc71ff04f122e89843d311cc8aebc1eecd94fcf
           </div>
         </div>
       </section>
 
-<<<<<<< HEAD
+      {/* Our Values Section */}
+      <section className="py-20 relative overflow-hidden" style={{backgroundColor: '#001038'}}>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full">
+            <svg width="100%" height="100%" viewBox="0 0 100 100" className="text-blue-300">
+              <pattern id="valuesGrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="1" cy="1" r="1" fill="currentColor" opacity="0.3"/>
+              </pattern>
+              <rect width="100%" height="100%" fill="url(#valuesGrid)" />
+            </svg>
+          </div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+              Our <span className="text-cyan-400">Values</span>
+            </h2>
+            <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
+              These core values guide everything we do and shape how we interact with our clients, 
+              partners, and each other.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {values.map((value, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="group relative p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300"
+              >
+                <div className={`absolute inset-0 bg-gradient-to-r ${value.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}></div>
+                <div className="relative">
+                  <h3 className="text-2xl font-bold text-white mb-4">{value.title}</h3>
+                  <p className="text-gray-300 leading-relaxed text-lg">{value.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* What Sets Us Apart Section */}
       <section className="bg-gray-50 py-20 light-section">
         <div className="container mx-auto px-6">
@@ -845,12 +594,12 @@ const About = () => {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
               Our <span className="text-cyan-400">Milestones</span>
-          </h2>
+            </h2>
             <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
               Key achievements and milestones that mark our journey of growth, 
               innovation, and commitment to excellence.
             </p>
-            </div>
+          </div>
           
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -866,7 +615,7 @@ const About = () => {
                     <div className="text-2xl font-bold text-cyan-400 mb-2">{milestone.year}</div>
                     <h3 className="text-xl font-bold text-white mb-3">{milestone.title}</h3>
                     <p className="text-gray-300 leading-relaxed text-sm">{milestone.description}</p>
-            </div>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -890,7 +639,7 @@ const About = () => {
               <div className="grid md:grid-cols-3 gap-8 mb-12">
                 <div className="text-center">
                   <h4 className="text-xl font-bold mb-2">Quick Start</h4>
-                  <p className="text-gray-600">Get started with our consultation</p>
+                  <p className="text-gray-600">Get started with a free consultation</p>
                 </div>
                 <div className="text-center">
                   <h4 className="text-xl font-bold mb-2">Tailored Solutions</h4>
@@ -908,15 +657,13 @@ const About = () => {
                 onClick={openContactModal}
                 className="bg-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                Start Consultation
+                Start Free Consultation
               </motion.button>
             </div>
           </div>
         </div>
       </section>
 
-=======
->>>>>>> 0bc71ff04f122e89843d311cc8aebc1eecd94fcf
       {/* Contact Modal */}
       <Modal
         isOpen={isContactModalOpen}
