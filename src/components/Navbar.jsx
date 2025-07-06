@@ -280,13 +280,13 @@ const Navbar = ({ services = [], industries = [], solutions = [] }) => {
                       onMouseLeave={handleMenuLeave}
                     >
                       {services.map((service, index) => (
-                        <a
+                        <Link
                           key={service.title || index}
-                          href="#"
+                          to={service.link || "#"}
                           className="block px-5 py-3 text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-all duration-150 text-base font-medium"
                         >
                           {service.title || `Service ${index + 1}`}
-                        </a>
+                        </Link>
                       ))}
                     </motion.div>
                   )}
@@ -419,13 +419,13 @@ const Navbar = ({ services = [], industries = [], solutions = [] }) => {
                     className="mt-2 ml-4 space-y-2"
                   >
                     {services.slice(0, 3).map((item, index) => (
-                      <a
+                      <Link
                         key={item.title || index}
-                        href="#"
+                        to={item.link || "#"}
                         className="block px-4 py-3 text-sm text-white/70 rounded-lg hover:bg-white/5 hover:text-white border border-white/5 backdrop-blur-sm transition-all duration-300"
                       >
                         {item.title || `Service ${index + 1}`}
-                      </a>
+                      </Link>
                     ))}
                   </motion.div>
                 )}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ContactForm from "../ContactForm";
+import Navbar from "../Navbar";
 
 const Implementation = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,8 +34,33 @@ const Implementation = () => {
         return <div className="min-h-screen flex items-center justify-center">Error loading data</div>;
     }
 
+    // Services data for navbar
+    const services = [
+      {
+        title: "Strategic Consultation",
+        link: "#"
+      },
+      {
+        title: "Implementation",
+        link: "/Implementation"
+      },
+      {
+        title: "Training",
+        link: "/Training"
+      },
+      {
+        title: "Tailored Customization",
+        link: "#"
+      },
+      {
+        title: "Seamless Integration",
+        link: "#"
+      }
+    ];
+
     return (
         <>
+            <Navbar services={services} />
             {/* Hero Section */}
             <div className="min-h-screen relative overflow-hidden pt-20">
                 {/* Background Video */}

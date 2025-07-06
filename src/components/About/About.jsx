@@ -7,9 +7,36 @@ import Modal from '../Modal';
 
 const About = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [cardsPerScreen, setCardsPerScreen] = useState(3);
+  const [slideOffset, setSlideOffset] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
 
   const openContactModal = () => setIsContactModalOpen(true);
   const closeContactModal = () => setIsContactModalOpen(false);
+
+  // Services data for navbar
+  const services = [
+    {
+      title: "Strategic Consultation",
+      link: "#"
+    },
+    {
+      title: "Implementation",
+      link: "/Implementation"
+    },
+    {
+      title: "Training",
+      link: "/Training"
+    },
+    {
+      title: "Tailored Customization",
+      link: "#"
+    },
+    {
+      title: "Seamless Integration",
+      link: "#"
+    }
+  ];
 
   const values = [
     {
@@ -38,32 +65,94 @@ const About = () => {
     {
       name: 'Sarah Johnson',
       role: 'Chief Executive Officer',
-      image: '/images/indleaders.jpg',
+      image: '/public/images/ourteam/1.jpg',
       bio: 'Visionary leader with 20+ years in enterprise software solutions.',
       expertise: ['Strategic Planning', 'Business Development', 'Leadership']
     },
     {
       name: 'Michael Chen',
       role: 'Chief Technology Officer',
-      image: '/images/indleaders.jpg',
+      image: '/public/images/ourteam/2.jpg',
       bio: 'Technology expert specializing in NetSuite implementations and cloud solutions.',
       expertise: ['NetSuite Development', 'Cloud Architecture', 'System Integration']
     },
     {
       name: 'Emily Rodriguez',
       role: 'Head of Operations',
-      image: '/images/indleaders.jpg',
+      image: '/public/images/ourteam/3.jpg',
       bio: 'Operations specialist ensuring seamless project delivery and client success.',
       expertise: ['Project Management', 'Process Optimization', 'Quality Assurance']
     },
     {
       name: 'David Kim',
       role: 'Lead Consultant',
-      image: '/images/indleaders.jpg',
+      image: '/public/images/ourteam/1.jpg',
       bio: 'Senior consultant with expertise in business process optimization.',
       expertise: ['Business Analysis', 'Process Design', 'Training']
+    },
+    {
+      name: 'Lisa Thompson',
+      role: 'Senior Developer',
+      image: '/public/images/ourteam/2.jpg',
+      bio: 'Full-stack developer with deep expertise in NetSuite customization.',
+      expertise: ['NetSuite SuiteScript', 'JavaScript', 'API Integration']
+    },
+    {
+      name: 'Alex Martinez',
+      role: 'Business Analyst',
+      image: '/public/images/ourteam/3.jpg',
+      bio: 'Experienced analyst specializing in business process mapping and optimization.',
+      expertise: ['Requirements Gathering', 'Process Mapping', 'User Training']
     }
   ];
+
+  // Get cards per screen size
+  const getCardsPerScreen = () => {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth >= 1024) return 3; // lg screens
+      if (window.innerWidth >= 768) return 2;  // md screens
+      return 1; // mobile screens
+    }
+    return 3; // default for SSR
+  };
+
+  // Update cards per screen on window resize
+  useEffect(() => {
+    const updateCardsPerScreen = () => {
+      setCardsPerScreen(getCardsPerScreen());
+    };
+
+    updateCardsPerScreen();
+    window.addEventListener('resize', updateCardsPerScreen);
+    return () => window.removeEventListener('resize', updateCardsPerScreen);
+  }, []);
+
+  // Check if carousel navigation is needed
+  const needsCarousel = teamMembers.length > cardsPerScreen;
+
+  // Continuous sliding effect
+  useEffect(() => {
+    if (!needsCarousel || isHovering) return;
+
+    const slideSpeed = 0.3; // pixels per second - very slow
+    let animationId;
+
+    const animate = () => {
+      setSlideOffset(prev => {
+        const newOffset = prev - slideSpeed / 60; // 60fps
+        
+        if (newOffset <= -100) {
+          // Reset to beginning for seamless loop
+          return 0;
+        }
+        return newOffset;
+      });
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animationId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationId);
+  }, [needsCarousel, cardsPerScreen, teamMembers.length, isHovering]);
 
   const milestones = [
     {
@@ -123,7 +212,7 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navbar />
+      <Navbar services={services} />
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -135,7 +224,7 @@ const About = () => {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="/Videos/HomeHeroSectionV.mp4" type="video/mp4" />
+          <source src="/public/Videos/about-hero.mp4" type="video/mp4" />
         </video>
         
         {/* Overlay */}
@@ -365,37 +454,48 @@ const About = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
+          <div className="relative overflow-hidden">
+            {/* Team Cards Container */}
+            <div className="max-w-7xl mx-auto">
+              <div 
+                className="flex gap-8 transition-transform duration-1000 ease-linear"
+                style={{ 
+                  transform: `translateX(${slideOffset}%)`,
+                  width: `${Math.ceil(teamMembers.length / cardsPerScreen) * 100}%`
+                }}
               >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">{member.name}</h3>
-                  <p className="text-blue-600 font-medium mb-3">{member.role}</p>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">{member.bio}</p>
-                  <div className="space-y-1">
-                    {member.expertise.map((skill, i) => (
-                      <span key={i} className="inline-block bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded-full mr-1">
-                        {skill}
-                      </span>
-                    ))}
+                {/* Duplicate team members for seamless loop */}
+                {[...teamMembers, ...teamMembers].map((member, index) => (
+                  <div
+                    key={`member-${index}`}
+                    className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex-shrink-0 min-w-[300px] max-w-[350px]"
+                    onMouseEnter={() => setIsHovering(true)}
+                    onMouseLeave={() => setIsHovering(false)}
+                  >
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-800 mb-2">{member.name}</h3>
+                      <p className="text-blue-600 font-medium mb-3">{member.role}</p>
+                      <p className="text-gray-600 text-sm leading-relaxed mb-4">{member.bio}</p>
+                      <div className="space-y-1">
+                        {member.expertise.map((skill, i) => (
+                          <span key={i} className="inline-block bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded-full mr-1">
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -524,14 +624,14 @@ const About = () => {
       </section>
 
       {/* Ready to Build Something Great Section */}
-      <section className="bg-white py-20 light-section">
+      <section className="bg-gray-50 py-20 light-section">
         <div className="container mx-auto px-6">
-          <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl p-12 text-white text-center">
+          <div className="bg-gradient-to-r from-gray-100 to-gray-200 rounded-3xl p-12 text-gray-800 text-center">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-                Ready to Build Something <span className="text-cyan-200">Great?</span>
+                Ready to Build Something <span className="text-blue-600">Great?</span>
               </h2>
-              <p className="text-xl mb-8 opacity-90 leading-relaxed">
+              <p className="text-xl mb-8 text-gray-600 leading-relaxed">
                 Let's collaborate to transform your business with innovative Oracle NetSuite solutions 
                 that drive growth, efficiency, and success.
               </p>
@@ -539,15 +639,15 @@ const About = () => {
               <div className="grid md:grid-cols-3 gap-8 mb-12">
                 <div className="text-center">
                   <h4 className="text-xl font-bold mb-2">Quick Start</h4>
-                  <p className="opacity-90">Get started with a free consultation</p>
+                  <p className="text-gray-600">Get started with a free consultation</p>
                 </div>
                 <div className="text-center">
                   <h4 className="text-xl font-bold mb-2">Tailored Solutions</h4>
-                  <p className="opacity-90">Custom solutions for your business</p>
+                  <p className="text-gray-600">Custom solutions for your business</p>
                 </div>
                 <div className="text-center">
                   <h4 className="text-xl font-bold mb-2">Proven Results</h4>
-                  <p className="opacity-90">98% client satisfaction rate</p>
+                  <p className="text-gray-600">98% client satisfaction rate</p>
                 </div>
               </div>
               
@@ -555,7 +655,7 @@ const About = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={openContactModal}
-                className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 Start Free Consultation
               </motion.button>
