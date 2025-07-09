@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import ContactForm from "../ContactForm";
-import Navbar from "../Navbar";
 import Modal from '../../components/Modal';
 
 const Training = () => {
@@ -168,7 +167,6 @@ const Training = () => {
 
     return (
         <>
-            <Navbar services={services} />
             <style dangerouslySetInnerHTML={{
                 __html: `
                     @keyframes fadeInUp {
@@ -461,7 +459,7 @@ const Training = () => {
                 </div>
 
                 {/* Our Training Programs Section */}
-                <div className="bg-gray-50 py-12">
+                <div className="bg-gray-50 py-12 light-section">
                     <div className="container mx-auto px-6">
                         {/* Section Header */}
                         <div className="text-center mb-10">
@@ -810,7 +808,7 @@ const Training = () => {
                 </div>
 
                 {/* Why Choose Our Training Section */}
-                <div className="bg-gray-50 py-12">
+                <div className="bg-gray-50 py-12 light-section">
                     <div className="container mx-auto px-6">
                         {/* Section Header */}
                         <div className="text-center mb-10">

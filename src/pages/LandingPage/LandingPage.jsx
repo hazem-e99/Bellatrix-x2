@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
-import Navbar from '../../components/Navbar';
 import Hero from '../../components/Hero';
 import Services from '../../components/Services';
 import Testimonials from '../../components/Testimonials';
 import Industries from '../../components/Industries';
-import Footer from '../../components/Footer';
 import './LandingPage.css';
 
 // Custom fetch hook
@@ -56,8 +54,6 @@ function LandingPage() {
 
   return (
     <div className="bg-gray-900 text-white">
-      <Navbar   services={data.services.services}  industries={data.industries.industries}  solutions={data.solutions.solutions} />
-      
       {/* Hero Section */}
       {data?.hero && (
         <Hero 
@@ -92,8 +88,6 @@ function LandingPage() {
           styles={data.industries.styles}
         />
       )}
-      
-      <Footer  />
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import ContactForm from "../ContactForm";
-import Navbar from "../Navbar";
 
 const Implementation = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -60,7 +59,6 @@ const Implementation = () => {
 
     return (
         <>
-            <Navbar services={services} />
             {/* Hero Section */}
             <div className="min-h-screen relative overflow-hidden pt-20">
                 {/* Background Video */}
@@ -150,7 +148,7 @@ const Implementation = () => {
             </div>
 
             {/* Our Implementation Process Section */}
-            <div className="bg-gray-50 py-12">
+            <div className="bg-gray-50 py-12 light-section">
                 <div className="container mx-auto px-6">
                     {/* Section Header */}
                     <div className="text-center mb-10">
@@ -373,7 +371,7 @@ const Implementation = () => {
             </div>
 
             {/* Pricing Section */}
-            <div className="bg-gray-50 py-12">
+            <div className="bg-gray-50 py-12 light-section">
                 <div className="container mx-auto px-6">
                     {/* Section Header */}
                     <div className="text-center mb-10">

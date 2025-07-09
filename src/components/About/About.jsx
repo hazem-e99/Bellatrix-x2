@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Navbar from '../Navbar';
-import Footer from '../Footer';
 import ContactForm from '../ContactForm';
 import Modal from '../Modal';
 
@@ -212,7 +210,6 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navbar services={services} />
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -676,7 +673,6 @@ const About = () => {
         </div>
       </Modal>
 
-      <Footer />
     </div>
   );
 };

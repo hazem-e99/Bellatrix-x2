@@ -64,7 +64,7 @@ export default function HRSolution() {
   }, []);
 
   return (
-    <main className="bg-gradient-to-br from-blue-50 to-white min-h-screen text-slate-800">
+    <main className="bg-gradient-to-br from-blue-50 to-white min-h-screen text-slate-800 light-section">
       {/* Hero Section */}
       <section className="w-full min-h-screen bg-gradient-to-br from-[#191970] via-black to-blue-700 py-24 md:py-32 text-center flex flex-col items-center justify-center relative overflow-hidden" style={{backgroundImage: 'url(/images/payrollHeroSection.jpg)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
         {/* Overlay */}
@@ -77,7 +77,7 @@ export default function HRSolution() {
       </section>
 
       {/* Benefits */}
-      <section className="py-20 bg-gray-50 animate-fade-in-up">
+      <section className="py-20 bg-gray-50 animate-fade-in-up light-section">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-4 text-blue-800 text-center">Why Choose Our HR Solution?</h2>
           <p className="text-lg text-gray-600 mb-10 text-center max-w-2xl mx-auto">Discover the key advantages that make our HR platform the smart choice for modern businesses of all sizes.</p>
@@ -189,7 +189,7 @@ export default function HRSolution() {
       </section>
 
       {/* Use Cases */}
-      <section className="py-20 bg-gray-50 animate-fade-in-up">
+      <section className="py-20 bg-gray-50 animate-fade-in-up light-section">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-extrabold mb-3 text-blue-800 text-center">
             Who Is It <span className="text-blue-600">For?</span>
@@ -312,7 +312,7 @@ export default function HRSolution() {
       </section>
 
       {/* Strong CTA Block */}
-      <section className="py-16 bg-gray-50 text-center animate-fade-in-up">
+      <section className="py-16 bg-gray-50 text-center animate-fade-in-up light-section">
         <div className="max-w-2xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-blue-800">Ready to Transform Your HR?</h2>
           <p className="text-lg md:text-xl mb-8 text-gray-600">Start your free trial or book a personalized demo with our experts today.</p>
@@ -323,7 +323,7 @@ export default function HRSolution() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 bg-white/90 animate-fade-in-up">
+      <section className="py-20 bg-white/90 animate-fade-in-up light-section">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-10 text-blue-800 text-center">Frequently Asked Questions</h2>
           <div className="space-y-6">
