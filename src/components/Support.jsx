@@ -2,8 +2,8 @@ import { Card, CardContent, Typography } from '@mui/material';
 
 const supportItems = [
   {
-    title: 'Oracle NetSuite Support',
-    description: 'Continuous support to ensure your NetSuite solution runs smoothly.',
+    title: 'Oracle Bellatrix Support',
+    description: 'Continuous support to ensure your Bellatrix solution runs smoothly.',
   },
   {
     title: 'System Maintenance',
@@ -11,7 +11,7 @@ const supportItems = [
   },
   {
     title: 'User Training',
-    description: 'Comprehensive training to empower your team to use NetSuite effectively.',
+    description: 'Comprehensive training to empower your team to use Bellatrix effectively.',
   },
 ];
 
