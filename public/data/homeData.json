@@ -43,7 +43,7 @@
           "Change management strategy"
         ],
         "stats": "92% client satisfaction rate",
-        "link": "#"
+        "link": "/netsuite-consulting"
       },
       {
         "title": "Implementation",
@@ -185,7 +185,8 @@
             "Shop floor control"
           ],
           "image": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-        }
+        },
+        "link": "/industries/manufacturing"
       },
       {
         "id": "retail",
@@ -193,16 +194,17 @@
         "icon": "Store",
         "content": {
           "title": "Retail Solutions",
-          "description": "Transform your retail operations with our integrated NetSuite solutions. Manage inventory, sales, and customer relationships across multiple channels seamlessly.",
+          "description": "Transform your retail operations with integrated commerce solutions that unify online, mobile, and in-store experiences while optimizing inventory and enhancing customer satisfaction.",
           "features": [
-            "Multi-channel retail management",
-            "Inventory optimization",
-            "Customer relationship management",
+            "Omnichannel commerce platform",
+            "Real-time inventory management",
+            "Unified customer experience",
             "Point of sale integration",
-            "E-commerce integration"
+            "Advanced analytics and reporting"
           ],
           "image": "https://images.unsplash.com/photo-1441986300917-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-        }
+        },
+        "link": "/industries/retail"
       },
       {
         "id": "professional-services",

@@ -47,6 +47,7 @@ const Layout = () => {
     <div className="min-h-screen flex flex-col">
       {/* Fixed Navbar */}
       <Navbar 
+        services={navbarData.services}
         industries={navbarData.industries}
         solutions={navbarData.solutions}
       />
@@ -62,4 +63,4 @@ const Layout = () => {
   );
 };
 
-export default Layout; 
+export default Layout;

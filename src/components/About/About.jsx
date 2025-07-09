@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Navbar from '../Navbar';
-import Footer from '../Footer';
 import ContactForm from '../ContactForm';
 import Modal from '../Modal';
 
@@ -212,7 +210,6 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navbar services={services} />
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -639,7 +636,7 @@ const About = () => {
               <div className="grid md:grid-cols-3 gap-8 mb-12">
                 <div className="text-center">
                   <h4 className="text-xl font-bold mb-2">Quick Start</h4>
-                  <p className="text-gray-600">Get started with a free consultation</p>
+                  <p className="text-gray-600">Get started our consultation</p>
                 </div>
                 <div className="text-center">
                   <h4 className="text-xl font-bold mb-2">Tailored Solutions</h4>
@@ -657,7 +654,7 @@ const About = () => {
                 onClick={openContactModal}
                 className="bg-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                Start Free Consultation
+                Start  Consultation
               </motion.button>
             </div>
           </div>
@@ -676,7 +673,6 @@ const About = () => {
         </div>
       </Modal>
 
-      <Footer />
     </div>
   );
 };
