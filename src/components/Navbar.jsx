@@ -3,6 +3,7 @@ import {
   Bars3Icon,
   XMarkIcon,
   ChevronDownIcon,
+  ChevronRightIcon,
 } from "@heroicons/react/24/outline";
 // eslint-disable-next-line
 import { AnimatePresence, motion } from "framer-motion";
@@ -10,9 +11,10 @@ import ContactForm from "./ContactForm";
 import Modal from './Modal';
 import { Link } from 'react-router-dom';
 
-const Navbar = ({ services = [], industries = [], solutions = [] }) => {
+const Navbar = ({ industries = [] }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [openSubDropdown, setOpenSubDropdown] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const timeoutRef = useRef(null);
@@ -100,6 +102,25 @@ const Navbar = ({ services = [], industries = [], solutions = [] }) => {
     }
   };
 
+  // New Services structure
+  const servicesStructure = {
+    support: {
+      title: "Support",
+      items: [
+        { title: "Oracle NetSuite Support", link: "#" }
+      ]
+    },
+    consultation: {
+      title: "Consultation",
+      items: [
+        { title: "Implementation", link: "/Implementation" },
+        { title: "Training", link: "/Training" },
+        { title: "Customization and Development", link: "#" },
+        { title: "Integration", link: "#" }
+      ]
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10;
@@ -146,7 +167,21 @@ const Navbar = ({ services = [], industries = [], solutions = [] }) => {
   const handleMenuLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setOpenDropdown(null);
+      setOpenSubDropdown(null);
     }, 200);
+  };
+
+  const handleSubMenuEnter = (subDropdown) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    setOpenSubDropdown(subDropdown);
+  };
+
+  const handleSubMenuLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setOpenSubDropdown(null);
+    }, 150);
   };
 
   useEffect(() => {
@@ -157,39 +192,31 @@ const Navbar = ({ services = [], industries = [], solutions = [] }) => {
     };
   }, []);
 
-  const toggleDropdown = (dropdown) => {
-    setOpenDropdown(openDropdown === dropdown ? null : dropdown);
-  };
+  // Handle escape key to close dropdowns
+  useEffect(() => {
+    const handleEscapeKey = (event) => {
+      if (event.key === 'Escape') {
+        setOpenDropdown(null);
+        setOpenSubDropdown(null);
+      }
+    };
 
-  // Default solutions data if not provided
-  const defaultSolutions = [
-    {
-      title: "NetSuite Implementation",
-      description: "Complete NetSuite deployment and configuration solutions"
-    },
-    {
-      title: "Custom Development",
-      description: "Tailored software solutions for your business needs"
-    },
-    {
-      title: "System Integration",
-      description: "Seamless integration with your existing systems"
-    },
-    {
-      title: "Training & Support",
-      description: "Comprehensive training programs and ongoing support"
-    },
-    {
-      title: "Data Migration",
-      description: "Secure and efficient data migration services"
-    },
-    {
-      title: "Process Optimization",
-      description: "Business process improvement and automation"
+    if (openDropdown || openSubDropdown) {
+      document.addEventListener('keydown', handleEscapeKey);
     }
-  ];
 
-  const solutionsData = solutions.length > 0 ? solutions : defaultSolutions;
+    return () => {
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [openDropdown, openSubDropdown]);
+
+  const toggleDropdown = (dropdown) => {
+    if (openDropdown === dropdown) {
+      setOpenDropdown(null);
+    } else {
+      setOpenDropdown(dropdown);
+    }
+  };
 
   return (
     <>
@@ -266,8 +293,18 @@ const Navbar = ({ services = [], industries = [], solutions = [] }) => {
                       ? `${isLightSection ? "text-black border-blue-400/20 shadow" : "text-white border-blue-400/30 shadow"}`
                       : `${isLightSection ? "text-black/90 hover:text-black border-transparent hover:border-black/20" : "text-white/90 hover:text-white border-transparent hover:border-white/20"}`
                   }`}
+                  onClick={() => toggleDropdown("services")}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      toggleDropdown("services");
+                    }
+                  }}
+                  aria-expanded={openDropdown === "services"}
+                  aria-haspopup="true"
                 >
                   <span>Services</span>
+                  <ChevronDownIcon className="ml-1 h-4 w-4" />
                 </button>
                 <AnimatePresence>
                   {openDropdown === "services" && (
@@ -275,19 +312,107 @@ const Navbar = ({ services = [], industries = [], solutions = [] }) => {
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="absolute left-0 mt-2 w-56 bg-white/70 backdrop-blur-md border border-gray-200 rounded-xl shadow-lg z-50 py-2"
+                      className="absolute left-0 mt-2 w-64 bg-white/70 backdrop-blur-md border border-gray-200 rounded-xl shadow-lg z-50 py-2"
                       onMouseEnter={() => handleMenuEnter("services")}
                       onMouseLeave={handleMenuLeave}
+                      role="menu"
+                      aria-label="Services menu"
                     >
-                      {services.map((service, index) => (
-                        <Link
-                          key={service.title || index}
-                          to={service.link || "#"}
-                          className="block px-5 py-3 text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-all duration-150 text-base font-medium"
+                      {/* Support Sublist */}
+                      <div 
+                        className="relative"
+                        onMouseEnter={() => handleSubMenuEnter("support")}
+                        onMouseLeave={handleSubMenuLeave}
+                      >
+                        <div 
+                          className="flex items-center justify-between px-5 py-3 text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-all duration-150 text-base font-medium cursor-pointer"
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
+                              setOpenSubDropdown(openSubDropdown === "support" ? null : "support");
+                            }
+                          }}
+                          tabIndex={0}
+                          role="button"
+                          aria-expanded={openSubDropdown === "support"}
                         >
-                          {service.title || `Service ${index + 1}`}
-                        </Link>
-                      ))}
+                          <span>{servicesStructure.support.title}</span>
+                          <ChevronRightIcon className="h-4 w-4" />
+                        </div>
+                        <AnimatePresence>
+                          {openSubDropdown === "support" && (
+                            <motion.div
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              exit={{ opacity: 0, x: -10 }}
+                              className="absolute left-full top-0 ml-1 w-56 bg-white/70 backdrop-blur-md border border-gray-200 rounded-xl shadow-lg z-50 py-2 lg:left-full lg:top-0 xl:left-full xl:top-0"
+                              onMouseEnter={() => handleSubMenuEnter("support")}
+                              onMouseLeave={handleSubMenuLeave}
+                              role="menu"
+                              aria-label="Support services"
+                            >
+                              {servicesStructure.support.items.map((item, index) => (
+                                <Link
+                                  key={item.title || index}
+                                  to={item.link || "#"}
+                                  className="block px-5 py-3 text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-all duration-150 text-base font-medium"
+                                  role="menuitem"
+                                >
+                                  {item.title}
+                                </Link>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+
+                      {/* Consultation Sublist */}
+                      <div 
+                        className="relative"
+                        onMouseEnter={() => handleSubMenuEnter("consultation")}
+                        onMouseLeave={handleSubMenuLeave}
+                      >
+                        <div 
+                          className="flex items-center justify-between px-5 py-3 text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-all duration-150 text-base font-medium cursor-pointer"
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
+                              setOpenSubDropdown(openSubDropdown === "consultation" ? null : "consultation");
+                            }
+                          }}
+                          tabIndex={0}
+                          role="button"
+                          aria-expanded={openSubDropdown === "consultation"}
+                        >
+                          <span>{servicesStructure.consultation.title}</span>
+                          <ChevronRightIcon className="h-4 w-4" />
+                        </div>
+                        <AnimatePresence>
+                          {openSubDropdown === "consultation" && (
+                            <motion.div
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              exit={{ opacity: 0, x: -10 }}
+                              className="absolute left-full top-0 ml-1 w-56 bg-white/70 backdrop-blur-md border border-gray-200 rounded-xl shadow-lg z-50 py-2 lg:left-full lg:top-0 xl:left-full xl:top-0"
+                              onMouseEnter={() => handleSubMenuEnter("consultation")}
+                              onMouseLeave={handleSubMenuLeave}
+                              role="menu"
+                              aria-label="Consultation services"
+                            >
+                              {servicesStructure.consultation.items.map((item, index) => (
+                                <Link
+                                  key={item.title || index}
+                                  to={item.link || "#"}
+                                  className="block px-5 py-3 text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-all duration-150 text-base font-medium"
+                                  role="menuitem"
+                                >
+                                  {item.title}
+                                </Link>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -314,15 +439,18 @@ const Navbar = ({ services = [], industries = [], solutions = [] }) => {
                       onMouseEnter={() => handleMenuEnter("solutions")}
                       onMouseLeave={handleMenuLeave}
                     >
-                      {solutionsData.map((solution, index) => (
-                        <a
-                          key={solution.title || index}
-                          href="#"
-                          className="block px-5 py-3 text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-all duration-150 text-base font-medium"
-                        >
-                          {solution.title || `Solution ${index + 1}`}
-                        </a>
-                      ))}
+                      <Link
+                        to="/Payroll"
+                        className="block px-5 py-3 text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-all duration-150 text-base font-medium"
+                      >
+                        Payroll
+                      </Link>
+                      <Link
+                        to="/hRSolution"
+                        className="block px-5 py-3 text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-all duration-150 text-base font-medium"
+                      >
+                        HR
+                      </Link>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -411,6 +539,7 @@ const Navbar = ({ services = [], industries = [], solutions = [] }) => {
                   className="w-full flex justify-between items-center px-4 py-3 text-base font-medium text-white/90 rounded-xl hover:bg-white/10 hover:text-white transition-all duration-300 border border-white/10"
                 >
                   <span>Services</span>
+                  <ChevronDownIcon className="h-4 w-4" />
                 </button>
                 {openDropdown === "mobileServices" && (
                   <motion.div
@@ -418,15 +547,75 @@ const Navbar = ({ services = [], industries = [], solutions = [] }) => {
                     animate={{ opacity: 1, height: "auto" }}
                     className="mt-2 ml-4 space-y-2"
                   >
-                    {services.slice(0, 3).map((item, index) => (
-                      <Link
-                        key={item.title || index}
-                        to={item.link || "#"}
-                        className="block px-4 py-3 text-sm text-white/70 rounded-lg hover:bg-white/5 hover:text-white border border-white/5 backdrop-blur-sm transition-all duration-300"
+                    {/* Mobile Support Sublist */}
+                    <div className="relative">
+                      <button
+                        onClick={() => toggleDropdown("mobileSupport")}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            toggleDropdown("mobileSupport");
+                          }
+                        }}
+                        className="w-full flex justify-between items-center px-4 py-3 text-sm text-white/70 rounded-lg hover:bg-white/5 hover:text-white border border-white/5 backdrop-blur-sm transition-all duration-300"
+                        aria-expanded={openDropdown === "mobileSupport"}
                       >
-                        {item.title || `Service ${index + 1}`}
-                      </Link>
-                    ))}
+                        <span>{servicesStructure.support.title}</span>
+                        <ChevronRightIcon className="h-4 w-4" />
+                      </button>
+                      {openDropdown === "mobileSupport" && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          className="mt-2 ml-4 space-y-2"
+                        >
+                          {servicesStructure.support.items.map((item, index) => (
+                            <Link
+                              key={item.title || index}
+                              to={item.link || "#"}
+                              className="block px-4 py-3 text-xs text-white/60 rounded-lg hover:bg-white/5 hover:text-white border border-white/5 backdrop-blur-sm transition-all duration-300"
+                            >
+                              {item.title}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </div>
+
+                    {/* Mobile Consultation Sublist */}
+                    <div className="relative">
+                      <button
+                        onClick={() => toggleDropdown("mobileConsultation")}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            toggleDropdown("mobileConsultation");
+                          }
+                        }}
+                        className="w-full flex justify-between items-center px-4 py-3 text-sm text-white/70 rounded-lg hover:bg-white/5 hover:text-white border border-white/5 backdrop-blur-sm transition-all duration-300"
+                        aria-expanded={openDropdown === "mobileConsultation"}
+                      >
+                        <span>{servicesStructure.consultation.title}</span>
+                        <ChevronRightIcon className="h-4 w-4" />
+                      </button>
+                      {openDropdown === "mobileConsultation" && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          className="mt-2 ml-4 space-y-2"
+                        >
+                          {servicesStructure.consultation.items.map((item, index) => (
+                            <Link
+                              key={item.title || index}
+                              to={item.link || "#"}
+                              className="block px-4 py-3 text-xs text-white/60 rounded-lg hover:bg-white/5 hover:text-white border border-white/5 backdrop-blur-sm transition-all duration-300"
+                            >
+                              {item.title}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </div>
                   </motion.div>
                 )}
               </div>
@@ -445,15 +634,18 @@ const Navbar = ({ services = [], industries = [], solutions = [] }) => {
                     animate={{ opacity: 1, height: "auto" }}
                     className="mt-2 ml-4 space-y-2"
                   >
-                    {solutionsData.slice(0, 3).map((item, index) => (
-                      <a
-                        key={item.title || index}
-                        href="#"
-                        className="block px-4 py-3 text-sm text-white/70 rounded-lg hover:bg-white/5 hover:text-white border border-white/5 backdrop-blur-sm transition-all duration-300"
-                      >
-                        {item.title || `Solution ${index + 1}`}
-                      </a>
-                    ))}
+                    <Link
+                      to="/Payroll"
+                      className="block px-4 py-3 text-sm text-white/70 rounded-lg hover:bg-white/5 hover:text-white border border-white/5 backdrop-blur-sm transition-all duration-300"
+                    >
+                      Payroll
+                    </Link>
+                    <Link
+                      to="/HR"
+                      className="block px-4 py-3 text-sm text-white/70 rounded-lg hover:bg-white/5 hover:text-white border border-white/5 backdrop-blur-sm transition-all duration-300"
+                    >
+                      HR
+                    </Link>
                   </motion.div>
                 )}
               </div>
