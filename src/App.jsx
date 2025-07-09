@@ -7,6 +7,7 @@ import NetSuiteConsulting from './components/Services/NetSuiteConsulting';
 import About from './components/About/About';
 import HRSolution from './pages/HrPage/HR';
 import Payroll from './components/Payroll/Payroll';
+import Manufacturing from './pages/Industries/Manufacturing';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="about" element={<About />} />
         <Route path="HRSolution" element={<HRSolution />} />
         <Route path="Payroll" element={<Payroll />} />
+        <Route path="industries/manufacturing" element={<Manufacturing />} />
       </Route>
     </Routes>
   );
