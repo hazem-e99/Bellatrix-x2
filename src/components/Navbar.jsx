@@ -107,7 +107,8 @@ const Navbar = ({ industries = [] }) => {
     support: {
       title: "Support",
       items: [
-        { title: "Oracle NetSuite Support", link: "#" }
+        { title: "Oracle NetSuite Support", link: "/Support" },
+        { title: "Technical Support", link: "/Support" }
       ]
     },
     consultation: {
@@ -115,11 +116,18 @@ const Navbar = ({ industries = [] }) => {
       items: [
         { title: "Implementation", link: "/Implementation" },
         { title: "Training", link: "/Training" },
-        { title: "Customization and Development", link: "#" },
-        { title: "Integration", link: "#" }
+        { title: "NetSuite Consulting", link: "/netsuite-consulting" },
+        { title: "Customization and Development", link: "/customization" },
+        { title: "Integration", link: "/integration" }
       ]
     }
   };
+
+  // Industries data
+  const industriesData = [
+    { title: "Manufacturing", link: "/industries/manufacturing" },
+    { title: "Retail & E-commerce", link: "/industries/retail" }
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -446,7 +454,7 @@ const Navbar = ({ industries = [] }) => {
                         Payroll
                       </Link>
                       <Link
-                        to="/hRSolution"
+                        to="/HRSolution"
                         className="block px-5 py-3 text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-all duration-150 text-base font-medium"
                       >
                         HR
@@ -477,14 +485,14 @@ const Navbar = ({ industries = [] }) => {
                       onMouseEnter={() => handleMenuEnter("industries")}
                       onMouseLeave={handleMenuLeave}
                     >
-                      {industries.map((item, index) => (
-                        <a
-                          key={item.label || index}
-                          href="#"
+                      {industriesData.map((item, index) => (
+                        <Link
+                          key={item.title || index}
+                          to={item.link || "#"}
                           className="block px-5 py-3 text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-all duration-150 text-base font-medium"
                         >
-                          {item.label || `Industry ${index + 1}`}
-                        </a>
+                          {item.title}
+                        </Link>
                       ))}
                     </motion.div>
                   )}
@@ -641,7 +649,7 @@ const Navbar = ({ industries = [] }) => {
                       Payroll
                     </Link>
                     <Link
-                      to="/HR"
+                      to="/HRSolution"
                       className="block px-4 py-3 text-sm text-white/70 rounded-lg hover:bg-white/5 hover:text-white border border-white/5 backdrop-blur-sm transition-all duration-300"
                     >
                       HR
@@ -664,14 +672,14 @@ const Navbar = ({ industries = [] }) => {
                     animate={{ opacity: 1, height: "auto" }}
                     className="mt-2 ml-4 space-y-2"
                   >
-                    {industries.slice(0, 3).map((item, index) => (
-                      <a
-                        key={item.label || index}
-                        href="#"
+                    {industriesData.slice(0, 3).map((item, index) => (
+                      <Link
+                        key={item.title || index}
+                        to={item.link || "#"}
                         className="block px-4 py-3 text-sm text-white/70 rounded-lg hover:bg-white/5 hover:text-white border border-white/5 backdrop-blur-sm transition-all duration-300"
                       >
-                        {item.label || `Industry ${index + 1}`}
-                      </a>
+                        {item.title}
+                      </Link>
                     ))}
                   </motion.div>
                 )}

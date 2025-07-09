@@ -4,6 +4,8 @@ import LandingPage from './pages/LandingPage/LandingPage';
 import Implementation from './components/Services/implementation';
 import Training from './components/Services/Training';
 import NetSuiteConsulting from './components/Services/NetSuiteConsulting';
+import Customization from './components/Services/Customization';
+import Integration from './components/Services/Integration';
 import About from './components/About/About';
 import HRSolution from './pages/HrPage/HR';
 import Payroll from './components/Payroll/Payroll';
@@ -20,6 +22,8 @@ function App() {
         <Route path="Implementation" element={<Implementation />} />
         <Route path="Training" element={<Training />} />
         <Route path="netsuite-consulting" element={<NetSuiteConsulting />} />
+        <Route path="customization" element={<Customization />} />
+        <Route path="integration" element={<Integration />} />
         <Route path="about" element={<About />} />
         <Route path="HRSolution" element={<HRSolution />} />
         <Route path="Payroll" element={<Payroll />} />
