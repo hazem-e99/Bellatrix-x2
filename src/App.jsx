@@ -8,6 +8,7 @@ import About from './components/About/About';
 import HRSolution from './pages/HrPage/HR';
 import Payroll from './components/Payroll/Payroll';
 import Manufacturing from './pages/Industries/Manufacturing';
+import Retail from './pages/Industries/Retail';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="HRSolution" element={<HRSolution />} />
         <Route path="Payroll" element={<Payroll />} />
         <Route path="industries/manufacturing" element={<Manufacturing />} />
+        <Route path="industries/retail" element={<Retail />} />
       </Route>
     </Routes>
   );
