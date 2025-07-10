@@ -2,7 +2,7 @@ import React from "react";
 
 const PayPerUseSection = () => {
   return (
-    <section className="w-full bg-white py-16">
+    <section className="w-full bg-white py-16 light-section">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-10 text-center">
           Only Pay for the Hours you Use

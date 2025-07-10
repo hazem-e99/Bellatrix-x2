@@ -2,7 +2,7 @@ import React from "react";
 
 const WhatWeOfferSection = () => {
   return (
-    <section className="w-full bg-gray-50 py-16">
+    <section className="w-full bg-gray-50 py-16 light-section">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">
           What We <span className="text-blue-600">Offer</span>

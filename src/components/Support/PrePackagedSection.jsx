@@ -3,6 +3,7 @@ import React from "react";
 const PrePackagedSection = () => {
   return (
     <section
+      className="light-section"
       style={{
         backgroundColor: "#f7f7f7",
         padding: "60px 25px 50px 25px",

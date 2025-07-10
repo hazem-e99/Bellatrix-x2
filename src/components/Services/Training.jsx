@@ -28,51 +28,61 @@ const Training = () => {
         fetchData();
     }, []);
 
-    // Video Protection
+    // Video Protection - Apply only to video elements
     useEffect(() => {
-        const handleContextMenu = (e) => {
-            e.preventDefault();
-            return false;
+        const handleVideoContextMenu = (e) => {
+            // Only prevent context menu on video elements
+            if (e.target.tagName === 'VIDEO') {
+                e.preventDefault();
+                return false;
+            }
         };
 
-        const handleDragStart = (e) => {
-            e.preventDefault();
-            return false;
+        const handleVideoDragStart = (e) => {
+            // Only prevent drag on video elements
+            if (e.target.tagName === 'VIDEO') {
+                e.preventDefault();
+                return false;
+            }
         };
 
-        const handleSelectStart = (e) => {
-            e.preventDefault();
-            return false;
+        const handleVideoSelectStart = (e) => {
+            // Only prevent selection on video elements
+            if (e.target.tagName === 'VIDEO') {
+                e.preventDefault();
+                return false;
+            }
         };
 
         const handleKeyDown = (e) => {
-            if (e.keyCode === 123) {
+            // Keep keyboard shortcuts disabled globally for dev tools protection
+            if (e.keyCode === 123) { // F12
                 e.preventDefault();
                 return false;
             }
-            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) { // Ctrl+Shift+I
                 e.preventDefault();
                 return false;
             }
-            if (e.ctrlKey && e.keyCode === 85) {
+            if (e.ctrlKey && e.keyCode === 85) { // Ctrl+U
                 e.preventDefault();
                 return false;
             }
-            if (e.ctrlKey && e.keyCode === 83) {
+            if (e.ctrlKey && e.keyCode === 83) { // Ctrl+S
                 e.preventDefault();
                 return false;
             }
         };
 
-        document.addEventListener('contextmenu', handleContextMenu);
-        document.addEventListener('dragstart', handleDragStart);
-        document.addEventListener('selectstart', handleSelectStart);
+        document.addEventListener('contextmenu', handleVideoContextMenu);
+        document.addEventListener('dragstart', handleVideoDragStart);
+        document.addEventListener('selectstart', handleVideoSelectStart);
         document.addEventListener('keydown', handleKeyDown);
 
         return () => {
-            document.removeEventListener('contextmenu', handleContextMenu);
-            document.removeEventListener('dragstart', handleDragStart);
-            document.removeEventListener('selectstart', handleSelectStart);
+            document.removeEventListener('contextmenu', handleVideoContextMenu);
+            document.removeEventListener('dragstart', handleVideoDragStart);
+            document.removeEventListener('selectstart', handleVideoSelectStart);
             document.removeEventListener('keydown', handleKeyDown);
         };
     }, []);
