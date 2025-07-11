@@ -11,81 +11,36 @@ import ContactForm from '../components/ContactForm';
 import Modal from '../components/Modal';
 
 const About = () => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [cardsPerScreen, setCardsPerScreen] = useState(3);
   const [slideOffset, setSlideOffset] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
 
+  // Fetch data from data.json
+  useEffect(() => {
+    fetch('data/about.json')
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        return res.json();
+      })
+      .then((fetchedData) => {
+        setData(fetchedData);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error('Error fetching data:', err);
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
+
   const openContactModal = () => setIsContactModalOpen(true);
   const closeContactModal = () => setIsContactModalOpen(false);
-
-  const values = [
-    {
-      title: 'Innovation',
-      description: 'We embrace cutting-edge technologies and creative thinking to solve complex business challenges.',
-      color: 'from-blue-500 to-cyan-500'
-    },
-    {
-      title: 'Excellence',
-      description: 'We deliver exceptional quality in every project, exceeding client expectations consistently.',
-      color: 'from-purple-500 to-pink-500'
-    },
-    {
-      title: 'Integrity',
-      description: 'We act with honesty and transparency, building trust through ethical business practices.',
-      color: 'from-green-500 to-teal-500'
-    },
-    {
-      title: 'Partnership',
-      description: 'We work closely with our clients as trusted partners in their digital transformation journey.',
-      color: 'from-orange-500 to-red-500'
-    }
-  ];
-
-  const teamMembers = [
-    {
-      name: 'Sarah Johnson',
-      role: 'Chief Executive Officer',
-      image: '/public/images/ourteam/1.jpg',
-      bio: 'Visionary leader with 20+ years in enterprise software solutions.',
-      expertise: ['Strategic Planning', 'Business Development', 'Leadership']
-    },
-    {
-      name: 'Michael Chen',
-      role: 'Chief Technology Officer',
-      image: '/public/images/ourteam/2.jpg',
-      bio: 'Technology expert specializing in NetSuite implementations and cloud solutions.',
-      expertise: ['NetSuite Development', 'Cloud Architecture', 'System Integration']
-    },
-    {
-      name: 'Emily Rodriguez',
-      role: 'Head of Operations',
-      image: '/public/images/ourteam/3.jpg',
-      bio: 'Operations specialist ensuring seamless project delivery and client success.',
-      expertise: ['Project Management', 'Process Optimization', 'Quality Assurance']
-    },
-    {
-      name: 'David Kim',
-      role: 'Lead Consultant',
-      image: '/public/images/ourteam/1.jpg',
-      bio: 'Senior consultant with expertise in business process optimization.',
-      expertise: ['Business Analysis', 'Process Design', 'Training']
-    },
-    {
-      name: 'Lisa Thompson',
-      role: 'Senior Developer',
-      image: '/public/images/ourteam/2.jpg',
-      bio: 'Full-stack developer with deep expertise in NetSuite customization.',
-      expertise: ['NetSuite SuiteScript', 'JavaScript', 'API Integration']
-    },
-    {
-      name: 'Alex Martinez',
-      role: 'Business Analyst',
-      image: '/public/images/ourteam/3.jpg',
-      bio: 'Experienced analyst specializing in business process mapping and optimization.',
-      expertise: ['Requirements Gathering', 'Process Mapping', 'User Training']
-    }
-  ];
 
   // Get cards per screen size
   const getCardsPerScreen = () => {
@@ -108,9 +63,9 @@ const About = () => {
   }, []);
 
   // Carousel sliding effect
-  const needsCarousel = teamMembers.length > cardsPerScreen;
   useEffect(() => {
-    if (!needsCarousel || isHovering) return;
+    if (!data?.team?.members || !data.team.members.length > cardsPerScreen || isHovering) return;
+    
     const slideSpeed = 0.3; // pixels per second - very slow
     let animationId;
     const animate = () => {
@@ -126,80 +81,56 @@ const About = () => {
     };
     animationId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationId);
-  }, [needsCarousel, cardsPerScreen, teamMembers.length, isHovering]);
+  }, [data?.team?.members, cardsPerScreen, isHovering]);
 
-  const milestones = [
-    {
-      year: '2008',
-      title: 'Company Founded',
-      description: 'Bellatrix was established with a vision to transform businesses through technology.'
-    },
-    {
-      year: '2012',
-      title: 'First 100 Clients',
-      description: 'Reached our first major milestone of serving 100 satisfied clients.'
-    },
-    {
-      year: '2016',
-      title: 'NetSuite Gold Partner',
-      description: 'Achieved NetSuite Gold Partner status, recognizing our expertise.'
-    },
-    {
-      year: '2020',
-      title: 'Global Expansion',
-      description: 'Expanded operations to serve clients across multiple continents.'
-    },
-    {
-      year: '2023',
-      title: '500+ Projects',
-      description: 'Successfully completed over 500 implementation projects.'
-    },
-    {
-      year: '2024',
-      title: 'AI Integration',
-      description: 'Pioneered AI-powered solutions for enhanced business intelligence.'
-    }
-  ];
+  // Loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
-  const differentiators = [
-    {
-      title: 'Industry Expertise',
-      description: 'Deep understanding of various industries and their unique challenges.',
-      stats: '15+ Industries'
-    },
-    {
-      title: 'Proven Methodology',
-      description: 'Time-tested implementation methodology ensuring project success.',
-      stats: '98% Success Rate'
-    },
-    {
-      title: 'Ongoing Support',
-      description: '24/7 support and maintenance services for continuous optimization.',
-      stats: '24/7 Support'
-    },
-    {
-      title: 'Custom Solutions',
-      description: 'Tailored solutions designed specifically for your business needs.',
-      stats: '100% Custom'
-    }
-  ];
+  // Error state
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-red-600 text-2xl mb-4">⚠️</div>
+          <h2 className="text-xl font-semibold text-gray-800 mb-2">Error Loading Data</h2>
+          <p className="text-gray-600 mb-4">{error}</p>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
+  }
 
+  // Render components with fetched data
   return (
     <div className="min-h-screen bg-gray-50">
-      <AboutHero />
-      <AboutMission />
-      <AboutJourney />
+      <AboutHero hero={data.hero} />
+      <AboutMission mission={data.mission} />
+      <AboutJourney journey={data.journey} />
       <AboutTeam
-        teamMembers={teamMembers}
+        team={data.team}
         cardsPerScreen={cardsPerScreen}
         slideOffset={slideOffset}
         isHovering={isHovering}
         setIsHovering={setIsHovering}
       />
-      <AboutValues values={values} />
-      <AboutDifferentiators differentiators={differentiators} />
-      <AboutMilestones milestones={milestones} />
-      <AboutCTA onOpenContactModal={openContactModal} />
+      <AboutValues values={data.values} />
+      <AboutDifferentiators differentiators={data.differentiators} />
+      <AboutMilestones milestones={data.milestones} />
+      <AboutCTA cta={data.cta} onOpenContactModal={openContactModal} />
       <Modal
         isOpen={isContactModalOpen}
         onClose={closeContactModal}

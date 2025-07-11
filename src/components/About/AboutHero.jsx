@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const AboutHero = () => (
+const AboutHero = ({ hero }) => (
   <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
     {/* Background Video */}
     <video
@@ -11,7 +11,7 @@ const AboutHero = () => (
       playsInline
       className="absolute inset-0 w-full h-full object-cover"
     >
-      <source src="/public/Videos/about-hero.mp4" type="video/mp4" />
+      <source src={hero.backgroundVideo} type="video/mp4" />
     </video>
     {/* Overlay */}
     <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-gray-900/60 to-cyan-900/80"></div>
@@ -36,11 +36,10 @@ const AboutHero = () => (
         transition={{ duration: 0.8 }}
       >
         <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
-          About Bellatrix
+          {hero.title}
         </h1>
         <p className="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed max-w-4xl mx-auto">
-          Empowering businesses worldwide with innovative Oracle NetSuite solutions, 
-          expert consulting, and transformative digital experiences that drive sustainable growth.
+          {hero.subtitle}
         </p>
         <motion.button
           whileHover={{ scale: 1.05 }}
@@ -48,7 +47,7 @@ const AboutHero = () => (
           onClick={() => document.getElementById('about-section').scrollIntoView({ behavior: 'smooth' })}
           className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
         >
-          Discover Our Story
+          {hero.buttonText}
         </motion.button>
       </motion.div>
     </div>

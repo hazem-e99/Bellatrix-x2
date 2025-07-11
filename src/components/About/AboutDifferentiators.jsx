@@ -6,15 +6,14 @@ const AboutDifferentiators = ({ differentiators }) => (
     <div className="container mx-auto px-6">
       <div className="text-center mb-16">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
-          What Sets Us <span className="text-blue-600">Apart</span>
+          {differentiators.title ? differentiators.title : 'What Sets Us'} <span className="text-blue-600">Apart</span>
         </h2>
         <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-          Our unique combination of expertise, methodology, and commitment to excellence 
-          makes us the preferred choice for Oracle NetSuite implementations.
+          {differentiators.subtitle ? differentiators.subtitle : 'Our unique combination of expertise, methodology, and commitment to excellence makes us the preferred choice for Oracle NetSuite implementations.'}
         </p>
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {differentiators.map((item, index) => (
+        {Array.isArray(differentiators.items) && differentiators.items.map((item, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}

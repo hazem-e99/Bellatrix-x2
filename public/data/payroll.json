@@ -1,0 +1,67 @@
+{
+  "hero": {
+    "title": "Transform Your Payroll Process",
+    "subtitle": "Streamline operations with our intelligent, automated payroll system",
+    "backgroundImage": "/images/payrollFinal.jpeg"
+  },
+  "painPoints": [
+    { "text": "Delayed salary processing and errors" },
+    { "text": "Manual tax calculations and compliance risks" },
+    { "text": "Lack of visibility and transparency for employees" },
+    { "text": "Difficulty scaling payroll operations across geographies" },
+    { "text": "Disconnected systems leading to data silos" }
+  ],
+  "howItWorks": {
+    "title": "How Our Payroll System Works",
+    "description": "Our payroll process is simple: upload employee and contract details, sync timesheets and leave data, let the system run payroll automatically on schedule, approve via role-based access, execute payments through integrated bank APIs, and download payslips & compliance-ready reports—all in one platform."
+  },
+  "workflowTitle": "Payroll System Built for All Industries",
+  "workflowSubtitle": "Streamline your entire payroll lifecycle — from onboarding to salary disbursement — with a secure, intuitive platform.",
+  "workflowStepTitle": "Core Workflow",
+  "stepper": {
+    "steps": [
+      {
+        "title": "Employee data import",
+        "desc": "Easily onboard and manage employee records in one place.",
+        "details": "Import employee data from spreadsheets or integrated HR systems. Supports bulk uploads and data validation with real-time error checking.",
+        "icon": "import",
+        "benefits": ["Bulk import from Excel/CSV", "Data validation", "Duplicate detection", "HR system integration"]
+      },
+      {
+        "title": "Time & attendance sync",
+        "desc": "Integrate timesheets and attendance for accurate payroll.",
+        "details": "Syncs with your time tracking tools to ensure accurate hours and leave data for every employee. Supports multiple time tracking systems.",
+        "icon": "clock",
+        "benefits": ["Real-time sync", "Multiple time systems", "Leave management", "Overtime calculation"]
+      },
+      {
+        "title": "Salary & tax auto-calculation",
+        "desc": "Automate salary, tax, and deduction calculations.",
+        "details": "Calculates gross and net pay, taxes, and deductions automatically based on your rules and local compliance. Handles complex tax scenarios.",
+        "icon": "calculator",
+        "benefits": ["Auto tax calculation", "Compliance built-in", "Deduction management", "Bonus processing"]
+      },
+      {
+        "title": "Approval workflows",
+        "desc": "Streamline approvals with role-based access.",
+        "details": "Multi-level approval flows for payroll runs, with notifications and audit trails. Customizable approval hierarchies.",
+        "icon": "check",
+        "benefits": ["Multi-level approval", "Email notifications", "Audit trails", "Role-based access"]
+      },
+      {
+        "title": "Payment execution",
+        "desc": "Execute payments securely through integrated bank APIs.",
+        "details": "Initiate salary payments directly from the platform with secure, bank-level integrations. Supports multiple payment methods.",
+        "icon": "bank",
+        "benefits": ["Bank API integration", "Multiple payment methods", "Secure transactions", "Payment tracking"]
+      },
+      {
+        "title": "Payslip generation & reporting",
+        "desc": "Generate payslips and compliance-ready reports instantly.",
+        "details": "Employees get digital payslips; admins get downloadable, compliance-ready reports. Customizable templates and automated distribution.",
+        "icon": "report",
+        "benefits": ["Digital payslips", "Custom templates", "Auto distribution", "Compliance reports"]
+      }
+    ]
+  }
+} 

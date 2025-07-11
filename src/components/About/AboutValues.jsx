@@ -16,15 +16,14 @@ const AboutValues = ({ values }) => (
     <div className="container mx-auto px-6 relative z-10">
       <div className="text-center mb-16">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-          Our <span className="text-cyan-400">Values</span>
+          {values.title ? values.title : 'Our'} <span className="text-cyan-400">Values</span>
         </h2>
         <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
-          These core values guide everything we do and shape how we interact with our clients, 
-          partners, and each other.
+          {values.subtitle ? values.subtitle : 'These core values guide everything we do and shape how we interact with our clients, partners, and each other.'}
         </p>
       </div>
       <div className="grid md:grid-cols-2 gap-8">
-        {values.map((value, index) => (
+        {Array.isArray(values.items) && values.items.map((value, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}

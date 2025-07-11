@@ -1,19 +1,18 @@
 import React from 'react';
 
-const AboutTeam = ({ teamMembers, cardsPerScreen, slideOffset, isHovering, setIsHovering }) => {
+const AboutTeam = ({ team, cardsPerScreen, slideOffset, isHovering, setIsHovering }) => {
   // Check if carousel navigation is needed
-  const needsCarousel = teamMembers.length > cardsPerScreen;
+  const needsCarousel = team.members.length > cardsPerScreen;
 
   return (
     <section className="bg-gray-50 py-20 light-section">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
-            Meet Our <span className="text-blue-600">Team</span>
+            {team.title} <span className="text-blue-600">Team</span>
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            Our diverse team of experts brings together decades of experience in enterprise 
-            software, business consulting, and digital transformation.
+            {team.subtitle}
           </p>
         </div>
         <div className="relative overflow-hidden">
@@ -23,11 +22,11 @@ const AboutTeam = ({ teamMembers, cardsPerScreen, slideOffset, isHovering, setIs
               className="flex gap-8 transition-transform duration-1000 ease-linear"
               style={{ 
                 transform: `translateX(${slideOffset}%)`,
-                width: `${Math.ceil(teamMembers.length / cardsPerScreen) * 100}%`
+                width: `${Math.ceil(team.members.length / cardsPerScreen) * 100}%`
               }}
             >
               {/* Duplicate team members for seamless loop */}
-              {[...teamMembers, ...teamMembers].map((member, index) => (
+              {[...team.members, ...team.members].map((member, index) => (
                 <div
                   key={`member-${index}`}
                   className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex-shrink-0 min-w-[300px] max-w-[350px]"

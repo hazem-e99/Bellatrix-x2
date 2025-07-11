@@ -1,15 +1,14 @@
 import React from 'react';
 
-const AboutMission = () => (
+const AboutMission = ({ mission }) => (
   <section id="about-section" className="bg-gray-50 py-20 light-section">
     <div className="container mx-auto px-6">
       <div className="text-center mb-16">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
-          About <span className="text-blue-600">Bellatrix</span>
+          {mission.title} <span className="text-blue-600">Bellatrix</span>
         </h2>
         <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-          We are a leading Oracle NetSuite consultancy dedicated to transforming businesses through 
-          innovative technology solutions and strategic digital transformation initiatives.
+          {mission.subtitle}
         </p>
       </div>
       <div className="flex flex-col lg:flex-row items-center gap-12">
@@ -24,7 +23,7 @@ const AboutMission = () => (
             <div className="relative bg-gradient-to-br from-gray-900/10 via-blue-900/5 to-gray-900/10 rounded-3xl p-6 backdrop-blur-md border border-white/30 shadow-2xl group-hover:shadow-blue-500/20 transition-all duration-500">
               <div className="relative bg-gradient-to-br from-white/5 via-transparent to-blue-500/5 rounded-2xl p-4 border border-white/20">
                 <img 
-                  src="/images/ourProServices.png" 
+                  src={mission.image} 
                   alt="About Bellatrix - Professional Services" 
                   className="w-full h-auto rounded-xl shadow-2xl brightness-105 contrast-110 saturate-105 group-hover:brightness-110 group-hover:contrast-115 group-hover:saturate-110 transition-all duration-500 filter drop-shadow-xl"
                 />
@@ -60,29 +59,17 @@ const AboutMission = () => (
         </div>
         {/* Content - Right Side */}
         <div className="flex-1 space-y-6">
-          <h3 className="text-3xl font-bold text-gray-800">Our Mission</h3>
+          <h3 className="text-3xl font-bold text-gray-800">{mission.missionTitle}</h3>
           <p className="text-gray-600 leading-relaxed text-lg">
-            To empower businesses worldwide with cutting-edge Oracle NetSuite solutions that drive 
-            operational excellence, enhance productivity, and accelerate growth. We believe in 
-            creating lasting partnerships that deliver measurable value and sustainable success.
+            {mission.missionDescription}
           </p>
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
-              <div className="text-2xl font-bold text-blue-600">500+</div>
-              <div className="text-sm text-gray-600">Projects Completed</div>
-            </div>
-            <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
-              <div className="text-2xl font-bold text-blue-600">98%</div>
-              <div className="text-sm text-gray-600">Client Satisfaction</div>
-            </div>
-            <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
-              <div className="text-2xl font-bold text-blue-600">15+</div>
-              <div className="text-sm text-gray-600">Years Experience</div>
-            </div>
-            <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
-              <div className="text-2xl font-bold text-blue-600">50+</div>
-              <div className="text-sm text-gray-600">Expert Team</div>
-            </div>
+            {mission.stats.map((stat, index) => (
+              <div key={index} className="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                <div className="text-2xl font-bold text-blue-600">{stat.value}</div>
+                <div className="text-sm text-gray-600">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

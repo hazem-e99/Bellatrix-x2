@@ -16,16 +16,15 @@ const AboutMilestones = ({ milestones }) => (
     <div className="container mx-auto px-6 relative z-10">
       <div className="text-center mb-16">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-          Our <span className="text-cyan-400">Milestones</span>
+          {milestones.title ? milestones.title : 'Our'} <span className="text-cyan-400">Milestones</span>
         </h2>
         <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
-          Key achievements and milestones that mark our journey of growth, 
-          innovation, and commitment to excellence.
+          {milestones.subtitle ? milestones.subtitle : 'Key achievements and milestones that mark our journey of growth, innovation, and commitment to excellence.'}
         </p>
       </div>
       <div className="max-w-4xl mx-auto">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {milestones.map((milestone, index) => (
+          {Array.isArray(milestones.items) && milestones.items.map((milestone, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
