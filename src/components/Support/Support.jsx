@@ -13,16 +13,36 @@ import BellatrixSupportHero from './BellatrixSupportHero';
 const Support = () => {
     return (
         <>
-            <BellatrixSupportHero />
-            <SupportSecondSec />
-            <SherpaCareServices />
-            <WhatWeOfferSection />
-            <DedicatedTeamSection />
-            <PrePackagedSection />
-            <BellatrixSupportSection />
-            <PayPerUseSection />
-            <CustomerSupport />
-            <WhyChoeseBellatrix />
+            <section data-theme="dark">
+                <BellatrixSupportHero />
+            </section>
+            <section data-theme="light">
+                <SupportSecondSec />
+            </section>
+            <section data-theme="dark">
+                <SherpaCareServices />
+            </section>
+            <section data-theme="light">
+                <WhatWeOfferSection />
+            </section>
+            <section data-theme="dark">
+                <DedicatedTeamSection />
+            </section>
+            <section data-theme="light">
+                <PrePackagedSection />
+            </section>
+            <section data-theme="dark">
+                <BellatrixSupportSection />
+            </section>
+            <section data-theme="light">
+                <PayPerUseSection />
+            </section>
+            <section data-theme="dark">
+                <CustomerSupport />
+            </section>
+            <section data-theme="light">
+                <WhyChoeseBellatrix />
+            </section>
         </>
     );
 }

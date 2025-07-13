@@ -18,7 +18,7 @@ const Navbar = ({ industries = [] }) => {
   const [scrolled, setScrolled] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const timeoutRef = useRef(null);
-  const [isLightSection, setIsLightSection] = useState(false);
+  const [navbarTheme, setNavbarTheme] = useState("dark"); // "light" or "dark"
 
   // Contact form modal functions
   const openContactModal = () => setIsContactModalOpen(true);
@@ -144,25 +144,27 @@ const Navbar = ({ industries = [] }) => {
   // حل scrollY + getBoundingClientRect
   useEffect(() => {
     const handleScroll = () => {
-      const navbar = document.querySelector('nav');
-      const navbarHeight = navbar ? navbar.offsetHeight : 0;
-      const scrollPosition = window.scrollY + navbarHeight + 1;
-      const sections = Array.from(document.querySelectorAll('.light-section'));
-      let isLight = false;
+      const navbarHeight = 60; // fixed height as per requirement
+      // The point just below the navbar
+      const checkY = navbarHeight + 1;
+      const sections = Array.from(document.querySelectorAll('[data-theme]'));
+      let foundTheme = "dark";
       for (let section of sections) {
         const rect = section.getBoundingClientRect();
-        const sectionTop = window.scrollY + rect.top;
-        const sectionBottom = sectionTop + section.offsetHeight;
-        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-          isLight = true;
+        if (rect.top <= checkY && rect.bottom > checkY) {
+          foundTheme = section.getAttribute('data-theme') || "dark";
           break;
         }
       }
-      setIsLightSection(isLight);
+      setNavbarTheme(foundTheme);
     };
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
     handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   const handleMenuEnter = (dropdown) => {
@@ -249,7 +251,7 @@ const Navbar = ({ industries = [] }) => {
               <div className="flex items-center justify-center h-56 w-56 mr-2 relative">
                 <div className="absolute top-0 left-0 h-56 w-56 w-full h-full">
                   <AnimatePresence mode="wait">
-                    {isLightSection ? (
+                    {navbarTheme === "light" ? (
                       <motion.img
                         key="logoThree"
                         src="/images/logoThree.png"
@@ -298,8 +300,8 @@ const Navbar = ({ industries = [] }) => {
                 <button
                   className={`flex items-center px-5 py-3 text-sm font-medium rounded-xl transition-all duration-300 border ${
                     openDropdown === "services"
-                      ? `${isLightSection ? "text-black border-blue-400/20 shadow" : "text-white border-blue-400/30 shadow"}`
-                      : `${isLightSection ? "text-black/90 hover:text-black border-transparent hover:border-black/20" : "text-white/90 hover:text-white border-transparent hover:border-white/20"}`
+                      ? `${navbarTheme === "light" ? "text-black border-blue-400/20 shadow" : "text-white border-blue-400/30 shadow"}`
+                      : `${navbarTheme === "light" ? "text-black/90 hover:text-black border-transparent hover:border-black/20" : "text-white/90 hover:text-white border-transparent hover:border-white/20"}`
                   }`}
                   onClick={() => toggleDropdown("services")}
                   onKeyDown={(e) => {
@@ -431,8 +433,8 @@ const Navbar = ({ industries = [] }) => {
                 <button
                   className={`flex items-center px-5 py-3 text-sm font-medium rounded-xl transition-all duration-300 border ${
                     openDropdown === "solutions"
-                      ? `${isLightSection ? "text-black border-blue-400/20 shadow" : "text-white border-blue-400/30 shadow"}`
-                      : `${isLightSection ? "text-black/90 hover:text-black border-transparent hover:border-black/20" : "text-white/90 hover:text-white border-transparent hover:border-white/20"}`
+                      ? `${navbarTheme === "light" ? "text-black border-blue-400/20 shadow" : "text-white border-blue-400/30 shadow"}`
+                      : `${navbarTheme === "light" ? "text-black/90 hover:text-black border-transparent hover:border-black/20" : "text-white/90 hover:text-white border-transparent hover:border-white/20"}`
                   }`}
                 >
                   <span>Solutions</span>
@@ -469,8 +471,8 @@ const Navbar = ({ industries = [] }) => {
                 <button
                   className={`flex items-center px-5 py-3 text-sm font-medium rounded-xl transition-all duration-300 border ${
                     openDropdown === "industries"
-                      ? `${isLightSection ? "text-black border-blue-400/20 shadow" : "text-white border-blue-400/30 shadow"}`
-                      : `${isLightSection ? "text-black/90 hover:text-black border-transparent hover:border-black/20" : "text-white/90 hover:text-white border-transparent hover:border-white/20"}`
+                      ? `${navbarTheme === "light" ? "text-black border-blue-400/20 shadow" : "text-white border-blue-400/30 shadow"}`
+                      : `${navbarTheme === "light" ? "text-black/90 hover:text-black border-transparent hover:border-black/20" : "text-white/90 hover:text-white border-transparent hover:border-white/20"}`
                   }`}
                 >
                   <span>Industries</span>
@@ -501,7 +503,7 @@ const Navbar = ({ industries = [] }) => {
 
               <Link
                 to="/about"
-                className={`px-5 py-3 text-sm font-medium rounded-xl transition-all duration-300 border border-transparent hover:border-white/20 ${isLightSection ? "text-black hover:text-black" : "text-white/90 hover:text-white"}`}
+                className={`px-5 py-3 text-sm font-medium rounded-xl transition-all duration-300 border border-transparent hover:border-white/20 ${navbarTheme === "light" ? "text-black hover:text-black" : "text-white/90 hover:text-white"}`}
               >
                 About
               </Link>

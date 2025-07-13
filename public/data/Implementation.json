@@ -168,38 +168,38 @@
         "type": "text",
         "required": true
       },
-      {
+          {
         "name": "contactName",
         "label": "Contact Name",
-        "type": "text",
-        "required": true
-      },
-      {
+            "type": "text",
+            "required": true
+          },
+          {
         "name": "email",
         "label": "Email Address",
-        "type": "email",
-        "required": true
-      },
-      {
+            "type": "email",
+            "required": true
+          },
+          {
         "name": "phone",
-        "label": "Phone Number",
-        "type": "tel",
+            "label": "Phone Number",
+            "type": "tel",
         "required": false
       },
       {
         "name": "companySize",
         "label": "Company Size",
-        "type": "select",
+            "type": "select",
         "options": ["1-10 employees", "11-50 employees", "51-200 employees", "200+ employees"],
         "required": true
-      },
-      {
+          },
+          {
         "name": "implementationType",
         "label": "Implementation Type",
-        "type": "select",
+            "type": "select",
         "options": ["New NetSuite Implementation", "NetSuite Upgrade", "Module Addition", "Custom Development"],
         "required": true
-      }
+    }
     ]
   }
 }

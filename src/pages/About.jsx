@@ -117,20 +117,36 @@ const About = () => {
   // Render components with fetched data
   return (
     <div className="min-h-screen bg-gray-50">
-      <AboutHero hero={data.hero} />
-      <AboutMission mission={data.mission} />
-      <AboutJourney journey={data.journey} />
-      <AboutTeam
-        team={data.team}
-        cardsPerScreen={cardsPerScreen}
-        slideOffset={slideOffset}
-        isHovering={isHovering}
-        setIsHovering={setIsHovering}
-      />
-      <AboutValues values={data.values} />
-      <AboutDifferentiators differentiators={data.differentiators} />
-      <AboutMilestones milestones={data.milestones} />
-      <AboutCTA cta={data.cta} onOpenContactModal={openContactModal} />
+      <section data-theme="light">
+        <AboutHero hero={data.hero} />
+      </section>
+      <section data-theme="light">
+        <AboutMission mission={data.mission} />
+      </section>
+      <section data-theme="dark">
+        <AboutJourney journey={data.journey} />
+      </section>
+      <section data-theme="light">
+        <AboutTeam
+          team={data.team}
+          cardsPerScreen={cardsPerScreen}
+          slideOffset={slideOffset}
+          isHovering={isHovering}
+          setIsHovering={setIsHovering}
+        />
+      </section>
+      <section data-theme="dark">
+        <AboutValues values={data.values} />
+      </section>
+      <section data-theme="light">
+        <AboutDifferentiators differentiators={data.differentiators} />
+      </section>
+      <section data-theme="dark">
+        <AboutMilestones milestones={data.milestones} />
+      </section>
+      <section data-theme="light">
+        <AboutCTA cta={data.cta} onOpenContactModal={openContactModal} />
+      </section>
       <Modal
         isOpen={isContactModalOpen}
         onClose={closeContactModal}

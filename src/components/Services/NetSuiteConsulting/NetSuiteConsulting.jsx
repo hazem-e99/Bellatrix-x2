@@ -63,33 +63,45 @@ const NetSuiteConsulting = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <NetSuiteConsultingHero heroContent={data.heroContent} />
+      <section data-theme="dark">
+        <NetSuiteConsultingHero heroContent={data.heroContent} />
+      </section>
 
       {/* Consulting Services Section */}
-      <NetSuiteConsultingServices 
-        consultingServices={data.consultingServices}
-      />
+      <section data-theme="light">
+        <NetSuiteConsultingServices 
+          consultingServices={data.consultingServices}
+        />
+      </section>
 
       {/* Industry Expertise Section */}
-      <NetSuiteConsultingIndustries 
-        industries={data.industries}
-        onIndustryClick={handleIndustryClick} 
-      />
+      <section data-theme="dark">
+        <NetSuiteConsultingIndustries 
+          industries={data.industries}
+          onIndustryClick={handleIndustryClick} 
+        />
+      </section>
 
       {/* Consulting Process Section */}
-      <NetSuiteConsultingProcess 
-        consultingProcess={data.consultingProcess}
-        onStartConsulting={openContactModal} 
-      />
+      <section data-theme="light">
+        <NetSuiteConsultingProcess 
+          consultingProcess={data.consultingProcess}
+          onStartConsulting={openContactModal} 
+        />
+      </section>
 
       {/* Benefits Section */}
-      <NetSuiteConsultingBenefits benefits={data.benefits} />
+      <section data-theme="dark">
+        <NetSuiteConsultingBenefits benefits={data.benefits} />
+      </section>
 
       {/* CTA Section */}
-      <NetSuiteConsultingCTA 
-        cta={data.cta}
-        onScheduleConsultation={openContactModal} 
-      />
+      <section data-theme="light">
+        <NetSuiteConsultingCTA 
+          cta={data.cta}
+          onScheduleConsultation={openContactModal} 
+        />
+      </section>
 
       {/* Contact Modal */}
       <Modal

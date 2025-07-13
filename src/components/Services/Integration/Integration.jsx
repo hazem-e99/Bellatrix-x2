@@ -53,14 +53,24 @@ const Integration = () => {
 
   return (
     <main className="bg-gradient-to-br from-blue-50 to-white min-h-screen text-slate-800">
-      <IntegrationHero heroContent={data.heroContent} />
-      <IntegrationTypes integrationTypes={data.integrationTypes} />
-      <IntegrationBenefits integrationBenefits={data.integrationBenefits} />
-      <IntegrationPlatforms integrationPlatforms={data.integrationPlatforms} />
-      <IntegrationCTA 
-        cta={data.cta}
-        onStartIntegration={handleStartIntegration} 
-      />
+      <section data-theme="dark">
+        <IntegrationHero heroContent={data.heroContent} />
+      </section>
+      <section data-theme="light">
+        <IntegrationTypes integrationTypes={data.integrationTypes} />
+      </section>
+      <section data-theme="light">
+        <IntegrationBenefits integrationBenefits={data.integrationBenefits} />
+      </section>
+      <section data-theme="light">
+        <IntegrationPlatforms integrationPlatforms={data.integrationPlatforms} />
+      </section>
+      <section data-theme="light">
+        <IntegrationCTA 
+          cta={data.cta}
+          onStartIntegration={handleStartIntegration} 
+        />
+      </section>
     </main>
   );
 };

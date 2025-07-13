@@ -50,27 +50,37 @@ const Implementation = () => {
 
     return (
         <>
-            <ImplementationHero 
-                heroData={data.heroSection} 
-                onOpenModal={openModal} 
-            />
+            <section data-theme="dark">
+                <ImplementationHero 
+                    heroData={data.heroSection} 
+                    onOpenModal={openModal} 
+                />
+            </section>
             
-            <ImplementationProcess 
-                processData={data.processSection} 
-            />
+            <section data-theme="light">
+                <ImplementationProcess 
+                    processData={data.processSection} 
+                />
+            </section>
             
-            <ImplementationWhyChoose 
-                whyChooseData={data.whyChooseSection} 
-            />
+            <section data-theme="dark">
+                <ImplementationWhyChoose 
+                    whyChooseData={data.whyChooseSection} 
+                />
+            </section>
             
-            <ImplementationPricing 
-                pricingData={data.pricingSection} 
-            />
+            <section data-theme="light">
+                <ImplementationPricing 
+                    pricingData={data.pricingSection} 
+                />
+            </section>
             
-            <ImplementationCTA 
-                ctaData={data.ctaSection} 
-                onOpenModal={openModal} 
-            />
+            <section data-theme="dark">
+                <ImplementationCTA 
+                    ctaData={data.ctaSection} 
+                    onOpenModal={openModal} 
+                />
+            </section>
             
             <ImplementationModal 
                 isOpen={isModalOpen}

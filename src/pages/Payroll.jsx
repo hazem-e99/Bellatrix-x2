@@ -67,24 +67,32 @@ export default function PayrollPage() {
   }
 
   return (
-    <div className="bg-gray-50 min-h-screen w-full light-section">
-      <PayrollHero hero={data.hero} />
-      <PayrollPainPoints painPoints={data.painPoints} />
-      <PayrollHowItWorks howItWorks={data.howItWorks} />
-      <section className="py-20 bg-white light-section">
-        <div className="container mx-auto px-6 max-w-6xl">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-              {data.workflowTitle || 'Payroll System Built for All Industries'}
-            </h2>
-            <p className="text-xl text-gray-600">
-              {data.workflowSubtitle || 'Streamline your entire payroll lifecycle — from onboarding to salary disbursement — with a secure, intuitive platform.'}
-            </p>
+    <div className="bg-gray-50 min-h-screen w-full">
+      <section data-theme="light">
+        <PayrollHero hero={data.hero} />
+      </section>
+      <section data-theme="light">
+        <PayrollPainPoints painPoints={data.painPoints} />
+      </section>
+      <section data-theme="light">
+        <PayrollHowItWorks howItWorks={data.howItWorks} />
+      </section>
+      <section data-theme="light">
+        <div className="py-20 bg-white">
+          <div className="container mx-auto px-6 max-w-6xl">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+                {data.workflowTitle || 'Payroll System Built for All Industries'}
+              </h2>
+              <p className="text-xl text-gray-600">
+                {data.workflowSubtitle || 'Streamline your entire payroll lifecycle — from onboarding to salary disbursement — with a secure, intuitive platform.'}
+              </p>
+            </div>
+            <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">
+              {data.workflowStepTitle || 'Core Workflow'}
+            </h3>
+            <PayrollStepper stepper={data.stepper} />
           </div>
-          <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">
-            {data.workflowStepTitle || 'Core Workflow'}
-          </h3>
-          <PayrollStepper stepper={data.stepper} />
         </div>
       </section>
       {/* Add other sections here as you refactor them out */}
