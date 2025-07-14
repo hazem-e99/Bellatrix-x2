@@ -32,7 +32,7 @@ const ImplementationWhyChoose = ({ whyChooseData }) => {
                             <div className="absolute top-1/2 left-1/2 w-16 h-16 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 rounded-full opacity-15 transform -translate-x-8 -translate-y-8 group-hover:opacity-30 transition-opacity duration-500"></div>
                             
                             <div className="relative z-10 space-y-4">
-                                {whyChooseData.features.map((feature, index) => {
+                                {whyChooseData.benefits.map((feature, index) => {
                                     const bgGradients = [
                                         'from-blue-700 to-blue-900',
                                         'from-blue-800 to-blue-950',

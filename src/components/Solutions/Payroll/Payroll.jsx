@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import PayrollHero from '../components/Payroll/PayrollHero';
-import PayrollPainPoints from '../components/Payroll/PayrollPainPoints';
-import PayrollHowItWorks from '../components/Payroll/PayrollHowItWorks';
-import PayrollStepper from '../components/Payroll/PayrollStepper';
-// import PayrollFeatures from '../components/Payroll/PayrollFeatures';
-// import PayrollDemoModal from '../components/Payroll/PayrollDemoModal';
-// import PayrollWhyPerfect from '../components/Payroll/PayrollWhyPerfect';
-// import PayrollFAQ from '../components/Payroll/PayrollFAQ';
-// import PayrollCTA from '../components/Payroll/PayrollCTA';
-import ContactForm from '../components/ContactForm';
-import Modal from '../components/Modal';
+import PayrollHero from './PayrollHero';
+import PayrollPainPoints from './PayrollPainPoints';
+import PayrollHowItWorks from './PayrollHowItWorks';
+import PayrollStepper from './PayrollStepper';
+// import PayrollFeatures from '../PayrollFeatures';
+// import PayrollDemoModal from '../PayrollDemoModal';
+// import PayrollWhyPerfect from '../PayrollWhyPerfect';
+// import PayrollFAQ from '../PayrollFAQ';
+// import PayrollCTA from '../PayrollCTA';
+import ContactForm from '../../ContactForm';
+import Modal from '../../Modal';
 
 export default function PayrollPage() {
   const [data, setData] = useState(null);
@@ -34,7 +34,7 @@ export default function PayrollPage() {
       });
   }, []);
 
-  const openContactModal = () => setIsContactModalOpen(true);
+  // const openContactModal = () => setIsContactModalOpen(true);
   const closeContactModal = () => setIsContactModalOpen(false);
 
   if (loading) {

@@ -16,7 +16,7 @@ const ImplementationPricing = ({ pricingData }) => {
 
                 {/* Pricing Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    {pricingData.plans.map((plan, index) => (
+                    {pricingData.packages.map((plan, index) => (
                         <div key={index} className={`bg-white rounded-2xl p-8 border-2 ${plan.isPopular ? 'border-blue-500 hover:border-blue-600 transform scale-105' : 'border-gray-200 hover:border-blue-300'} transition-all duration-300 relative`}>
                             {plan.isPopular && (
                                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">

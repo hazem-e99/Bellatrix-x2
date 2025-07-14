@@ -2,7 +2,7 @@
   "heroSection": {
     "titleParts": ["NetSuite", "Implementation", "Excellence", "Transform Your Business"],
     "description": "Our proven implementation methodology ensures successful NetSuite deployment with minimal disruption to your business operations. From planning to go-live, we guide you every step of the way.",
-    "backgroundVideo": "/videos/implementation-hero.mp4",
+    "backgroundVideo": "/Videos/implementation/homepage_hero.mp4",
     "ctaButton": {
       "text": "Start Your Implementation",
       "icon": "M13 7l5 5m0 0l-5 5m5-5H6"
@@ -11,6 +11,7 @@
   "processSection": {
     "title": "Our Implementation Process",
     "description": "A structured approach to successful NetSuite deployment",
+    "image":"/Videos/implementation/implementProcess.jpg",
     "phases": [
       {
         "phase": "01",
@@ -143,7 +144,11 @@
         ],
         "recommended": false
       }
-    ]
+    ],
+    "additionalInfo": {
+      "note": "All packages include free consultation and project scoping.",
+      "contactText": "Need a custom solution? Contact our team for personalized pricing."
+    }
   },
   "ctaSection": {
     "title": "Ready to Transform Your Business?",

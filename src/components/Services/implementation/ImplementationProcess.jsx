@@ -1,6 +1,7 @@
 import React from 'react';
 
 const ImplementationProcess = ({ processData }) => {
+    console.log(processData);
     return (
         <div className="bg-gray-50 py-12 light-section">
             <div className="container mx-auto px-6">
@@ -103,7 +104,7 @@ const ImplementationProcess = ({ processData }) => {
                             <div className="absolute left-6 top-6 bottom-6 w-0.5 bg-gradient-to-b from-blue-300 via-blue-500 via-blue-700 to-blue-900"></div>
                             
                             <div className="space-y-6">
-                                {processData.steps.map((step, index) => {
+                                {processData.phases.map((step, index) => {
                                     const bgColors = ['bg-blue-300', 'bg-blue-500', 'bg-blue-700', 'bg-blue-900'];
                                     return (
                                         <div key={index} className="relative flex items-start group">

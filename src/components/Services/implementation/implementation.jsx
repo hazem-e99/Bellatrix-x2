@@ -14,8 +14,9 @@ const Implementation = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('data/implementation.json');
+                const response = await fetch('/data/implementation.json');
                 const jsonData = await response.json();
+            console.log(jsonData.processSection )
                 setData(jsonData);
                 setLoading(false);
             } catch (error) {

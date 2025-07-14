@@ -37,7 +37,7 @@ const ImplementationHero = ({ heroData, onOpenModal }) => {
                     {/* Main Heading with Text Animation */}
                     <div className="text-center mb-8">
                         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-white animate-slide-up">
-                            <span className="inline-block animate-text-glow">{heroData.titleParts[0]}</span>{' '}
+                            <span className="inline-block animate-text-glow">{heroData.title}</span>{' '}
                             <span className="inline-block bg-gradient-to-r from-white via-white to-white bg-clip-text text-transparent animate-gradient-text">
                                 {heroData.titleParts[1]}
                             </span>{' '}

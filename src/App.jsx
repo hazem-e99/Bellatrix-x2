@@ -7,11 +7,11 @@ import NetSuiteConsulting from './components/Services/NetSuiteConsulting/NetSuit
 import Customization from './components/Services/Customization/Customization';
 import Integration from './components/Services/Integration/Integration';
 import About from './pages/About';
-import HRSolution from './pages/HrPage/HR';
-import Payroll from './pages/Payroll';
+import HRSolution from './components/Solutions/HrPage/HR';
+import Payroll from './components/Solutions/Payroll/Payroll';
 import Support from './components/Support/Support';
-import Manufacturing from './pages/Industries/Manufacturing';
-import Retail from './pages/Industries/Retail';
+import Manufacturing from './components/Industries/Manufacturing/Manufacturing';
+import Retail from './components/Industries/Retail/Retail';
 
 function App() {
   return (

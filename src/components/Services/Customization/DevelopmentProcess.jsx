@@ -1,0 +1,45 @@
+import React from 'react';
+
+const processSteps = [
+  {
+    step: "01",
+    title: "Requirements Analysis",
+    description: "We analyze your business requirements and current NetSuite setup"
+  },
+  {
+    step: "02",
+    title: "Solution Design",
+    description: "Design custom solutions that align with your business goals"
+  },
+  {
+    step: "03",
+    title: "Development & Testing",
+    description: "Develop and thoroughly test all customizations"
+  },
+  {
+    step: "04",
+    title: "Deployment & Support",
+    description: "Deploy solutions and provide ongoing support"
+  }
+];
+
+const DevelopmentProcess = () => (
+  <section className="py-20 bg-gray-50">
+    <div className="max-w-6xl mx-auto px-4">
+      <h2 className="text-3xl font-bold mb-10 text-blue-800 text-center">Our Development Process</h2>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        {processSteps.map((process, index) => (
+          <div key={index} className="text-center">
+            <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
+              {process.step}
+            </div>
+            <h3 className="text-xl font-bold text-blue-800 mb-3">{process.title}</h3>
+            <p className="text-gray-600">{process.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+export default DevelopmentProcess; 

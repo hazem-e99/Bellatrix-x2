@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import ContactForm from '../../components/ContactForm';
-import Modal from '../../components/Modal';
+import ContactForm from '../../../components/ContactForm';
+import Modal from '../../../components/Modal';
 
-const Manufacturing = () => {
+const Retail = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [activeChallenge, setActiveChallenge] = useState(0);
   const [activeSolution, setActiveSolution] = useState(0);
@@ -14,7 +13,7 @@ const Manufacturing = () => {
   // Auto-rotate challenges and solutions
   useEffect(() => {
     const challengeInterval = setInterval(() => {
-      setActiveChallenge((prev) => (prev + 1) % manufacturingChallenges.length);
+      setActiveChallenge((prev) => (prev + 1) % retailChallenges.length);
     }, 4000);
     
     const solutionInterval = setInterval(() => {
@@ -27,152 +26,148 @@ const Manufacturing = () => {
     };
   }, []);
 
-  const manufacturingChallenges = [
+  const retailChallenges = [
     {
-      title: "Complex Production Planning",
-      description: "Managing multi-level BOMs, work orders, and production schedules across multiple facilities",
-      icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2",
-      impact: "30% production delays"
-    },
-    {
-      title: "Inventory Management Complexity",
-      description: "Tracking raw materials, WIP, and finished goods across multiple locations with real-time visibility",
+      title: "Omnichannel Inventory Management",
+      description: "Managing inventory across multiple sales channels while maintaining real-time visibility and preventing stockouts",
       icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4",
-      impact: "25% excess inventory"
+      impact: "35% inventory discrepancies"
     },
     {
-      title: "Quality Control & Compliance",
-      description: "Maintaining quality standards and regulatory compliance throughout the manufacturing process",
-      icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z",
-      impact: "15% quality issues"
+      title: "Customer Experience Consistency",
+      description: "Delivering consistent customer experience across online, mobile, and physical store touchpoints",
+      icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z",
+      impact: "40% customer satisfaction issues"
     },
     {
-      title: "Supply Chain Visibility",
-      description: "Managing supplier relationships and ensuring timely delivery of materials and components",
-      icon: "M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",
-      impact: "20% supply delays"
+      title: "Seasonal Demand Planning",
+      description: "Accurately forecasting demand for seasonal products and managing inventory levels accordingly",
+      icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+      impact: "25% excess seasonal inventory"
+    },
+    {
+      title: "Price Optimization & Promotions",
+      description: "Managing dynamic pricing strategies and promotional campaigns across multiple channels",
+      icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+      impact: "20% margin erosion"
     }
   ];
 
   const netSuiteSolutions = [
     {
-      title: "Advanced Manufacturing",
-      description: "Complete production planning with work orders, routing, and capacity planning",
+      title: "Omnichannel Commerce",
+      description: "Unified commerce platform connecting online, mobile, and in-store experiences",
       features: [
-        "Multi-level BOM management",
-        "Work order scheduling",
-        "Capacity planning",
-        "Shop floor control",
-        "Production reporting"
+        "Real-time inventory visibility",
+        "Cross-channel order management",
+        "Unified customer profiles",
+        "Buy online, pick up in store",
+        "Endless aisle capabilities"
       ],
-      benefits: "40% improvement in production efficiency"
+      benefits: "45% improvement in inventory turnover"
     },
     {
-      title: "Inventory & Warehouse Management",
-      description: "Real-time inventory tracking with automated replenishment and cycle counting",
+      title: "Point of Sale (POS) Integration",
+      description: "Seamlessly integrated POS system with real-time synchronization to back-office operations",
       features: [
-        "Real-time inventory tracking",
-        "Automated reorder points",
-        "Cycle counting",
-        "Lot and serial tracking",
+        "Cloud-based POS system",
+        "Mobile POS capabilities",
+        "Real-time inventory updates",
+        "Customer loyalty integration",
         "Multi-location management"
       ],
-      benefits: "35% reduction in inventory costs"
+      benefits: "60% faster checkout process"
     },
     {
-      title: "Quality Management",
-      description: "Comprehensive quality control with inspection plans and non-conformance tracking",
+      title: "E-commerce Platform",
+      description: "Native e-commerce solution with advanced merchandising and personalization",
       features: [
-        "Quality inspection plans",
-        "Non-conformance tracking",
-        "Supplier quality management",
-        "Certificate of analysis",
-        "Corrective action tracking"
+        "Responsive web design",
+        "Product catalog management",
+        "Personalized recommendations",
+        "Advanced search & filtering",
+        "Mobile commerce optimization"
       ],
-      benefits: "50% reduction in quality issues"
+      benefits: "50% increase in online conversion"
     },
     {
-      title: "Supply Chain Management",
-      description: "End-to-end supply chain visibility with supplier collaboration tools",
+      title: "Customer Relationship Management",
+      description: "360-degree customer view with advanced analytics and marketing automation",
       features: [
-        "Supplier portal",
-        "Purchase order automation",
-        "Vendor performance tracking",
-        "Drop shipment management",
-        "Supply chain analytics"
+        "Unified customer database",
+        "Purchase history tracking",
+        "Loyalty program management",
+        "Targeted marketing campaigns",
+        "Customer service integration"
       ],
-      benefits: "30% improvement in on-time delivery"
+      benefits: "35% increase in customer retention"
     }
   ];
 
   const industryStats = [
-    { value: "500+", label: "Manufacturing Clients", description: "Successful implementations" },
-    { value: "40%", label: "Efficiency Gain", description: "Average improvement" },
-    { value: "35%", label: "Cost Reduction", description: "In operational costs" },
-    { value: "98%", label: "Client Satisfaction", description: "Success rate" }
+    { value: "300+", label: "Retail Clients", description: "Successful implementations" },
+    { value: "50%", label: "Sales Growth", description: "Average improvement" },
+    { value: "40%", label: "Cost Reduction", description: "In operational costs" },
+    { value: "99%", label: "Uptime", description: "System availability" }
   ];
 
   const caseStudies = [
     {
-      company: "TechManufacturing Corp",
-      industry: "Electronics Manufacturing",
-      challenge: "Complex multi-level BOMs and production scheduling across 3 facilities",
-      solution: "Implemented NetSuite Advanced Manufacturing with custom workflows",
+      company: "Fashion Forward Retail",
+      industry: "Fashion & Apparel",
+      challenge: "Managing inventory across 50+ stores and online channels with seasonal variations",
+      solution: "NetSuite Omnichannel Commerce with advanced inventory management and demand planning",
       results: [
-        "45% reduction in production lead times",
-        "30% improvement in on-time delivery",
-        "25% reduction in inventory carrying costs",
-        "Real-time visibility across all facilities"
+        "55% reduction in stockouts",
+        "40% improvement in inventory turnover",
+        "30% increase in cross-channel sales",
+        "Real-time visibility across all channels"
       ],
-      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
-      company: "Precision Parts Ltd",
-      industry: "Automotive Parts",
-      challenge: "Quality control and traceability requirements for automotive industry",
-      solution: "NetSuite Quality Management with lot tracking and supplier integration",
+      company: "Electronics Plus",
+      industry: "Consumer Electronics",
+      challenge: "Complex product configurations and warranty management across multiple channels",
+      solution: "NetSuite E-commerce with product configurator and service management",
       results: [
-        "60% reduction in quality incidents",
-        "100% lot traceability achieved",
-        "40% faster supplier onboarding",
-        "Automated compliance reporting"
+        "70% reduction in order errors",
+        "45% faster product launches",
+        "60% improvement in warranty processing",
+        "Automated product configuration"
       ],
-      image: "https://images.unsplash.com/photo-1565043666747-69f6646db940?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     }
   ];
 
-  const implementationProcess = [
+  const retailFeatures = [
     {
-      phase: "Discovery & Assessment",
-      duration: "2-3 weeks",
-      description: "Analyze current manufacturing processes, systems, and requirements",
-      deliverables: ["Current state assessment", "Gap analysis", "Requirements documentation"]
+      title: "Inventory Management",
+      description: "Real-time inventory tracking across all channels and locations",
+      icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4",
+      benefits: ["Real-time stock levels", "Automated reordering", "Multi-location tracking", "Demand forecasting"]
     },
     {
-      phase: "Solution Design",
-      duration: "3-4 weeks", 
-      description: "Design NetSuite configuration tailored to manufacturing workflows",
-      deliverables: ["System architecture", "Process flows", "Integration design"]
+      title: "Customer Management",
+      description: "Comprehensive customer profiles and loyalty program management",
+      icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z",
+      benefits: ["360-degree customer view", "Loyalty programs", "Purchase history", "Personalized marketing"]
     },
     {
-      phase: "Configuration & Development",
-      duration: "6-8 weeks",
-      description: "Configure NetSuite modules and develop custom manufacturing features",
-      deliverables: ["Configured system", "Custom developments", "Integration setup"]
+      title: "Financial Management",
+      description: "Complete financial oversight with retail-specific reporting",
+      icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+      benefits: ["Real-time P&L", "Store performance", "Margin analysis", "Tax compliance"]
     },
     {
-      phase: "Testing & Training",
-      duration: "3-4 weeks",
-      description: "Comprehensive testing and user training for manufacturing teams",
-      deliverables: ["Test results", "Training materials", "User documentation"]
-    },
-    {
-      phase: "Go-Live & Support",
-      duration: "2-3 weeks",
-      description: "Production deployment with ongoing support and optimization",
-      deliverables: ["Live system", "Support documentation", "Performance monitoring"]
+      title: "Supply Chain",
+      description: "End-to-end supply chain visibility and vendor management",
+      icon: "M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",
+      benefits: ["Vendor management", "Purchase automation", "Drop shipping", "Supply chain analytics"]
     }
   ];
+
+
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -183,7 +178,7 @@ const Manufacturing = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80)'
+            backgroundImage: 'url(https://images.unsplash.com/photo-1441986300917-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80)'
           }}
         />
         
@@ -192,36 +187,24 @@ const Manufacturing = () => {
         
         {/* Floating Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div
-            animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-            transition={{ duration: 6, repeat: Infinity }}
-            className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full blur-xl"
-          />
-          <motion.div
-            animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
-            transition={{ duration: 8, repeat: Infinity }}
-            className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full blur-lg"
-          />
+          <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full blur-xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full blur-lg"></div>
         </div>
         
         {/* Content */}
         <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <div>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
-              Manufacturing Excellence
+              Retail Excellence
             </h1>
             <h2 className="text-2xl md:text-3xl text-blue-200 mb-6 font-semibold">
               Powered by NetSuite
             </h2>
             <p className="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed max-w-4xl mx-auto">
-              Transform your manufacturing operations with integrated ERP solutions that streamline 
-              production, optimize inventory, and ensure quality compliance across your entire value chain.
+              Transform your retail operations with integrated commerce solutions that unify online, 
+              mobile, and in-store experiences while optimizing inventory and enhancing customer satisfaction.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -230,23 +213,20 @@ const Manufacturing = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {industryStats.map((stat, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
                 <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">{stat.value}</div>
                 <div className="text-lg font-semibold text-gray-800 mb-1">{stat.label}</div>
                 <div className="text-sm text-gray-600">{stat.description}</div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Manufacturing Challenges Section */}
+      {/* Retail Challenges Section */}
       <section className="py-20 relative overflow-hidden" style={{backgroundColor: '#001038'}}>
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-full">
@@ -262,11 +242,11 @@ const Manufacturing = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-              Manufacturing <span className="text-cyan-400">Challenges</span>
+              Retail <span className="text-cyan-400">Challenges</span>
             </h2>
             <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
-              Modern manufacturing faces complex challenges that require integrated solutions 
-              to maintain competitiveness and operational efficiency.
+              Modern retail faces complex challenges that require integrated solutions 
+              to deliver exceptional customer experiences and maintain profitability.
             </p>
           </div>
 
@@ -277,21 +257,21 @@ const Manufacturing = () => {
                 <div className="mb-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center mb-4">
                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={manufacturingChallenges[activeChallenge].icon} />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={retailChallenges[activeChallenge].icon} />
                     </svg>
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-3">
-                    {manufacturingChallenges[activeChallenge].title}
+                    {retailChallenges[activeChallenge].title}
                   </h3>
                   <p className="text-gray-300 mb-4">
-                    {manufacturingChallenges[activeChallenge].description}
+                    {retailChallenges[activeChallenge].description}
                   </p>
                   <div className="bg-blue-900/20 border border-blue-400/30 rounded-lg p-4">
                     <div className="flex items-center space-x-2">
                       <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
                       </svg>
-                      <span className="text-blue-300 font-semibold">Impact: {manufacturingChallenges[activeChallenge].impact}</span>
+                      <span className="text-blue-300 font-semibold">Impact: {retailChallenges[activeChallenge].impact}</span>
                     </div>
                   </div>
                 </div>
@@ -299,7 +279,7 @@ const Manufacturing = () => {
 
               {/* Challenge Navigation */}
               <div className="flex space-x-2 mt-6 justify-center">
-                {manufacturingChallenges.map((_, index) => (
+                {retailChallenges.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setActiveChallenge(index)}
@@ -316,8 +296,8 @@ const Manufacturing = () => {
               <div className="relative group max-w-xl">
                 <div className="relative bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-4 backdrop-blur-sm border border-white/20 shadow-2xl">
                   <img 
-                    src="https://i.pinimg.com/736x/c4/80/65/c4806594c1156f008c99c34514da447c.jpg" 
-                    alt="Manufacturing Challenges" 
+                    src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    alt="Retail Challenges" 
                     className="w-full h-auto rounded-xl shadow-lg brightness-110 contrast-110 saturate-110 group-hover:scale-105 transition-all duration-500"
                   />
                 </div>
@@ -335,15 +315,15 @@ const Manufacturing = () => {
               NetSuite <span className="text-blue-600">Solutions</span>
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              Comprehensive manufacturing solutions that address every aspect of your operations, 
-              from planning to production to delivery.
+              Comprehensive retail solutions that unify your commerce operations, 
+              from inventory management to customer experience optimization.
             </p>
           </div>
 
           <div className="flex flex-col lg:flex-row items-center gap-12">
             {/* Image - Left Side */}
-            <div className="flex-1 flex justify-center">
-              <div className="relative group max-w-2xl">
+                        <div className="flex-1 flex justify-center">
+              <div className="relative group max-w-xl">
                 <div className="absolute -inset-8 opacity-30 group-hover:opacity-60 transition-all duration-700">
                   <div className="absolute -inset-6 bg-gradient-to-r from-blue-600/20 via-cyan-500/30 to-blue-600/20 rounded-3xl blur-2xl"></div>
                   <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/15 via-blue-500/20 to-cyan-500/15 rounded-2xl blur-xl"></div>
@@ -353,9 +333,9 @@ const Manufacturing = () => {
                 <div className="relative bg-gradient-to-br from-gray-900/10 via-blue-900/5 to-gray-900/10 rounded-3xl p-6 backdrop-blur-md border border-white/30 shadow-2xl group-hover:shadow-blue-500/20 transition-all duration-500">
                   <div className="relative bg-gradient-to-br from-white/5 via-transparent to-blue-500/5 rounded-2xl p-4 border border-white/20">
                     <img 
-                      src="https://i.pinimg.com/1200x/19/e6/91/19e6918482b92f0f7e31e68d376bf711.jpg" 
-                      alt="NetSuite Manufacturing Solutions" 
-                      className="w-full h-96 object-cover rounded-xl shadow-2xl brightness-105 contrast-110 saturate-105 group-hover:brightness-110 group-hover:contrast-115 group-hover:saturate-110 transition-all duration-500 filter drop-shadow-xl"
+                      src="https://i.pinimg.com/736x/5d/33/74/5d33743cd85ff60ff425a2614a87503f.jpg" 
+                      alt="NetSuite Retail Solutions" 
+                      className="w-full h-110 object-cover rounded-xl shadow-2xl brightness-105 contrast-110 saturate-105 group-hover:brightness-110 group-hover:contrast-115 group-hover:saturate-110 transition-all duration-500 filter drop-shadow-xl"
                     />
                     
                     <div className="absolute inset-4 rounded-xl bg-gradient-to-tr from-blue-500/5 via-transparent via-transparent to-cyan-400/5 pointer-events-none"></div>
@@ -436,6 +416,60 @@ const Manufacturing = () => {
         </div>
       </section>
 
+      {/* Retail Features Section */}
+      <section className="py-20 relative overflow-hidden" style={{backgroundColor: '#001038'}}>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full">
+            <svg width="100%" height="100%" viewBox="0 0 100 100" className="text-blue-300">
+              <pattern id="featuresGrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="1" cy="1" r="1" fill="currentColor" opacity="0.3"/>
+              </pattern>
+              <rect width="100%" height="100%" fill="url(#featuresGrid)" />
+            </svg>
+          </div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+              Retail <span className="text-cyan-400">Features</span>
+            </h2>
+            <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
+              Comprehensive features designed specifically for retail operations and customer experience optimization.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {retailFeatures.map((feature, index) => (
+              <div
+                key={index}
+                className="bg-white/5 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300"
+              >
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={feature.icon} />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
+                    <p className="text-gray-300 mb-4">{feature.description}</p>
+                    <div className="grid grid-cols-2 gap-2">
+                      {feature.benefits.map((benefit, i) => (
+                        <div key={i} className="flex items-center space-x-2">
+                          <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full"></div>
+                          <span className="text-sm text-gray-300">{benefit}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Case Studies Section */}
       <section className="py-20 relative overflow-hidden" style={{backgroundColor: '#001038'}}>
         <div className="absolute inset-0 opacity-10">
@@ -455,18 +489,15 @@ const Manufacturing = () => {
               Success <span className="text-cyan-400">Stories</span>
             </h2>
             <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
-              Real manufacturing companies achieving remarkable results with NetSuite solutions.
+              Real retail companies achieving remarkable results with NetSuite commerce solutions.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {caseStudies.map((study, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
-                className="bg-white/5 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-white/10"
+                className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10"
               >
                 <div className="relative h-48">
                   <img 
@@ -506,7 +537,7 @@ const Manufacturing = () => {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -517,7 +548,7 @@ const Manufacturing = () => {
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-              Manufacturing Implementation Built for All Industries
+              Retail Implementation Built for All Industries
             </h2>
             <p className="text-xl text-gray-600">
               Streamline your entire NetSuite implementation lifecycle — from discovery to 
@@ -538,22 +569,22 @@ const Manufacturing = () => {
           <div className="bg-gradient-to-r from-gray-100 to-gray-200 rounded-3xl p-12 text-gray-800 text-center border border-gray-300">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gray-900">
-                Ready to Transform Your Manufacturing Operations?
+                Ready to Transform Your Retail Operations?
               </h2>
               <p className="text-xl mb-8 leading-relaxed text-gray-700">
-                Join hundreds of manufacturing companies that have streamlined their operations 
-                and improved efficiency with NetSuite. Get started with a free consultation today.
+                Join hundreds of retail companies that have unified their commerce operations 
+                and improved customer experience with NetSuite. Get started with a free consultation today.
               </p>
               
               <div className="grid md:grid-cols-3 gap-8 mb-12">
                 <div className="text-center">
                   <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-md border border-gray-200">
                     <svg className="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                     </svg>
                   </div>
                   <h4 className="text-xl font-bold mb-2 text-gray-800">Free Assessment</h4>
-                  <p className="text-gray-600">Comprehensive evaluation of your manufacturing processes</p>
+                  <p className="text-gray-600">Comprehensive evaluation of your retail processes</p>
                 </div>
                 <div className="text-center">
                   <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-md border border-gray-200">
@@ -575,14 +606,12 @@ const Manufacturing = () => {
                 </div>
               </div>
               
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <button
                 onClick={openContactModal}
                 className="bg-gray-800 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-gray-900"
               >
-                Schedule Manufacturing Demo
-              </motion.button>
+                Schedule Retail Demo
+              </button>
             </div>
           </div>
         </div>
@@ -592,8 +621,8 @@ const Manufacturing = () => {
       <Modal
         isOpen={isContactModalOpen}
         onClose={closeContactModal}
-        title="Schedule Your Manufacturing Demo"
-        subtitle="Let's discuss your manufacturing challenges and solutions"
+        title="Schedule Your Retail Demo"
+        subtitle="Let's discuss your retail challenges and solutions"
       >
         <div className="p-2">
           <ContactForm />
@@ -607,22 +636,22 @@ const Manufacturing = () => {
 function ImplementationStepper() {
   const steps = [
     {
-      title: 'Discovery & Assessment',
-      desc: 'Analyze current manufacturing processes, systems, and requirements',
+      title: 'Discovery & Planning',
+      desc: 'Analyze current retail operations, systems, and customer journey requirements',
       details:
-        'Comprehensive analysis of your existing manufacturing operations, including process mapping, system evaluation, and requirements gathering. We identify gaps and opportunities for improvement.',
+        'Comprehensive analysis of your existing retail operations, including process mapping, system evaluation, and requirements gathering. We identify gaps and opportunities for improvement.',
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
         </svg>
       ),
-      benefits: ['Current state assessment', 'Gap analysis', 'Requirements documentation', 'Process mapping'],
+      benefits: ['Current state assessment', 'Gap analysis', 'Implementation roadmap', 'Process mapping'],
     },
     {
-      title: 'Solution Design',
-      desc: 'Design NetSuite configuration tailored to manufacturing workflows',
+      title: 'System Design',
+      desc: 'Design NetSuite configuration for retail workflows and customer touchpoints',
       details:
-        'Create a detailed blueprint for your NetSuite implementation, including system architecture, integration points, and customization requirements specific to manufacturing processes.',
+        'Create a detailed blueprint for your NetSuite implementation, including system architecture, integration points, and customization requirements specific to retail processes.',
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
@@ -631,8 +660,8 @@ function ImplementationStepper() {
       benefits: ['System architecture', 'Process flows', 'Integration design', 'Custom requirements'],
     },
     {
-      title: 'Configuration & Development',
-      desc: 'Configure NetSuite modules and develop custom manufacturing features',
+      title: 'Configuration & Integration',
+      desc: 'Configure NetSuite modules and integrate with POS, e-commerce, and other systems',
       details:
         'Implementation of NetSuite configuration based on the approved design, including custom script development, workflow automation, and integration setup.',
       icon: (
@@ -641,11 +670,11 @@ function ImplementationStepper() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
       ),
-      benefits: ['Configured system', 'Custom developments', 'Integration setup', 'Workflow automation'],
+      benefits: ['Configured system', 'Integrations', 'Custom developments', 'Workflow automation'],
     },
     {
       title: 'Testing & Training',
-      desc: 'Comprehensive testing and user training for manufacturing teams',
+      desc: 'Comprehensive testing and training for retail staff across all locations',
       details:
         'Thorough system testing including unit, integration, and user acceptance testing. Comprehensive training programs for all user groups to ensure smooth adoption.',
       icon: (
@@ -656,8 +685,8 @@ function ImplementationStepper() {
       benefits: ['Test results', 'Training materials', 'User documentation', 'System validation'],
     },
     {
-      title: 'Go-Live & Support',
-      desc: 'Production deployment with ongoing support and optimization',
+      title: 'Go-Live & Optimization',
+      desc: 'Production deployment with ongoing support and performance optimization',
       details:
         'Carefully managed production deployment with real-time monitoring, immediate support, and post-implementation optimization to ensure successful system adoption.',
       icon: (
@@ -864,4 +893,4 @@ function ImplementationStepper() {
   )
 }
 
-export default Manufacturing;
+export default Retail;
