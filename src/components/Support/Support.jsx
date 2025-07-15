@@ -14,34 +14,34 @@ const Support = () => {
     return (
         <>
             <section data-theme="dark">
-                <BellatrixSupportHero />
+            <BellatrixSupportHero />
             </section>
             <section data-theme="light">
-                <SupportSecondSec />
+            <SupportSecondSec />
             </section>
             <section data-theme="dark">
-                <SherpaCareServices />
+            <SherpaCareServices />
             </section>
             <section data-theme="light">
-                <WhatWeOfferSection />
+            <WhatWeOfferSection />
             </section>
             <section data-theme="dark">
-                <DedicatedTeamSection />
+            <DedicatedTeamSection />
             </section>
             <section data-theme="light">
-                <PrePackagedSection />
+            <PrePackagedSection />
             </section>
             <section data-theme="dark">
-                <BellatrixSupportSection />
+            <BellatrixSupportSection />
             </section>
             <section data-theme="light">
-                <PayPerUseSection />
+            <PayPerUseSection />
             </section>
             <section data-theme="dark">
-                <CustomerSupport />
+            <CustomerSupport />
             </section>
             <section data-theme="light">
-                <WhyChoeseBellatrix />
+            <WhyChoeseBellatrix />
             </section>
         </>
     );

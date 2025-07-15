@@ -9,7 +9,7 @@ const Implementation = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('data/Implementation.json');
+                const response = await fetch('/data/Implementation.json');
                 const jsonData = await response.json();
                 setData(jsonData);
                 setLoading(false);

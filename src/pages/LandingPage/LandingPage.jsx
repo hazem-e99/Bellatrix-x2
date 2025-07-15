@@ -57,43 +57,43 @@ function LandingPage() {
       {/* Hero Section */}
       {data?.hero && (
         <section data-theme="dark">
-          <Hero 
-            slides={data.hero.slides} 
-            stats={data.hero.stats} 
-          />
+        <Hero 
+          slides={data.hero.slides} 
+          stats={data.hero.stats} 
+        />
         </section>
       )}
       
       {/* Services Section */}
       {data?.services && (
         <section data-theme="light">
-          <Services 
-            services={data.services.services}
-            sectionHeader={data.services.sectionHeader}
-            viewAllButton={data.services.viewAllButton}
-          />
+        <Services 
+          services={data.services.services}
+          sectionHeader={data.services.sectionHeader}
+          viewAllButton={data.services.viewAllButton}
+        />
         </section>
       )}
       
       {/* Testimonials Section */}
       {data?.testimonials && (
         <section data-theme="dark">
-          <Testimonials 
-            testimonials={data.testimonials.testimonials}
-            sectionHeader={data.testimonials.sectionHeader}
-            ctaButton={data.testimonials.ctaButton}
-          />
+        <Testimonials 
+          testimonials={data.testimonials.testimonials}
+          sectionHeader={data.testimonials.sectionHeader}
+          ctaButton={data.testimonials.ctaButton}
+        />
         </section>
       )}
       
       {/* Industries Section */}
       {data?.industries && (
         <section data-theme="light">
-          <Industries 
-            industries={data.industries.industries}
-            sectionHeader={data.industries.sectionHeader}
-            styles={data.industries.styles}
-          />
+        <Industries 
+          industries={data.industries.industries}
+          sectionHeader={data.industries.sectionHeader}
+          styles={data.industries.styles}
+        />
         </section>
       )}
     </div>

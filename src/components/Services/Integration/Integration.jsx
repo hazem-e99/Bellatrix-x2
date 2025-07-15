@@ -75,8 +75,8 @@ const Integration = () => {
               }}
               className="text-white animate-slide-up"
             >
-              NetSuite Integration Services
-            </h1>
+            NetSuite Integration Services
+          </h1>
 
             {/* Description */}
             <p
@@ -313,9 +313,9 @@ const Integration = () => {
               <div key={index} className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-100">
                 <div className="flex items-start space-x-4">
                   <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-1">
-                    ✓
-                  </div>
-                  <div>
+                  ✓
+                </div>
+                <div>
                     <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-gray-900 transition-colors duration-300">{benefit.title}</h3>
                     <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">{benefit.description}</p>
                   </div>
@@ -439,7 +439,7 @@ const Integration = () => {
                   className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold px-10 py-4 rounded-xl shadow-lg text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
                 >
                   Start Your Integration Project
-                </button>
+          </button>
  
               </div>
               
