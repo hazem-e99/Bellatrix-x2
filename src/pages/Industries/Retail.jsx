@@ -1,16 +1,5 @@
 import React, { useState, useEffect } from 'react';
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
 // eslint-disable-next-line no-unused-vars
->>>>>>> Stashed changes
-=======
-// eslint-disable-next-line no-unused-vars
->>>>>>> Stashed changes
-=======
-// eslint-disable-next-line no-unused-vars
->>>>>>> Stashed changes
 import { motion } from 'framer-motion';
 import ContactForm from '../../components/ContactForm';
 import Modal from '../../components/Modal';
@@ -217,25 +206,6 @@ const Retail = () => {
     <div className="min-h-screen bg-gray-50">
       
       {/* Hero Section */}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1441986300917-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80)'
-          }}
-        />
-        
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/90 via-gray-900/80 to-pink-900/90"></div>
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20" style={{backgroundColor: '#001038'}}>
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
@@ -248,13 +218,6 @@ const Retail = () => {
             </svg>
           </div>
         </div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         
         {/* Floating Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -364,18 +327,6 @@ const Retail = () => {
             {industryStats.map((stat, index) => (
               <motion.div
                 key={index}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="text-4xl md:text-5xl font-bold text-purple-600 mb-2">{stat.value}</div>
-                <div className="text-lg font-semibold text-gray-800 mb-1">{stat.label}</div>
-                <div className="text-sm text-gray-600">{stat.description}</div>
-=======
                 initial={{ opacity: 0, y: 30, scale: 0.9 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ 
@@ -391,40 +342,6 @@ const Retail = () => {
                 }}
                 className="group relative"
               >
-=======
-                initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: index * 0.1,
-                  type: "spring",
-                  stiffness: 100
-                }}
-                whileHover={{ 
-                  scale: 1.05,
-                  y: -5,
-                  transition: { duration: 0.3 }
-                }}
-                className="group relative"
-              >
->>>>>>> Stashed changes
-=======
-                initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: index * 0.1,
-                  type: "spring",
-                  stiffness: 100
-                }}
-                whileHover={{ 
-                  scale: 1.05,
-                  y: -5,
-                  transition: { duration: 0.3 }
-                }}
-                className="group relative"
-              >
->>>>>>> Stashed changes
                 {/* Card Background */}
                 <div className="relative bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100 group-hover:shadow-2xl group-hover:border-blue-200 transition-all duration-300 overflow-hidden">
                   {/* Gradient overlay on hover */}
@@ -481,13 +398,6 @@ const Retail = () => {
                   <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-100/30 to-transparent rounded-full -translate-y-10 translate-x-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-cyan-100/30 to-transparent rounded-full translate-y-8 -translate-x-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
               </motion.div>
             ))}
           </div>
@@ -593,14 +503,6 @@ const Retail = () => {
             {/* Image - Left Side */}
             <div className="flex-1 flex justify-center">
               <div className="relative group max-w-xl">
-<<<<<<< Updated upstream
-                <div className="relative bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-4 backdrop-blur-sm border border-white/20 shadow-2xl">
-                  <img 
-                    src="https://images.unsplash.com/photo-1441986300917-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                    alt="NetSuite Retail Solutions" 
-                    className="w-full h-auto rounded-xl shadow-lg brightness-110 contrast-110 saturate-110 group-hover:scale-105 transition-all duration-500"
-                  />
-=======
                 <div className="absolute -inset-8 opacity-30 group-hover:opacity-60 transition-all duration-700">
                   <div className="absolute -inset-6 bg-gradient-to-r from-blue-600/20 via-cyan-500/30 to-blue-600/20 rounded-3xl blur-2xl"></div>
                   <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/15 via-blue-500/20 to-cyan-500/15 rounded-2xl blur-xl"></div>
@@ -646,7 +548,6 @@ const Retail = () => {
                     </svg>
                     <span>NetSuite Expert</span>
                   </div>
->>>>>>> Stashed changes
                 </div>
               </div>
             </div>

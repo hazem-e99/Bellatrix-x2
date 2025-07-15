@@ -56,21 +56,11 @@ export default function HRSolution() {
   const nextDemo = () => handleDemoChange((demoIdx + 1) % demoImages.length);
   const prevDemo = () => handleDemoChange((demoIdx - 1 + demoImages.length) % demoImages.length);
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  // Animate benefits
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
   // Contact modal functions
   const openContactModal = () => setIsContactModalOpen(true);
   const closeContactModal = () => setIsContactModalOpen(false);
 
   // Animation for Benefits Cards
->>>>>>> Stashed changes
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveBenefitIdx((prev) => (prev + 1) % benefits.length);
@@ -79,52 +69,6 @@ export default function HRSolution() {
   }, []);
 
   return (
-<<<<<<< Updated upstream
-    <main className="bg-gradient-to-br from-blue-50 to-white min-h-screen text-slate-800 light-section">
-
-      {/* Hero Section */}
-      <section className="w-full min-h-screen relative overflow-hidden py-24 md:py-32 flex flex-col items-center justify-center text-center bg-black">
-        <div className="absolute inset-0 w-full h-full">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            onError={(e) => {
-              e.target.style.display = 'none';
-              document.getElementById('fallback-bg').style.display = 'block';
-            }}
-            className="absolute inset-0 w-full h-full object-cover transform scale-105 hover:scale-110 transition-transform duration-[8s] ease-in-out pointer-events-none"
-            style={{
-              filter: 'brightness(0.7) contrast(1.2) saturate(1.3) hue-rotate(10deg)',
-              animation: 'video-enhance 20s ease-in-out infinite',
-              userSelect: 'none',
-              WebkitUserSelect: 'none',
-            }}
-          >
-            <source src="/videos/hr-hero.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <div
-            id="fallback-bg"
-            className="w-full h-full bg-cover bg-center hidden"
-            style={{ backgroundImage: 'url(/images/payrollHeroSection.jpg)' }}
-          ></div>
-        </div>
-        <div className="absolute inset-0 bg-black/40 z-0"></div>
-        <div className="max-w-3xl mx-auto px-4 relative z-10 animate-fade-in-up">
-          <div className="accent-bar mx-auto mb-4" aria-hidden="true"></div>
-          <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-4 tracking-tight drop-shadow-2xl">
-            Modern HR, Payroll & People Management
-          </h1>
-          <p className="text-xl md:text-2xl text-white mb-8 drop-shadow-lg">
-            Automate HR, empower employees, and stay compliant—on one secure platform.
-          </p>
-        </div>
-      </section>
-
-      {/* Animation Style */}
-=======
     <>
       <main className="bg-gradient-to-br from-blue-50 to-white min-h-screen text-slate-800">
         {/* Hero Section */}
@@ -450,29 +394,22 @@ export default function HRSolution() {
       >
         <ContactForm />
       </Modal>
+<<<<<<< Updated upstream
+=======
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
       <style>{`
         @keyframes video-enhance {
-          0%, 100% {
+          0%, 100% { 
             filter: brightness(0.7) contrast(1.2) saturate(1.3) hue-rotate(10deg);
             transform: scale(1.05);
           }
-          50% {
+          50% { 
             filter: brightness(0.8) contrast(1.3) saturate(1.4) hue-rotate(15deg);
             transform: scale(1.08);
           }
         }
       `}</style>
-
-      {/* باقي السكاشن زي benefits, modules, useCases, pricing, etc. */}
-      {/* لو حابب أضيفهم كلهم كمان في نفس الملف قولّي أكمل لك بقية الصفحة بالكامل. */}
-    </main>
+>>>>>>> Stashed changes
+    </>
   );
 }

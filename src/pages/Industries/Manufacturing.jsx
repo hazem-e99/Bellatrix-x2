@@ -142,6 +142,67 @@ const Manufacturing = () => {
     }
   ];
 
+<<<<<<< Updated upstream
+  const implementationProcess = [
+    {
+      phase: "Discovery & Planning",
+      duration: "1-2 Weeks",
+      description: "Define your business goals, current challenges, and future vision. Conduct a thorough assessment of your current systems and processes.",
+      deliverables: [
+        "Business requirements definition",
+        "System architecture design",
+        "Detailed implementation plan",
+        "Training requirements assessment"
+      ]
+    },
+    {
+      phase: "Data Migration & Configuration",
+      duration: "2-4 Weeks",
+      description: "Prepare your data for NetSuite, configure the system, and set up customizations. This includes data cleaning, mapping, and testing.",
+      deliverables: [
+        "Data migration strategy",
+        "System configuration",
+        "Customization development",
+        "Data validation"
+      ]
+    },
+    {
+      phase: "Development & Testing",
+      duration: "3-6 Months",
+      description: "Develop and test the application, including user interfaces, workflows, and integrations. This phase is critical for ensuring smooth operation.",
+      deliverables: [
+        "Application development",
+        "Workflow customization",
+        "Integration testing",
+        "User acceptance testing"
+      ]
+    },
+    {
+      phase: "Go-Live & Training",
+      duration: "1-2 Weeks",
+      description: "Launch the system, train your team, and ensure everything is ready for production. This includes final testing and user training.",
+      deliverables: [
+        "Go-live readiness assessment",
+        "User training",
+        "Final testing",
+        "Documentation"
+      ]
+    },
+    {
+      phase: "Ongoing Support & Optimization",
+      duration: "Ongoing",
+      description: "Provide ongoing support, monitor system performance, and continuously optimize the solution to meet your evolving needs.",
+      deliverables: [
+        "24/7 support",
+        "Performance monitoring",
+        "Continuous optimization",
+        "Regular updates"
+      ]
+    }
+  ];
+=======
+
+>>>>>>> Stashed changes
 
 
   return (
@@ -175,8 +236,6 @@ const Manufacturing = () => {
         </div>
         
         {/* Content */}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
           <motion.div
@@ -216,10 +275,6 @@ const Manufacturing = () => {
             </div>
           </motion.div>
 =======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         <div className="relative z-10 text-center">
           <div className="container mx-auto px-6 max-w-6xl">
             <motion.div
@@ -239,12 +294,6 @@ const Manufacturing = () => {
               </p>
             </motion.div>
           </div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
         </div>
       </section>
@@ -402,44 +451,14 @@ const Manufacturing = () => {
 
           <div className="flex flex-col lg:flex-row items-stretch gap-12">
             {/* Challenges Showcase - Left Side */}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            <div className="flex-1">
-              <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
-                <div className="mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-700 rounded-xl flex items-center justify-center mb-4">
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
             <div className="flex-1 flex flex-col">
               <div className="bg-white/5 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-white/10 h-full flex flex-col justify-between">
                 <div className="flex-1 flex flex-col justify-center">
                   <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center mb-6">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={manufacturingChallenges[activeChallenge].icon} />
                     </svg>
                   </div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                  <h3 className="text-2xl font-bold text-gray-800 mb-3">
-                    {manufacturingChallenges[activeChallenge].title}
-                  </h3>
-                  <p className="text-gray-600 mb-4">
-                    {manufacturingChallenges[activeChallenge].description}
-                  </p>
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-=======
                   <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
                     {manufacturingChallenges[activeChallenge].title}
                   </h3>
@@ -447,25 +466,6 @@ const Manufacturing = () => {
                     {manufacturingChallenges[activeChallenge].description}
                   </p>
                   <div className="bg-blue-900/20 border border-blue-400/30 rounded-lg p-4 mb-6">
->>>>>>> Stashed changes
-=======
-                  <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
-                    {manufacturingChallenges[activeChallenge].title}
-                  </h3>
-                  <p className="text-gray-300 mb-6 text-lg leading-relaxed">
-                    {manufacturingChallenges[activeChallenge].description}
-                  </p>
-                  <div className="bg-blue-900/20 border border-blue-400/30 rounded-lg p-4 mb-6">
->>>>>>> Stashed changes
-=======
-                  <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
-                    {manufacturingChallenges[activeChallenge].title}
-                  </h3>
-                  <p className="text-gray-300 mb-6 text-lg leading-relaxed">
-                    {manufacturingChallenges[activeChallenge].description}
-                  </p>
-                  <div className="bg-blue-900/20 border border-blue-400/30 rounded-lg p-4 mb-6">
->>>>>>> Stashed changes
                     <div className="flex items-center space-x-2">
                       <svg className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
@@ -475,25 +475,6 @@ const Manufacturing = () => {
                   </div>
                 </div>
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-              {/* Challenge Navigation */}
-              <div className="flex space-x-2 mt-6 justify-center">
-                {manufacturingChallenges.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setActiveChallenge(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      activeChallenge === index ? 'bg-red-600' : 'bg-gray-300'
-                    }`}
-                  />
-                ))}
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
                 {/* Challenge Navigation */}
                 <div className="flex space-x-2 justify-center pt-4">
                   {manufacturingChallenges.map((_, index) => (
@@ -506,58 +487,17 @@ const Manufacturing = () => {
                     />
                   ))}
                 </div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
               </div>
             </div>
 
             {/* Image - Right Side */}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            <div className="flex-1 flex justify-center">
-              <div className="relative group max-w-xl">
-                <div className="absolute -inset-8 opacity-30 group-hover:opacity-60 transition-all duration-700">
-                  <div className="absolute -inset-6 bg-gradient-to-r from-red-600/20 via-orange-500/30 to-red-600/20 rounded-3xl blur-2xl"></div>
-                </div>
-                
-                <div className="relative bg-gradient-to-br from-gray-900/10 via-red-900/5 to-gray-900/10 rounded-3xl p-6 backdrop-blur-md border border-white/30 shadow-2xl">
-=======
             <div className="flex-1 flex justify-center items-center">
               <div className="relative group max-w-xl w-full h-full">
                 <div className="relative bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-4 backdrop-blur-sm border border-white/20 shadow-2xl h-full flex items-center">
->>>>>>> Stashed changes
-=======
-            <div className="flex-1 flex justify-center items-center">
-              <div className="relative group max-w-xl w-full h-full">
-                <div className="relative bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-4 backdrop-blur-sm border border-white/20 shadow-2xl h-full flex items-center">
->>>>>>> Stashed changes
-=======
-            <div className="flex-1 flex justify-center items-center">
-              <div className="relative group max-w-xl w-full h-full">
-                <div className="relative bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-4 backdrop-blur-sm border border-white/20 shadow-2xl h-full flex items-center">
->>>>>>> Stashed changes
                   <img 
                     src="https://images.unsplash.com/photo-1565043666747-69f6646db940?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                     alt="Manufacturing Challenges" 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                    className="w-full h-auto rounded-xl shadow-2xl brightness-105 contrast-110 saturate-105 group-hover:brightness-110 transition-all duration-500"
-=======
                     className="w-full h-full max-h-96 object-cover rounded-xl shadow-lg brightness-110 contrast-110 saturate-110 group-hover:scale-105 transition-all duration-500"
->>>>>>> Stashed changes
-=======
-                    className="w-full h-full max-h-96 object-cover rounded-xl shadow-lg brightness-110 contrast-110 saturate-110 group-hover:scale-105 transition-all duration-500"
->>>>>>> Stashed changes
-=======
-                    className="w-full h-full max-h-96 object-cover rounded-xl shadow-lg brightness-110 contrast-110 saturate-110 group-hover:scale-105 transition-all duration-500"
->>>>>>> Stashed changes
                   />
                 </div>
               </div>
@@ -583,20 +523,6 @@ const Manufacturing = () => {
             {/* Image - Left Side */}
             <div className="flex-1 flex justify-center">
               <div className="relative group max-w-xl">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                <div className="relative bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-4 backdrop-blur-sm border border-white/20 shadow-2xl">
-                  <img 
-                    src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                    alt="NetSuite Manufacturing Solutions" 
-                    className="w-full h-auto rounded-xl shadow-lg brightness-110 contrast-110 saturate-110 group-hover:scale-105 transition-all duration-500"
-                  />
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
                 <div className="absolute -inset-8 opacity-30 group-hover:opacity-60 transition-all duration-700">
                   <div className="absolute -inset-6 bg-gradient-to-r from-blue-600/20 via-cyan-500/30 to-blue-600/20 rounded-3xl blur-2xl"></div>
                   <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/15 via-blue-500/20 to-cyan-500/15 rounded-2xl blur-xl"></div>
@@ -642,7 +568,6 @@ const Manufacturing = () => {
                     </svg>
                     <span>NetSuite Expert</span>
                   </div>
->>>>>>> Stashed changes
                 </div>
               </div>
             </div>

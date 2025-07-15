@@ -2,19 +2,7 @@ import React from "react";
 
 const SupportSecondSec = () => {
   return (
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    <section className="w-full bg-gray-50 py-16">
-=======
     <section className="w-full bg-gray-50 py-16 light-section" aria-labelledby="bellatrix-support-heading">
->>>>>>> Stashed changes
-=======
-    <section className="w-full bg-gray-50 py-16 light-section" aria-labelledby="bellatrix-support-heading">
->>>>>>> Stashed changes
-=======
-    <section className="w-full bg-gray-50 py-16 light-section" aria-labelledby="bellatrix-support-heading">
->>>>>>> Stashed changes
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         
         {/* Image Section */}
@@ -25,7 +13,6 @@ const SupportSecondSec = () => {
             className="w-full h-64 md:h-80 object-cover rounded-lg shadow-lg"
           />
         </div>
-
         {/* Text Section */}
         <article className="order-1 md:order-2">
           <h2 id="bellatrix-support-heading" className="text-2xl md:text-3xl font-bold text-blue-900 mb-6 flex items-center">
