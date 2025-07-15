@@ -4,7 +4,11 @@ const SupportSecondSec = () => {
   return (
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <section className="w-full bg-gray-50 py-16">
+=======
+    <section className="w-full bg-gray-50 py-16 light-section" aria-labelledby="bellatrix-support-heading">
+>>>>>>> Stashed changes
 =======
     <section className="w-full bg-gray-50 py-16 light-section" aria-labelledby="bellatrix-support-heading">
 >>>>>>> Stashed changes

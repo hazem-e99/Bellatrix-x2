@@ -177,6 +177,7 @@ const Manufacturing = () => {
         {/* Content */}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -217,6 +218,8 @@ const Manufacturing = () => {
 =======
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
         <div className="relative z-10 text-center">
           <div className="container mx-auto px-6 max-w-6xl">
             <motion.div
@@ -237,6 +240,9 @@ const Manufacturing = () => {
             </motion.div>
           </div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -398,6 +404,7 @@ const Manufacturing = () => {
             {/* Challenges Showcase - Left Side */}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <div className="flex-1">
               <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
                 <div className="mb-6">
@@ -405,11 +412,16 @@ const Manufacturing = () => {
 =======
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
             <div className="flex-1 flex flex-col">
               <div className="bg-white/5 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-white/10 h-full flex flex-col justify-between">
                 <div className="flex-1 flex flex-col justify-center">
                   <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center mb-6">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -419,6 +431,7 @@ const Manufacturing = () => {
                   </div>
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                   <h3 className="text-2xl font-bold text-gray-800 mb-3">
                     {manufacturingChallenges[activeChallenge].title}
                   </h3>
@@ -426,6 +439,15 @@ const Manufacturing = () => {
                     {manufacturingChallenges[activeChallenge].description}
                   </p>
                   <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+=======
+                  <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
+                    {manufacturingChallenges[activeChallenge].title}
+                  </h3>
+                  <p className="text-gray-300 mb-6 text-lg leading-relaxed">
+                    {manufacturingChallenges[activeChallenge].description}
+                  </p>
+                  <div className="bg-blue-900/20 border border-blue-400/30 rounded-lg p-4 mb-6">
+>>>>>>> Stashed changes
 =======
                   <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
                     {manufacturingChallenges[activeChallenge].title}
@@ -455,6 +477,7 @@ const Manufacturing = () => {
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
               {/* Challenge Navigation */}
               <div className="flex space-x-2 mt-6 justify-center">
                 {manufacturingChallenges.map((_, index) => (
@@ -467,6 +490,8 @@ const Manufacturing = () => {
                   />
                 ))}
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
                 {/* Challenge Navigation */}
@@ -482,6 +507,9 @@ const Manufacturing = () => {
                   ))}
                 </div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -489,6 +517,7 @@ const Manufacturing = () => {
             </div>
 
             {/* Image - Right Side */}
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
             <div className="flex-1 flex justify-center">
@@ -508,12 +537,21 @@ const Manufacturing = () => {
               <div className="relative group max-w-xl w-full h-full">
                 <div className="relative bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-4 backdrop-blur-sm border border-white/20 shadow-2xl h-full flex items-center">
 >>>>>>> Stashed changes
+=======
+            <div className="flex-1 flex justify-center items-center">
+              <div className="relative group max-w-xl w-full h-full">
+                <div className="relative bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-4 backdrop-blur-sm border border-white/20 shadow-2xl h-full flex items-center">
+>>>>>>> Stashed changes
                   <img 
                     src="https://images.unsplash.com/photo-1565043666747-69f6646db940?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                     alt="Manufacturing Challenges" 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     className="w-full h-auto rounded-xl shadow-2xl brightness-105 contrast-110 saturate-105 group-hover:brightness-110 transition-all duration-500"
+=======
+                    className="w-full h-full max-h-96 object-cover rounded-xl shadow-lg brightness-110 contrast-110 saturate-110 group-hover:scale-105 transition-all duration-500"
+>>>>>>> Stashed changes
 =======
                     className="w-full h-full max-h-96 object-cover rounded-xl shadow-lg brightness-110 contrast-110 saturate-110 group-hover:scale-105 transition-all duration-500"
 >>>>>>> Stashed changes
@@ -547,6 +585,7 @@ const Manufacturing = () => {
               <div className="relative group max-w-xl">
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 <div className="relative bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-4 backdrop-blur-sm border border-white/20 shadow-2xl">
                   <img 
                     src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
@@ -554,6 +593,8 @@ const Manufacturing = () => {
                     className="w-full h-auto rounded-xl shadow-lg brightness-110 contrast-110 saturate-110 group-hover:scale-105 transition-all duration-500"
                   />
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
                 <div className="absolute -inset-8 opacity-30 group-hover:opacity-60 transition-all duration-700">
