@@ -57,8 +57,11 @@ export default function HRSolution() {
   const prevDemo = () => handleDemoChange((demoIdx - 1 + demoImages.length) % demoImages.length);
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   // Animate benefits
 =======
+=======
+>>>>>>> Stashed changes
   // Contact modal functions
   const openContactModal = () => setIsContactModalOpen(true);
   const closeContactModal = () => setIsContactModalOpen(false);
@@ -445,6 +448,9 @@ export default function HRSolution() {
         <ContactForm />
       </Modal>
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
       <style>{`
         @keyframes video-enhance {
