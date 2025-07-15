@@ -6,16 +6,16 @@
 /* Custom animations for background glow effect */
 @keyframes background-glow {
   0%, 100% {
-    background-color: #001038;
+    background-color: var(--color-dark-primary);
   }
   25% {
-    background-color: #001248;
+    background-color: var(--color-dark-secondary);
   }
   50% {
-    background-color: #001458;
+    background-color: var(--color-dark-accent);
   }
   75% {
-    background-color: #001248;
+    background-color: var(--color-dark-secondary);
   }
 }
 

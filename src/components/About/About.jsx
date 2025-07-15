@@ -665,12 +665,10 @@ const About = () => {
       <Modal
         isOpen={isContactModalOpen}
         onClose={closeContactModal}
-        title="Contact Us"
-        subtitle="Let's discuss your project needs"
+        title="Schedule Your Consultation"
+        subtitle="Let's discuss your NetSuite consulting needs"
       >
-        <div className="p-2">
-          <ContactForm />
-        </div>
+        <ContactForm />
       </Modal>
 
     </div>

@@ -157,7 +157,7 @@ export default function PayrollPage() {
     },
   ]
   return (
-    <div className="bg-gray-50 min-h-screen w-full light-section">
+    <div className="bg-gray-50 min-h-screen w-full ">
       
       {/* Hero Section */}
       <section className="py-24 lg:py-32 flex items-center justify-center relative min-h-screen">
@@ -675,12 +675,10 @@ export default function PayrollPage() {
       <Modal
         isOpen={isContactModalOpen}
         onClose={closeContactModal}
-        title="Contact Us"
-        subtitle="Let's discuss your payroll needs"
+        title="Schedule Your Consultation"
+        subtitle="Let's discuss your NetSuite consulting needs"
       >
-        <div className="p-2">
-          <ContactForm />
-        </div>
+        <ContactForm />
       </Modal>
     </div>
   )

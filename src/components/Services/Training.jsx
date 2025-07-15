@@ -426,9 +426,9 @@ const Training = () => {
                     
                     {/* Content */}
                     <div className="relative z-30 min-h-screen flex items-center justify-center">
-                        <div className="w-full max-w-6xl mx-auto px-6">
+                        <div className="w-full max-w-6xl mx-auto px-8">
                             {/* Main Heading with Text Animation */}
-                            <div className="text-center mb-8">
+                            <div className="text-center mb-12">
                                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-white animate-slide-up">
                                     <span className="inline-block animate-text-glow">{data.heroContent.title.split(' ')[0]}</span>{' '}
                                     <span className="inline-block bg-gradient-to-r from-blue-400 via-blue-500 to-blue-400 bg-clip-text text-transparent animate-gradient-text">
@@ -459,11 +459,11 @@ const Training = () => {
                 </div>
 
                 {/* Our Training Programs Section */}
-                <div className="bg-gray-50 py-12 light-section">
-                    <div className="container mx-auto px-6">
+                <div className="bg-gray-50 py-16 light-section">
+                    <div className="container mx-auto px-8">
                         {/* Section Header */}
-                        <div className="text-center mb-10">
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
+                        <div className="text-center mb-12">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
                                 {data.programsSection.title.split(' ')[0]} <span className="text-blue-600">{data.programsSection.title.split(' ')[1]}</span>
                             </h2>
                             <p className="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
@@ -471,7 +471,7 @@ const Training = () => {
                             </p>
                         </div>
 
-                        <div className="flex flex-col lg:flex-row items-center gap-8">
+                        <div className="flex flex-col lg:flex-row items-center gap-12">
                             {/* Image - Left Side */}
                             <div className="flex-1 flex justify-center">
                                 <div className="relative group max-w-2xl">
@@ -553,26 +553,26 @@ const Training = () => {
                             {/* Training Programs Content - Right Side */}
                             <div className="flex-1">
                                 {/* Training Program Cards */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     {data.trainingPrograms.map((program, index) => (
                                         <div 
                                             key={program.id}
                                             onClick={() => openProgramModal(program)}
-                                            className="text-center p-5 bg-white rounded-xl border-2 border-blue-100 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer group transform hover:scale-105"
+                                            className="text-center p-6 bg-white rounded-xl border-2 border-blue-100 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer group transform hover:scale-105"
                                         >
                                             <div className={`w-14 h-14 bg-gradient-to-br ${
                                                 index === 0 ? 'from-blue-400 to-blue-600' :
                                                 index === 1 ? 'from-blue-500 to-blue-700' :
                                                 index === 2 ? 'from-blue-600 to-blue-800' :
                                                 'from-blue-800 to-blue-900'
-                                            } rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                                                {renderIcon(program.icon)}
+                                            } rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 shadow-lg relative`}>
+                                                <span className="text-xl font-bold text-white">{index + 1}</span>
                                             </div>
-                                            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">{program.title}</h3>
-                                            <p className="text-sm text-gray-600">{program.shortDescription}</p>
-                                            <div className="mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                <span className="text-xs text-blue-600 font-medium">Click to learn more</span>
-                                            </div>
+                                                                            <h3 className="text-lg font-bold text-gray-800 mb-4 group-hover:text-blue-600 transition-colors duration-300">{program.title}</h3>
+                                <p className="text-sm text-gray-600">{program.shortDescription}</p>
+                                                                            <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <span className="text-xs text-blue-600 font-medium">Click to learn more</span>
+                                </div>
                                         </div>
                                     ))}
                                 </div>
@@ -582,7 +582,7 @@ const Training = () => {
                 </div>
 
                 {/* Key Training Modules Section */}
-                <div className="py-12 relative overflow-hidden animate-background-glow" style={{
+                <div className="py-16 relative overflow-hidden animate-background-glow" style={{
                     backgroundColor: '#001038',
                     animation: 'background-glow 12s ease-in-out infinite'
                 }}>
@@ -761,10 +761,10 @@ const Training = () => {
                         </div>
                     </div>
                     
-                    <div className="container mx-auto px-6 relative z-10">
+                    <div className="container mx-auto px-8 relative z-10">
                         {/* Section Header */}
                         <div className="text-center mb-12">
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
                                 {data.keyModulesSection.title.split(' ')[0]} <span className="text-blue-400">{data.keyModulesSection.title.split(' ').slice(1).join(' ')}</span>
                             </h2>
                             <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
@@ -788,16 +788,16 @@ const Training = () => {
                                             index % 4 === 1 ? 'from-blue-400 to-blue-500' :
                                             index % 4 === 2 ? 'from-blue-600 to-blue-700' :
                                             'from-blue-700 to-blue-800'
-                                        } rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg`}>
-                                            {renderIcon(module.icon, "w-6 h-6 text-white")}
+                                        } rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg`}>
+                                            <span className="text-lg font-bold text-white">{index + 1}</span>
                                         </div>
-                                        <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                                        <h3 className="text-lg font-bold text-white mb-4 group-hover:text-blue-600 transition-colors duration-300">
                                             {module.title}
                                         </h3>
-                                        <p className="text-sm text-gray-300 leading-relaxed mb-4">
+                                                                                <p className="text-sm text-gray-300 leading-relaxed mb-4">
                                             {module.description}
                                         </p>
-                                        <div className="text-xs text-blue-400 font-medium">
+                                        <div className="text-xs text-blue-400 font-medium mt-2">
                                             Duration: {module.duration}
                                         </div>
                                     </div>
@@ -808,11 +808,11 @@ const Training = () => {
                 </div>
 
                 {/* Why Choose Our Training Section */}
-                <div className="bg-gray-50 py-12 light-section">
-                    <div className="container mx-auto px-6">
+                <div className="bg-gray-50 py-16 light-section">
+                    <div className="container mx-auto px-8">
                         {/* Section Header */}
-                        <div className="text-center mb-10">
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
+                        <div className="text-center mb-12">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
                                 {data.whyChooseSection.title.split(' ')[0]} <span className="text-blue-600">{data.whyChooseSection.title.split(' ').slice(1).join(' ')}</span>
                             </h2>
                             <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
@@ -825,18 +825,18 @@ const Training = () => {
                             <div className="flex-1">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     {data.trainingFeatures.map((feature, index) => (
-                                        <div key={feature.id} className="group relative overflow-hidden bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 p-8 animate-fade-in-up" style={{animationDelay: `${0.1 * (index + 1)}s`}}>
+                                        <div key={feature.id} className="group relative overflow-hidden bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 p-6 animate-fade-in-up" style={{animationDelay: `${0.1 * (index + 1)}s`}}>
                                             <div className="absolute top-0 right-0 w-20 h-20 bg-blue-500 rounded-bl-3xl opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
                                             <div className="relative z-10">
-                                                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 animate-bounce-subtle shadow-lg">
-                                                    {renderIcon(feature.icon)}
+                                                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 animate-bounce-subtle shadow-lg">
+                                                    <span className="text-xl font-bold text-white">{index + 1}</span>
                                                 </div>
-                                                <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors duration-300">
-                                                    {feature.title}
-                                                </h3>
-                                                <p className="text-gray-600 leading-relaxed mb-4">
-                                                    {feature.shortDescription}
-                                                </p>
+                                                                                <h3 className="text-xl font-bold text-gray-800 mb-4 group-hover:text-blue-600 transition-colors duration-300">
+                                    {feature.title}
+                                </h3>
+                                <p className="text-gray-600 leading-relaxed mb-4">
+                                    {feature.shortDescription}
+                                </p>
                                                 <button 
                                                     onClick={() => openFeatureModal(feature)}
                                                     className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold text-sm transition-colors duration-300 group-hover:translate-x-1 transform cursor-pointer hover:cursor-pointer"
@@ -1065,12 +1065,10 @@ const Training = () => {
                 <Modal
                   isOpen={isContactModalOpen}
                   onClose={closeContactModal}
-                  title="Contact Us"
-                  subtitle="Let's discuss your project needs"
+                  title="Schedule Your Consultation"
+                  subtitle="Let's discuss your NetSuite consulting needs"
                 >
-                  <div className="p-2">
-                    <ContactForm />
-                  </div>
+                  <ContactForm />
                 </Modal>
             </div>
         </>

@@ -24,10 +24,10 @@ const Navbar = ({ industries = [] }) => {
   const openContactModal = () => setIsContactModalOpen(true);
   const closeContactModal = () => setIsContactModalOpen(false);
 
-  // Contact form data
+  // Contact form data (unified for all modals)
   const modalContent = {
-    title: "Contact Us",
-    subtitle: "Let's discuss your project",
+    title: "Schedule Your Consultation",
+    subtitle: "Let's discuss your NetSuite consulting needs",
     formFields: {
       contactInfo: {
         title: "Contact Information",
@@ -250,19 +250,19 @@ const Navbar = ({ industries = [] }) => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -16 }}
                         transition={{ duration: 0.25, ease: 'easeInOut' }}
-                        className="absolute top-1/2 left-1/2 h-20 w-20 object-contain -translate-x-1/2 -translate-y-1/2"
+                        className="absolute top-1/2 left-1/2 h-30 w-30 object-contain -translate-x-1/2 -translate-y-1/2"
                         style={{ zIndex: 2 }}
                       />
                     ) : scrolled ? (
                       <motion.img
                         key="logoTwo"
-                        src="/images/logoTwo.png"
+                        src="/images/logoTwo2.png"
                         alt="Bellatrix Logo Two"
                         initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -16 }}
                         transition={{ duration: 0.25, ease: 'easeInOut' }}
-                        className="absolute top-1/2 left-1/2 h-56 w-56 object-contain -translate-x-1/2 -translate-y-1/2"
+                        className="absolute top-1/2 left-1/2 h-30 w-30 object-contain -translate-x-1/2 -translate-y-1/2"
                         style={{ zIndex: 2 }}
                       />
                     ) : (
@@ -274,7 +274,7 @@ const Navbar = ({ industries = [] }) => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 16 }}
                         transition={{ duration: 0.25, ease: 'easeInOut' }}
-                        className="absolute top-1/2 left-1/2 h-36 w-36 object-contain -translate-x-1/2 -translate-y-1/2"
+                        className="absolute top-1/2 left-1/2 h-48 w-48 object-contain -translate-x-1/2 -translate-y-1/2"
                         style={{ zIndex: 2 }}
                       />
                     )}
@@ -700,12 +700,10 @@ const Navbar = ({ industries = [] }) => {
       <Modal
         isOpen={isContactModalOpen}
         onClose={closeContactModal}
-        title={modalContent.title}
-        subtitle={modalContent.subtitle}
+        title="Schedule Your Consultation"
+        subtitle="Let's discuss your NetSuite consulting needs"
       >
-        <div className="p-2">
-          <ContactForm />
-        </div>
+        <ContactForm />
       </Modal>
 
       <style>{`

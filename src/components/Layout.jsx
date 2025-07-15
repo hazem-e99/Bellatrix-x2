@@ -2,8 +2,10 @@ import { Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { useThemeContext } from '../theme/ThemeProvider';
 
 const Layout = () => {
+  const { bg } = useThemeContext();
   const [navbarData, setNavbarData] = useState({
     services: [],
     industries: [],
@@ -44,7 +46,7 @@ const Layout = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: bg.primary }}>
       {/* Fixed Navbar */}
       <Navbar 
         services={navbarData.services}

@@ -1,5 +1,7 @@
 ﻿import { useState } from 'react';
 import { Factory, Store, Work as Briefcase, LocalShipping as Package, ArrowRightAlt, CheckCircle, ExpandMore, ExpandLess } from '@mui/icons-material';
+import ContactForm from './ContactForm';
+import Modal from './Modal';
 
 // Icon mapping for dynamic icon rendering
 const iconMap = {
@@ -13,6 +15,7 @@ const Industries = ({ industries = [], sectionHeader = {} }) => {
   const [selectedIndustry, setSelectedIndustry] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalIndustry, setModalIndustry] = useState(null);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   const openModal = (industry) => {
     setModalIndustry(industry);
@@ -24,11 +27,20 @@ const Industries = ({ industries = [], sectionHeader = {} }) => {
     setModalIndustry(null);
   };
 
+  const openContactModal = () => {
+    setIsContactModalOpen(true);
+    setIsModalOpen(false); // Close the industry modal when opening contact modal
+  };
+
+  const closeContactModal = () => {
+    setIsContactModalOpen(false);
+  };
+
   return (
     <section className="bg-gray-50 py-20 light-section">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <div className="inline-block px-4 py-2 bg-blue-100 text-blue-700 text-sm font-semibold rounded-full mb-6">
             {sectionHeader?.chipLabel || "INDUSTRY SOLUTIONS"}
           </div>
@@ -50,16 +62,16 @@ const Industries = ({ industries = [], sectionHeader = {} }) => {
               </>
             )}
           </h2>
-          <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
             {sectionHeader?.description || "Explore how our platform transforms your sector with tailored solutions."}
           </p>
         </div>
 
         {/* Main Content - Image on left, Industries on right */}
-        <div className="flex flex-col lg:flex-row items-center gap-12">
+        <div className="flex flex-col lg:flex-row items-center gap-8">
           {/* Left Side - Enhanced Image */}
           <div className="flex-1 flex justify-center">
-            <div className="relative group max-w-xl">
+            <div className="relative group max-w-2xl">
               {/* Advanced Background Effects */}
               <div className="absolute -inset-8 opacity-30 group-hover:opacity-60 transition-all duration-700">
                 {/* Multiple layered glows */}
@@ -91,35 +103,7 @@ const Industries = ({ industries = [], sectionHeader = {} }) => {
                   </div>
                 </div>
                 
-                <div className="absolute bottom-6 left-6">
-                  <div className="relative">
-                    <div className="w-3 h-3 bg-gradient-to-r from-cyan-300 to-blue-400 rounded-full animate-pulse shadow-md"></div>
-                    <div className="absolute -inset-1 w-5 h-5 bg-cyan-400/20 rounded-full animate-ping"></div>
-                    </div>
-                    </div>
-                
-                <div className="absolute top-1/2 right-6">
-                  <div className="relative">
-                    <div className="w-2 h-2 bg-white/90 rounded-full animate-pulse shadow-sm"></div>
-                    <div className="absolute -inset-1 w-4 h-4 bg-white/20 rounded-full animate-ping"></div>
-                  </div>
-                </div>
-                
-                <div className="absolute top-1/4 left-8">
-                  <div className="w-2 h-2 bg-gradient-to-r from-blue-300 to-cyan-300 rounded-full animate-pulse opacity-70"></div>
-                </div>
-                
-                <div className="absolute bottom-1/3 right-12">
-                  <div className="w-1.5 h-1.5 bg-gradient-to-r from-white to-blue-200 rounded-full animate-pulse opacity-80"></div>
-                </div>
-                
-                {/* Professional corner accents */}
-                <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-blue-400/40 rounded-tl-3xl"></div>
-                <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-cyan-400/40 rounded-tr-3xl"></div>
-                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-blue-400/40 rounded-bl-3xl"></div>
-                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-cyan-400/40 rounded-br-3xl"></div>
-                
-                {/* Data visualization lines */}
+                {/* Professional Decorative Lines */}
                 <div className="absolute top-4 left-1/4 w-12 h-0.5 bg-gradient-to-r from-transparent via-blue-300/50 to-transparent"></div>
                 <div className="absolute bottom-8 right-1/4 w-16 h-0.5 bg-gradient-to-r from-transparent via-cyan-300/50 to-transparent"></div>
                 <div className="absolute top-1/3 right-2 w-0.5 h-8 bg-gradient-to-b from-transparent via-blue-300/50 to-transparent"></div>
@@ -131,7 +115,7 @@ const Industries = ({ industries = [], sectionHeader = {} }) => {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                   </svg>
-                  <span>Industry Leader</span>
+                  <span>Industry Solutions</span>
                 </div>
               </div>
             </div>
@@ -228,7 +212,10 @@ Learn More
               </div>
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 mt-2">
-                <button className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-800 hover:to-blue-950 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center group">
+                <button 
+                  onClick={openContactModal}
+                  className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-800 hover:to-blue-950 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center group"
+                >
                   <span>Get Started with {modalIndustry.label}</span>
                   <ArrowRightAlt className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
@@ -243,6 +230,16 @@ Learn More
           </div>
         </div>
       )}
+
+      {/* Contact Modal */}
+      <Modal
+        isOpen={isContactModalOpen}
+        onClose={closeContactModal}
+        title="Schedule Your Consultation"
+        subtitle="Let's discuss your NetSuite consulting needs"
+      >
+        <ContactForm />
+      </Modal>
     </section>
   );
 };

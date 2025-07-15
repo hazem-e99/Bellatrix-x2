@@ -501,8 +501,8 @@ const Implementation = () => {
                                 </svg>
                             </button>
                             <div className="text-center">
-                                <h3 className="text-xl font-bold mb-1 text-blue-900">{data.modalContent.title}</h3>
-                                <p className="text-gray-500 text-sm">{data.modalContent.subtitle}</p>
+                                <h3 className="text-xl font-bold mb-1 text-blue-900">Schedule Your Consultation</h3>
+                                <p className="text-gray-500 text-sm">Let's discuss your NetSuite consulting needs</p>
                             </div>
                         </div>
                         {/* Form Content */}
