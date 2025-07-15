@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 import { AnimatePresence } from 'framer-motion';
+import { useThemeContext } from '../theme/ThemeProvider';
 
 const Hero = () => {
+  const { text, gradients } = useThemeContext();
   const videoRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -77,14 +79,24 @@ const Hero = () => {
             >
               {/* Subtitle */}
               <div className="text-center mb-4">
-                <span className="inline-block text-white/90 text-sm md:text-base font-semibold letter-spacing-wider mb-2 px-4 py-2 bg-white/10 rounded-full backdrop-blur-sm border border-white/20">
+                <span 
+                  className="inline-block text-sm md:text-base font-semibold letter-spacing-wider mb-2 px-4 py-2 rounded-full backdrop-blur-sm border"
+                  style={{ 
+                    color: text.inverse,
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    borderColor: 'rgba(255, 255, 255, 0.2)'
+                  }}
+                >
               {slides[currentSlide].subtitle}
                 </span>
               </div>
 
               {/* Main Heading */}
               <div className="text-center mb-8">
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-white">
+                <h1 
+                  className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight"
+                  style={{ color: text.inverse }}
+                >
                   <span className="inline-block">
               {slides[currentSlide].title}
                   </span>
@@ -93,7 +105,10 @@ const Hero = () => {
               
               {/* Description */}
               <div className="text-center mb-12">
-                <p className="text-lg md:text-xl lg:text-2xl text-gray-200 leading-relaxed max-w-4xl mx-auto">
+                <p 
+                  className="text-lg md:text-xl lg:text-2xl leading-relaxed max-w-4xl mx-auto"
+                  style={{ color: text.inverse }}
+                >
               {slides[currentSlide].description}
                 </p>
               </div>

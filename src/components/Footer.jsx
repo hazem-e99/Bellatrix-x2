@@ -1,5 +1,6 @@
 import { Facebook, Twitter, LinkedIn, Email, ArrowUpward } from '@mui/icons-material';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const [showTop, setShowTop] = useState(false);
@@ -16,8 +17,6 @@ const Footer = () => {
     };
   }
 
-
-
   return (
     <footer className="relative bg-slate-900 text-white pt-0 pb-8 px-0 overflow-hidden border-t-4 border-slate-600 shadow-inner" style={{backgroundColor: '#0f172a'}}>
       {/* Top border glow */}
@@ -26,7 +25,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-12">
           {/* Brand Column */}
           <div className="flex flex-col items-center lg:items-start gap-4">
-            <h3 className="text-3xl font-extrabold tracking-tight text-slate-100 drop-shadow">Bellatrix</h3>
+            <img 
+              src="/images/mainLogo.png" 
+              alt="Bellatrix Logo" 
+              className="h-12 w-auto max-w-[200px] object-contain"
+            />
             <p className="text-slate-100/80 text-center lg:text-left max-w-xs">Empowering your business with next-gen enterprise software solutions.</p>
             <div className="flex space-x-4 mt-2">
               {[{icon: <Twitter fontSize="medium" />, href: "#"}, {icon: <LinkedIn fontSize="medium" />, href: "#"}, {icon: <Facebook fontSize="medium" />, href: "#"}].map((item, idx) => (
@@ -48,12 +51,11 @@ const Footer = () => {
           <div className="flex flex-col items-center lg:items-start gap-3">
             <h4 className="text-xl font-semibold text-slate-100 mb-2">Quick Links</h4>
             <div className="flex flex-col gap-2 text-slate-100/80">
-              <a href="#" className="hover:text-white transition-colors duration-300">Home</a>
-              <a href="#" className="hover:text-white transition-colors duration-300">Services</a>
-              <a href="#" className="hover:text-white transition-colors duration-300">Implementation</a>
-              <a href="#" className="hover:text-white transition-colors duration-300">Training</a>
-              <a href="#" className="hover:text-white transition-colors duration-300">Industries</a>
-              <a href="#" className="hover:text-white transition-colors duration-300">About Us</a>
+              <Link to="/" className="hover:text-white transition-colors duration-300">Home</Link>
+              <Link to="/about" className="hover:text-white transition-colors duration-300">About Us</Link>
+              <Link to="/Support" className="hover:text-white transition-colors duration-300">Support</Link>
+              <Link to="/HRSolution" className="hover:text-white transition-colors duration-300">HR Solution</Link>
+              <Link to="/Payroll" className="hover:text-white transition-colors duration-300">Payroll</Link>
             </div>
           </div>
 
@@ -61,26 +63,32 @@ const Footer = () => {
           <div className="flex flex-col items-center lg:items-start gap-3">
             <h4 className="text-xl font-semibold text-slate-100 mb-2">Our Services</h4>
             <div className="flex flex-col gap-2 text-slate-100/80">
-              <a href="#" className="hover:text-white transition-colors duration-300">Software Implementation</a>
-              <a href="#" className="hover:text-white transition-colors duration-300">Training Programs</a>
-              <a href="#" className="hover:text-white transition-colors duration-300">Technical Support</a>
-              <a href="#" className="hover:text-white transition-colors duration-300">Consulting Services</a>
-              <a href="#" className="hover:text-white transition-colors duration-300">Custom Solutions</a>
-              <a href="#" className="hover:text-white transition-colors duration-300">Maintenance & Updates</a>
+              <Link to="/Implementation" className="hover:text-white transition-colors duration-300">Implementation</Link>
+              <Link to="/Training" className="hover:text-white transition-colors duration-300">Training Programs</Link>
+              <Link to="/netsuite-consulting" className="hover:text-white transition-colors duration-300">NetSuite Consulting</Link>
+              <Link to="/customization" className="hover:text-white transition-colors duration-300">Customization</Link>
+              <Link to="/integration" className="hover:text-white transition-colors duration-300">Integration</Link>
             </div>
           </div>
 
-          {/* Contact Column */}
-          <div className="flex flex-col items-center lg:items-start gap-3 text-slate-100/90 text-sm">
-            <h4 className="text-xl font-semibold mb-2 text-slate-100">Contact Us</h4>
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-2">
-                <Email fontSize="small" /> 
-                <span>info@bellatrix.com</span>
+          {/* Industries Column */}
+          <div className="flex flex-col items-center lg:items-start gap-3">
+            <h4 className="text-xl font-semibold text-slate-100 mb-2">Industries</h4>
+            <div className="flex flex-col gap-2 text-slate-100/80">
+              <Link to="/industries/manufacturing" className="hover:text-white transition-colors duration-300">Manufacturing</Link>
+              <Link to="/industries/retail" className="hover:text-white transition-colors duration-300">Retail & E-commerce</Link>
+            </div>
+            <div className="mt-4">
+              <h5 className="text-lg font-semibold text-slate-100 mb-2">Contact Us</h5>
+              <div className="flex flex-col gap-2 text-slate-100/90 text-sm">
+                <div className="flex items-center gap-2">
+                  <Email fontSize="small" /> 
+                  <span>info@bellatrix.com</span>
+                </div>
+                <div>123 Business Avenue, Suite 500</div>
+                <div>San Francisco, CA 94107</div>
+                <div>Phone: (555) 123-4567</div>
               </div>
-              <div>123 Business Avenue, Suite 500</div>
-              <div>San Francisco, CA 94107</div>
-              <div>Phone: (555) 123-4567</div>
             </div>
           </div>
         </div>

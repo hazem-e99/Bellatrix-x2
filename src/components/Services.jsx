@@ -12,6 +12,7 @@ import {
 } from "@mui/icons-material";
 import ContactForm from "./ContactForm";
 import Modal from './Modal';
+import { useThemeContext } from '../theme/ThemeProvider';
 
 // Icon mapping for dynamic icon rendering
 const iconMap = {
@@ -23,6 +24,7 @@ const iconMap = {
 };
 
 const Services = ({ services = [], sectionHeader = {}, viewAllButton = {} }) => {
+  const { text, bg, brand, gradients, shadows } = useThemeContext();
   const [showAllServices, setShowAllServices] = useState(false);
   const [isServiceModalOpen, setIsServiceModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
@@ -51,18 +53,21 @@ const Services = ({ services = [], sectionHeader = {}, viewAllButton = {} }) => 
   const displayedServices = showAllServices ? services : services.slice(0, 4);
 
   return (
-    <div className="bg-gray-50 py-12 light-section">
+    <div className="py-12 light-section" style={{ backgroundColor: bg.secondary }}>
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
+          <h2 
+            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
+            style={{ color: text.primary }}
+          >
             {sectionHeader?.title ? (
               <>
                 {sectionHeader.title.split(sectionHeader.gradientText || "").map((part, i, arr) => (
                   <span key={i}>
                     {part}
                     {i < arr.length - 1 && sectionHeader.gradientText && (
-                      <span className="text-blue-600">
+                      <span style={{ color: brand.primary }}>
                         {sectionHeader.gradientText}
                       </span>
                     )}
@@ -71,11 +76,14 @@ const Services = ({ services = [], sectionHeader = {}, viewAllButton = {} }) => 
               </>
             ) : (
               <>
-                Our <span className="text-blue-600">Professional Services</span>
+                Our <span style={{ color: brand.primary }}>Professional Services</span>
               </>
             )}
           </h2>
-          <p className="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
+          <p 
+            className="text-lg leading-relaxed max-w-2xl mx-auto"
+            style={{ color: text.secondary }}
+          >
             {sectionHeader?.subtitle || "Comprehensive solutions designed to empower your business with the expertise you need to excel"}
           </p>
         </div>
@@ -170,7 +178,22 @@ const Services = ({ services = [], sectionHeader = {}, viewAllButton = {} }) => 
                   <Link
                     key={service.title}
                     to={service.link}
-                    className="text-center p-5 bg-white rounded-xl border-2 border-blue-100 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer group transform hover:scale-105 block"
+                    className="text-center p-5 rounded-xl border-2 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer group transform hover:scale-105 block"
+                    style={{
+                      backgroundColor: bg.primary,
+                      borderColor: brand.primary + '20',
+                      boxShadow: shadows.base
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.borderColor = brand.primary + '40';
+                      e.target.style.backgroundColor = brand.primary + '05';
+                      e.target.style.boxShadow = shadows.blue;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.borderColor = brand.primary + '20';
+                      e.target.style.backgroundColor = bg.primary;
+                      e.target.style.boxShadow = shadows.base;
+                    }}
                   >
                     <div className={`w-14 h-14 bg-gradient-to-br ${
                       index === 0 ? 'from-blue-400 to-blue-600' :
@@ -183,10 +206,27 @@ const Services = ({ services = [], sectionHeader = {}, viewAllButton = {} }) => 
                         {iconMap[service.icon] || <SettingsOutlined fontSize="large" />}
                       </div>
                     </div>
-                    <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">{service.title}</h3>
-                    <p className="text-sm text-gray-600 mb-2">{service.description}</p>
+                    <h3 
+                      className="text-lg font-bold mb-2 transition-colors duration-300"
+                      style={{ color: text.primary }}
+                      onMouseEnter={(e) => e.target.style.color = brand.primary}
+                      onMouseLeave={(e) => e.target.style.color = text.primary}
+                    >
+                      {service.title}
+                    </h3>
+                    <p 
+                      className="text-sm mb-2"
+                      style={{ color: text.secondary }}
+                    >
+                      {service.description}
+                    </p>
                     <div className="mt-3">
-                      <span className="text-s text-blue-600 font-medium">Click to learn more</span>
+                      <span 
+                        className="text-s font-medium"
+                        style={{ color: brand.primary }}
+                      >
+                        Click to learn more
+                      </span>
                     </div>
                   </Link>
                 ) : (
@@ -206,10 +246,27 @@ const Services = ({ services = [], sectionHeader = {}, viewAllButton = {} }) => 
                         {iconMap[service.icon] || <SettingsOutlined fontSize="large" />}
                       </div>
                     </div>
-                    <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">{service.title}</h3>
-                    <p className="text-sm text-gray-600 mb-2">{service.description}</p>
+                    <h3 
+                      className="text-lg font-bold mb-2 transition-colors duration-300"
+                      style={{ color: text.primary }}
+                      onMouseEnter={(e) => e.target.style.color = brand.primary}
+                      onMouseLeave={(e) => e.target.style.color = text.primary}
+                    >
+                      {service.title}
+                    </h3>
+                    <p 
+                      className="text-sm mb-2"
+                      style={{ color: text.secondary }}
+                    >
+                      {service.description}
+                    </p>
                     <div className="mt-3">
-                      <span className="text-s text-blue-600 font-medium">Click to learn more</span>
+                      <span 
+                        className="text-s font-medium"
+                        style={{ color: brand.primary }}
+                      >
+                        Click to learn more
+                      </span>
                     </div>
                   </div>
                 )
@@ -306,12 +363,10 @@ const Services = ({ services = [], sectionHeader = {}, viewAllButton = {} }) => 
       <Modal
         isOpen={isContactModalOpen}
         onClose={closeContactModal}
-        title="Contact Us"
-        subtitle="Let's discuss your project needs"
+        title="Schedule Your Consultation"
+        subtitle="Let's discuss your NetSuite consulting needs"
       >
-        <div className="p-2">
-          <ContactForm />
-        </div>
+        <ContactForm />
       </Modal>
     </div>
   );
