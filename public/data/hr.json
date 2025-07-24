@@ -1,0 +1,354 @@
+{
+  "hrSolution": {
+    "meta": {
+      "title": "HR Management Solution",
+      "description": "Complete HR platform for modern businesses",
+      "keywords": ["HR", "Payroll", "Employee Management"]
+    },
+    "sections": {
+      "hero": {
+        "title": "Modern HR, Payroll & People Management",
+        "subtitle": "Automate HR, empower employees, and stay compliant—on one secure platform.",
+        "media": {
+          "type": "video",
+          "url": "https://drive.google.com/file/d/1LuHKH3f8D6zYVLy4gdVueWVu1pBjlIlx/view?usp=sharing",
+          "fallback": "#001038",
+          "alt": "HR platform overview video"
+        },
+        "cta": {
+          "primary": {
+            "text": "Request Demo",
+            "url": "#demo",
+            "variant": "primary"
+          },
+          "secondary": {
+            "text": "Contact Sales",
+            "url": "#contact"
+          }
+        },
+        "settings": {
+          "show": true,
+          "animation": "fade-in",
+          "layout": "full-width"
+        }
+      },
+      "benefits": {
+        "title": "Why Choose Our HR Solution?",
+        "subtitle": "Discover the key advantages that make our HR platform the smart choice for modern businesses of all sizes.",
+        "items": [
+          {
+            "title": "Payroll Automation",
+            "description": "Automate payroll processing, tax calculations, and compliance with ease.",
+            "icon": "payroll",
+            "features": ["Tax compliance", "Auto calculations"]
+          },
+          {
+            "title": "Centralized Employee Data",
+            "description": "All employee records, contracts, and documents in one secure place.",
+            "icon": "database",
+            "features": ["Secure storage", "Easy access"]
+          },
+          {
+            "title": "Streamlined Onboarding",
+            "description": "Digitize onboarding for new hires with checklists and e-signatures.",
+            "icon": "onboarding",
+            "features": ["Checklists", "E-signatures"]
+          },
+          {
+            "title": "Real-Time Performance Tracking",
+            "description": "Monitor goals, feedback, and reviews in real time.",
+            "icon": "performance",
+            "features": ["Goal tracking", "Feedback system"]
+          },
+          {
+            "title": "Attendance & Leave",
+            "description": "Track attendance, shifts, and leave requests with built-in workflows.",
+            "icon": "attendance",
+            "features": ["Shift management", "Leave tracking"]
+          },
+          {
+            "title": "Data Security",
+            "description": "Enterprise-grade security and GDPR compliance.",
+            "icon": "security",
+            "features": ["GDPR compliant", "Encryption"]
+          }
+        ],
+        "demo": {
+          "images": ["/images/Hr/hrS1.png", "/images/Hr/hrS2.jpeg"]
+        },
+        "settings": {
+          "show": true,
+          "layout": "grid-cols-3",
+          "theme": "light",
+          "animation": "fade-in"
+        }
+      },
+      "painPoints": {
+        "title": "HR Challenges We Solve",
+        "subtitle": "Common HR pain points our platform addresses",
+        "items": [
+          {
+            "title": "Manual Processes",
+            "description": "Eliminate time-consuming manual HR tasks"
+          },
+          {
+            "title": "Compliance Risks",
+            "description": "Stay compliant with changing labor laws"
+          },
+          {
+            "title": "Data Silos",
+            "description": "Break down information barriers between departments"
+          }
+        ],
+        "illustration": {
+          "url": "",
+          "alt": ""
+        },
+        "settings": {
+          "show": false,
+          "layout": "split",
+          "theme": "light",
+          "animation": "none"
+        }
+      },
+      "modules": {
+        "title": "Product Modules",
+        "subtitle": "Our platform is built from modular components to cover every aspect of HR, payroll, and compliance—choose what fits your business best.",
+        "items": [
+          {
+            "title": "Employee Management",
+            "description": "Manage profiles, roles, and lifecycle events.",
+            "icon": "employee",
+            "features": ["Profile management", "Document storage"]
+          },
+          {
+            "title": "Attendance",
+            "description": "Automated time tracking, leave, and shift management.",
+            "icon": "attendance",
+            "features": ["Time tracking", "Leave management"]
+          },
+          {
+            "title": "Payroll",
+            "description": "End-to-end payroll with tax, benefits, and payslip generation.",
+            "icon": "payroll",
+            "features": ["Tax calculations", "Payslip generation"]
+          },
+          {
+            "title": "Recruitment",
+            "description": "Job postings, applicant tracking, and interview scheduling.",
+            "icon": "recruitment",
+            "features": ["Applicant tracking", "Interview scheduling"]
+          },
+          {
+            "title": "Compliance",
+            "description": "Built-in legal, tax, and labor compliance for multiple regions.",
+            "icon": "compliance",
+            "features": ["Legal compliance", "Tax compliance"]
+          }
+        ],
+        "settings": {
+          "show": true,
+          "layout": "grid-cols-3",
+          "theme": "dark",
+          "animation": "fade-in"
+        }
+      },
+      "howItWorks": {
+        "title": "How Our HR System Works",
+        "description": "Step-by-step explanation of our HR system workflow",
+        "steps": [],
+        "settings": {
+          "show": false,
+          "theme": "dark",
+          "animation": "none",
+          "layout": "stepper"
+        }
+      },
+      "useCases": {
+        "title": "Who Is It For?",
+        "subtitle": "Our HR solution is designed for businesses of all sizes and industries",
+        "items": [
+          {
+            "title": "Startups",
+            "description": "Scale your team fast with automated HR and payroll.",
+            "icon": "startup"
+          },
+          {
+            "title": "Enterprises",
+            "description": "Centralize HR operations across multiple locations.",
+            "icon": "enterprise"
+          },
+          {
+            "title": "Remote Teams",
+            "description": "Seamless onboarding, time tracking, and compliance for distributed teams.",
+            "icon": "remote"
+          },
+          {
+            "title": "SMBs",
+            "description": "Affordable, all-in-one HR for growing businesses.",
+            "icon": "smb"
+          }
+        ],
+        "settings": {
+          "show": true,
+          "layout": "grid-cols-4",
+          "theme": "light",
+          "animation": "fade-in"
+        }
+      },
+      "workflow": {
+        "title": "HR System Workflow",
+        "subtitle": "Visual representation of our HR system's core processes",
+        "stepTitle": "Core Workflow",
+        "items": [],
+        "settings": {
+          "show": false,
+          "layout": "stepper",
+          "theme": "light",
+          "animation": "none"
+        }
+      },
+      "features": {
+        "title": "Key HR Features",
+        "subtitle": "Explore the powerful features of our HR platform",
+        "items": [],
+        "settings": {
+          "show": false,
+          "layout": "grid-cols-3",
+          "theme": "light",
+          "animation": "none"
+        }
+      },
+      "pricing": {
+        "title": "Implementation Pricing",
+        "subtitle": "Choose the perfect implementation plan that fits your business needs and budget",
+        "plans": [
+          {
+            "name": "Basic",
+            "description": "Perfect for small businesses",
+            "price": "$2,500",
+            "priceNote": "starting from",
+            "features": ["Basic system analysis", "Standard implementation", "Basic testing & QA", "30 days support", "Email support"],
+            "cta": {
+              "text": "Get Started",
+              "url": "#contact"
+            },
+            "highlight": false
+          },
+          {
+            "name": "Professional",
+            "description": "Ideal for growing companies",
+            "price": "$5,000",
+            "priceNote": "starting from",
+            "features": ["Comprehensive analysis", "Custom implementation", "Advanced testing & QA", "90 days support", "Phone & email support", "Training sessions"],
+            "cta": {
+              "text": "Get Started",
+              "url": "#contact"
+            },
+            "highlight": true
+          },
+          {
+            "name": "Enterprise",
+            "description": "For large organizations",
+            "price": "Custom",
+            "priceNote": "pricing",
+            "features": ["Enterprise-grade analysis", "Fully customized solution", "Comprehensive testing", "Unlimited support", "24/7 dedicated support", "On-site training"],
+            "cta": {
+              "text": "Contact Sales",
+              "url": "#contact"
+            },
+            "highlight": false
+          }
+        ],
+        "settings": {
+          "show": true,
+          "disclaimer": "All plans include free consultation and project scoping",
+          "layout": "grid-cols-3",
+          "theme": "dark",
+          "animation": "none"
+        }
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "items": [
+          {
+            "question": "Is my data secure?",
+            "answer": "Yes. We use enterprise-grade encryption, regular audits, and are GDPR compliant."
+          },
+          {
+            "question": "Can I integrate with my payroll/accounting software?",
+            "answer": "Yes. We offer integrations with major payroll, accounting, and ERP systems."
+          },
+          {
+            "question": "How long does onboarding take?",
+            "answer": "Most customers are up and running in under a week with our guided onboarding."
+          },
+          {
+            "question": "Is there a free trial?",
+            "answer": "Yes, you can start with a 14-day free trial. No credit card required."
+          },
+          {
+            "question": "Do you offer multi-language support?",
+            "answer": "Yes, our platform supports English, Arabic, and French."
+          }
+        ],
+        "settings": {
+          "show": true,
+          "expandMultiple": false,
+          "layout": "list",
+          "theme": "light",
+          "animation": "fade-in"
+        }
+      },
+      "cta": {
+        "title": "Ready to Transform Your HR?",
+        "subtitle": "Start your free trial or book a personalized demo with our experts today.",
+        "buttons": [
+          {
+            "text": "Book Now",
+            "url": "#demo",
+            "variant": "outline"
+          },
+          {
+            "text": "Contact Sales",
+            "url": "#contact",
+            "variant": "primary"
+          }
+        ],
+        "settings": {
+          "show": true,
+          "theme": "light",
+          "layout": "center",
+          "animation": "fade-in"
+        }
+      },
+      "demo": {
+        "images": [],
+        "settings": {
+          "show": false
+        }
+      }
+    },
+    "settings": {
+      "theme": {
+        "primary": "#001038",
+        "secondary": "#1e40af",
+        "accent": "#3b82f6"
+      },
+      "cta": {
+        "main": {
+          "text": "Book a Demo",
+          "url": "#demo"
+        },
+        "secondary": {
+          "text": "Contact Sales",
+          "url": "#contact"
+        }
+      },
+      "navigation": {
+        "header": [],
+        "footer": []
+      }
+    }
+  }
+}

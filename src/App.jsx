@@ -7,11 +7,11 @@ import NetSuiteConsulting from './components/Services/NetSuiteConsulting/NetSuit
 import Customization from './components/Services/Customization/Customization';
 import Integration from './components/Services/Integration/Integration';
 import About from './pages/About';
-import HRSolution from './components/Solutions/HrPage/HR';
-import Payroll from './components/Solutions/Payroll/Payroll';
+import DynamicPage from './components/DynamicPage';
 import Support from './components/Support/Support';
 import Manufacturing from './components/Industries/Manufacturing/Manufacturing';
 import Retail from './components/Industries/Retail/Retail';
+import PayrollPage from './components/Payroll/Payroll';
 
 function App() {
   return (
@@ -25,8 +25,9 @@ function App() {
         <Route path="customization" element={<Customization />} />
         <Route path="integration" element={<Integration />} />
         <Route path="about" element={<About />} />
-        <Route path="HRSolution" element={<HRSolution />} />
-        <Route path="Payroll" element={<Payroll />} />
+        <Route path="Payroll" element={<PayrollPage />} />
+        <Route path="HRSolution" element={<DynamicPage pageType="hr" />} />
+        {/* <Route path="Payroll" element={<DynamicPage pageType="payroll" />} /> */}
         <Route path="Support" element={<Support />} />
         <Route path="industries/manufacturing" element={<Manufacturing />} />
         <Route path="industries/retail" element={<Retail />} />

@@ -1,0 +1,39 @@
+{
+  "painPoints": [
+    { "text": "Delayed salary processing and errors", "icon": "error" },
+    { "text": "Manual tax calculations and compliance risks", "icon": "compliance" },
+    { "text": "Lack of visibility and transparency for employees", "icon": "visibility" },
+    { "text": "Difficulty scaling payroll operations across geographies", "icon": "scaling" },
+    { "text": "Disconnected systems leading to data silos", "icon": "silos" }
+  ],
+  "features": [
+    { "title": "Automated Payroll Runs", "desc": "Set up payroll once and let it run automatically, with full audit trails.", "icon": "automation" },
+    { "title": "Tax & Compliance", "desc": "Stay compliant with local tax laws and generate reports in one click.", "icon": "compliance" },
+    { "title": "Employee Self-Service", "desc": "Employees access payslips, tax docs, and leave balances anytime.", "icon": "selfservice" },
+    { "title": "Real-Time Analytics", "desc": "Get instant insights into payroll costs, trends, and forecasts.", "icon": "analytics" },
+    { "title": "Multi-Country Support", "desc": "Run payroll for teams in multiple countries, currencies, and languages.", "icon": "multicountry" },
+    { "title": "Integrations", "desc": "Connect with HR, time tracking, and accounting tools you already use.", "icon": "integrations" }
+  ],
+  "faqs": [
+    { "question": "Does this system support global payroll?", "answer": "Yes, we support multi-country and multi-currency payroll operations." },
+    { "question": "Can it integrate with our existing HR system?", "answer": "Absolutely, we offer seamless integrations and open APIs." },
+    { "question": "How long does implementation take?", "answer": "Most companies are onboarded in less than 2 weeks." },
+    { "question": "Is the platform secure?", "answer": "Yes, we use bank-level encryption and comply with global security standards to protect your sensitive payroll data." },
+    { "question": "Can employees access their payroll information?", "answer": "Yes, through our employee self-service portal, staff can securely access their payslips, tax documents, and payment history." }
+  ],
+  "steps": [
+    { "title": "Employee data import", "desc": "Easily onboard and manage employee records in one place.", "details": "Import employee data from spreadsheets or integrated HR systems. Supports bulk uploads and data validation with real-time error checking.", "icon": "import", "benefits": ["Bulk import from Excel/CSV", "Data validation", "Duplicate detection", "HR system integration"] },
+    { "title": "Time & attendance sync", "desc": "Integrate timesheets and attendance for accurate payroll.", "details": "Syncs with your time tracking tools to ensure accurate hours and leave data for every employee. Supports multiple time tracking systems.", "icon": "attendance", "benefits": ["Real-time sync", "Multiple time systems", "Leave management", "Overtime calculation"] },
+    { "title": "Salary & tax auto-calculation", "desc": "Automate salary, tax, and deduction calculations.", "details": "Calculates gross and net pay, taxes, and deductions automatically based on your rules and local compliance. Handles complex tax scenarios.", "icon": "salary", "benefits": ["Auto tax calculation", "Compliance built-in", "Deduction management", "Bonus processing"] },
+    { "title": "Approval workflows", "desc": "Streamline approvals with role-based access.", "details": "Multi-level approval flows for payroll runs, with notifications and audit trails. Customizable approval hierarchies.", "icon": "approval", "benefits": ["Multi-level approval", "Email notifications", "Audit trails", "Role-based access"] },
+    { "title": "Payment execution", "desc": "Execute payments securely through integrated bank APIs.", "details": "Initiate salary payments directly from the platform with secure, bank-level integrations. Supports multiple payment methods.", "icon": "payment", "benefits": ["Bank API integration", "Multiple payment methods", "Secure transactions", "Payment tracking"] },
+    { "title": "Payslip generation & reporting", "desc": "Generate payslips and compliance-ready reports instantly.", "details": "Employees get digital payslips; admins get downloadable, compliance-ready reports. Customizable templates and automated distribution.", "icon": "payslip", "benefits": ["Digital payslips", "Custom templates", "Auto distribution", "Compliance reports"] }
+  ],
+  "whyPerfect": [
+    "Handles flexible work models (remote, hybrid, contract)",
+    "Built-in compliance for local and global operations",
+    "Reduces time spent on admin work by 70%",
+    "Supports dynamic teams with frequent changes",
+    "Scales with your business — from startup to enterprise"
+  ]
+} 
