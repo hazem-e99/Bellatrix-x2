@@ -9,9 +9,9 @@ import Integration from './components/Services/Integration/Integration';
 import About from './pages/About';
 import DynamicPage from './components/DynamicPage';
 import Support from './components/Support/Support';
-import Manufacturing from './components/Industries/Manufacturing/Manufacturing';
+import Manufacturing from './components/Industries/Manufacturing/ManufacturingParent';
 import Retail from './components/Industries/Retail/Retail';
-import PayrollPage from './components/Payroll/Payroll';
+import PayrollParent from './components/Payroll/Refactored/PayrollParent';
 
 function App() {
   return (
@@ -25,9 +25,11 @@ function App() {
         <Route path="customization" element={<Customization />} />
         <Route path="integration" element={<Integration />} />
         <Route path="about" element={<About />} />
-        <Route path="Payroll" element={<PayrollPage />} />
-        <Route path="HRSolution" element={<DynamicPage pageType="hr" />} />
-        {/* <Route path="Payroll" element={<DynamicPage pageType="payroll" />} /> */}
+        {/* <Route path="Payroll" element={<PayrollParent />} /> */}
+        {/* <Route path="HRSolution" element={<DynamicPage />} />
+        <Route path="Payroll" element={<DynamicPage />} /> */}
+        <Route path=":pageType" element={<DynamicPage />} />
+
         <Route path="Support" element={<Support />} />
         <Route path="industries/manufacturing" element={<Manufacturing />} />
         <Route path="industries/retail" element={<Retail />} />

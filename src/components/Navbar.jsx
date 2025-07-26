@@ -456,7 +456,7 @@ const Navbar = ({ industries = [] }) => {
                         Payroll
                       </Link>
                       <Link
-                        to="/HRSolution"
+                        to="/hr"
                         className="block px-5 py-3 text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-all duration-150 text-base font-medium"
                       >
                         HR
@@ -651,7 +651,7 @@ const Navbar = ({ industries = [] }) => {
                       Payroll
                     </Link>
                     <Link
-                      to="/HRSolution"
+                      to="/hr"
                       className="block px-4 py-3 text-sm text-white/70 rounded-lg hover:bg-white/5 hover:text-white border border-white/5 backdrop-blur-sm transition-all duration-300"
                     >
                       HR

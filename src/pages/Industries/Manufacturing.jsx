@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import ContactForm from '../../components/ContactForm';
 import Modal from '../../components/Modal';
@@ -8,152 +7,64 @@ const Manufacturing = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [activeChallenge, setActiveChallenge] = useState(0);
   const [activeSolution, setActiveSolution] = useState(0);
+  const [pageData, setPageData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const openContactModal = () => setIsContactModalOpen(true);
-  const closeContactModal = () => setIsContactModalOpen(false);
+  useEffect(() => {
+    // Simulate API fetch
+    const fetchData = async () => {
+      try {
+        // In a real app, this would be an API call:
+        // const response = await fetch('/api/manufacturing-data');
+        // const data = await response.json();
+        
+        // For now, we'll import the JSON directly
+        const data = await import('./data/manufacturingData.json');
+        setPageData(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error loading page data:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   // Auto-rotate challenges and solutions
   useEffect(() => {
+    if (!pageData) return;
+    
     const challengeInterval = setInterval(() => {
-      setActiveChallenge((prev) => (prev + 1) % manufacturingChallenges.length);
+      setActiveChallenge((prev) => (prev + 1) % pageData.challenges.items.length);
     }, 4000);
     
     const solutionInterval = setInterval(() => {
-      setActiveSolution((prev) => (prev + 1) % netSuiteSolutions.length);
+      setActiveSolution((prev) => (prev + 1) % pageData.solutions.items.length);
     }, 5000);
 
     return () => {
       clearInterval(challengeInterval);
       clearInterval(solutionInterval);
     };
-  }, []);
+  }, [pageData]);
 
-  const manufacturingChallenges = [
-    {
-      title: "Complex Production Planning",
-      description: "Managing multi-level BOMs, work orders, and production schedules across multiple facilities",
-      icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2",
-      impact: "30% production delays"
-    },
-    {
-      title: "Inventory Management Complexity",
-      description: "Tracking raw materials, WIP, and finished goods across multiple locations with real-time visibility",
-      icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4",
-      impact: "25% excess inventory"
-    },
-    {
-      title: "Quality Control & Compliance",
-      description: "Maintaining quality standards and regulatory compliance throughout the manufacturing process",
-      icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z",
-      impact: "15% quality issues"
-    },
-    {
-      title: "Supply Chain Visibility",
-      description: "Managing supplier relationships and ensuring timely delivery of materials and components",
-      icon: "M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",
-      impact: "20% supply delays"
-    }
-  ];
+  const openContactModal = () => setIsContactModalOpen(true);
+  const closeContactModal = () => setIsContactModalOpen(false);
 
-  const netSuiteSolutions = [
-    {
-      title: "Advanced Manufacturing",
-      description: "Complete production planning with work orders, routing, and capacity planning",
-      features: [
-        "Multi-level BOM management",
-        "Work order scheduling",
-        "Capacity planning",
-        "Shop floor control",
-        "Production reporting"
-      ],
-      benefits: "40% improvement in production efficiency"
-    },
-    {
-      title: "Inventory & Warehouse Management",
-      description: "Real-time inventory tracking with automated replenishment and cycle counting",
-      features: [
-        "Real-time inventory tracking",
-        "Automated reorder points",
-        "Cycle counting",
-        "Lot and serial tracking",
-        "Multi-location management"
-      ],
-      benefits: "35% reduction in inventory costs"
-    },
-    {
-      title: "Quality Management",
-      description: "Comprehensive quality control with inspection plans and non-conformance tracking",
-      features: [
-        "Quality inspection plans",
-        "Non-conformance tracking",
-        "Supplier quality management",
-        "Certificate of analysis",
-        "Corrective action tracking"
-      ],
-      benefits: "50% reduction in quality issues"
-    },
-    {
-      title: "Supply Chain Management",
-      description: "End-to-end supply chain visibility with supplier collaboration tools",
-      features: [
-        "Supplier portal",
-        "Purchase order automation",
-        "Vendor performance tracking",
-        "Drop shipment management",
-        "Supply chain analytics"
-      ],
-      benefits: "30% improvement in on-time delivery"
-    }
-  ];
-
-  const industryStats = [
-    { value: "500+", label: "Manufacturing Clients", description: "Successful implementations" },
-    { value: "40%", label: "Efficiency Gain", description: "Average improvement" },
-    { value: "35%", label: "Cost Reduction", description: "In operational costs" },
-    { value: "98%", label: "Client Satisfaction", description: "Success rate" }
-  ];
-
-  const caseStudies = [
-    {
-      company: "TechManufacturing Corp",
-      industry: "Electronics Manufacturing",
-      challenge: "Complex multi-level BOMs and production scheduling across 3 facilities",
-      solution: "Implemented NetSuite Advanced Manufacturing with custom workflows",
-      results: [
-        "45% reduction in production lead times",
-        "30% improvement in on-time delivery",
-        "25% reduction in inventory carrying costs",
-        "Real-time visibility across all facilities"
-      ],
-      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      company: "Precision Parts Ltd",
-      industry: "Automotive Parts",
-      challenge: "Quality control and traceability requirements for automotive industry",
-      solution: "NetSuite Quality Management with lot tracking and supplier integration",
-      results: [
-        "60% reduction in quality incidents",
-        "100% lot traceability achieved",
-        "40% faster supplier onboarding",
-        "Automated compliance reporting"
-      ],
-      image: "https://images.unsplash.com/photo-1565043666747-69f6646db940?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    }
-  ];
-
-
+  if (loading || !pageData) {
+    return <div className="min-h-screen bg-gray-50 flex items-center justify-center">Loading...</div>;
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
-      
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         {/* Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80)'
+            backgroundImage: `url(${pageData.hero.backgroundImage})`
           }}
         />
         
@@ -175,9 +86,6 @@ const Manufacturing = () => {
         </div>
         
         {/* Content */}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
         <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -185,67 +93,35 @@ const Manufacturing = () => {
             transition={{ duration: 0.8 }}
           >
             <div className="inline-block px-4 py-2 bg-blue-100/20 text-blue-200 text-sm font-semibold rounded-full mb-6 backdrop-blur-sm border border-blue-300/30">
-              MANUFACTURING SOLUTIONS
+              {pageData.hero.tagline}
             </div>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
-              Manufacturing Excellence
+              {pageData.hero.title}
             </h1>
             <h2 className="text-2xl md:text-3xl text-blue-200 mb-6 font-semibold">
-              Powered by NetSuite
+              {pageData.hero.subtitle}
             </h2>
             <p className="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed max-w-4xl mx-auto">
-              Transform your manufacturing operations with integrated ERP solutions that streamline 
-              production, optimize inventory, and ensure quality compliance across your entire value chain.
+              {pageData.hero.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={openContactModal}
-                className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                Get Manufacturing Demo
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-900 transition-all duration-300"
-              >
-                Download Case Study
-              </motion.button>
+              {pageData.hero.buttons.map((button, index) => (
+                <motion.button
+                  key={index}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={button.action === 'openModal' ? openContactModal : () => {}}
+                  className={`${
+                    button.variant === 'primary' 
+                      ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white' 
+                      : 'border-2 border-white text-white hover:bg-white hover:text-blue-900'
+                  } px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300`}
+                >
+                  {button.text}
+                </motion.button>
+              ))}
             </div>
           </motion.div>
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-        <div className="relative z-10 text-center">
-          <div className="container mx-auto px-6 max-w-6xl">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
-                Manufacturing Excellence
-              </h1>
-              <h2 className="text-2xl md:text-3xl text-blue-200 mb-6 font-semibold">
-                Powered by NetSuite
-              </h2>
-              <p className="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed max-w-4xl mx-auto">
-                Transform your manufacturing operations with integrated ERP solutions that streamline 
-                production, optimize inventory, and ensure quality compliance across your entire value chain.
-              </p>
-            </motion.div>
-          </div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         </div>
       </section>
 
@@ -285,7 +161,7 @@ const Manufacturing = () => {
               transition={{ duration: 0.6 }}
               className="text-3xl md:text-4xl font-bold text-gray-800 mb-4"
             >
-              Manufacturing Excellence in <span className="text-blue-600">Numbers</span>
+              {pageData.stats.title} <span className="text-blue-600">Numbers</span>
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -293,13 +169,13 @@ const Manufacturing = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg text-gray-600 max-w-2xl mx-auto"
             >
-              Proven results across hundreds of manufacturing implementations
+              {pageData.stats.subtitle}
             </motion.p>
           </div>
 
           {/* Stats Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {industryStats.map((stat, index) => (
+            {pageData.stats.items.map((stat, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30, scale: 0.9 }}
@@ -326,26 +202,9 @@ const Manufacturing = () => {
                   <div className="relative z-10 text-center">
                     {/* Icon */}
                     <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                      {index === 0 && (
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                      )}
-                      {index === 1 && (
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                        </svg>
-                      )}
-                      {index === 2 && (
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                        </svg>
-                      )}
-                      {index === 3 && (
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      )}
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={stat.icon} />
+                      </svg>
                     </div>
                     
                     {/* Value */}
@@ -392,172 +251,62 @@ const Manufacturing = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
-              Manufacturing <span className="text-blue-600">Challenges</span>
+              {pageData.challenges.title} <span className="text-blue-600">Challenges</span>
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              Modern manufacturing faces complex challenges that require integrated solutions 
-              to maintain competitiveness and operational efficiency.
+              {pageData.challenges.subtitle}
             </p>
           </div>
 
           <div className="flex flex-col lg:flex-row items-stretch gap-12">
             {/* Challenges Showcase - Left Side */}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            <div className="flex-1">
-              <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
-                <div className="mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-700 rounded-xl flex items-center justify-center mb-4">
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
             <div className="flex-1 flex flex-col">
-              <div className="bg-white/5 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-white/10 h-full flex flex-col justify-between">
+              <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-200 h-full flex flex-col justify-between">
                 <div className="flex-1 flex flex-col justify-center">
                   <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center mb-6">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={manufacturingChallenges[activeChallenge].icon} />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={pageData.challenges.items[activeChallenge].icon} />
                     </svg>
                   </div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                  <h3 className="text-2xl font-bold text-gray-800 mb-3">
-                    {manufacturingChallenges[activeChallenge].title}
+                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-800 mb-4">
+                    {pageData.challenges.items[activeChallenge].title}
                   </h3>
-                  <p className="text-gray-600 mb-4">
-                    {manufacturingChallenges[activeChallenge].description}
+                  <p className="text-gray-600 mb-6 text-lg leading-relaxed">
+                    {pageData.challenges.items[activeChallenge].description}
                   </p>
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-=======
-                  <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
-                    {manufacturingChallenges[activeChallenge].title}
-                  </h3>
-                  <p className="text-gray-300 mb-6 text-lg leading-relaxed">
-                    {manufacturingChallenges[activeChallenge].description}
-                  </p>
-                  <div className="bg-blue-900/20 border border-blue-400/30 rounded-lg p-4 mb-6">
->>>>>>> Stashed changes
-=======
-                  <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
-                    {manufacturingChallenges[activeChallenge].title}
-                  </h3>
-                  <p className="text-gray-300 mb-6 text-lg leading-relaxed">
-                    {manufacturingChallenges[activeChallenge].description}
-                  </p>
-                  <div className="bg-blue-900/20 border border-blue-400/30 rounded-lg p-4 mb-6">
->>>>>>> Stashed changes
-=======
-                  <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
-                    {manufacturingChallenges[activeChallenge].title}
-                  </h3>
-                  <p className="text-gray-300 mb-6 text-lg leading-relaxed">
-                    {manufacturingChallenges[activeChallenge].description}
-                  </p>
-                  <div className="bg-blue-900/20 border border-blue-400/30 rounded-lg p-4 mb-6">
->>>>>>> Stashed changes
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
                     <div className="flex items-center space-x-2">
-                      <svg className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
                       </svg>
-                      <span className="text-red-700 font-semibold">Impact: {manufacturingChallenges[activeChallenge].impact}</span>
+                      <span className="text-blue-700 font-semibold">Impact: {pageData.challenges.items[activeChallenge].impact}</span>
                     </div>
                   </div>
                 </div>
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-              {/* Challenge Navigation */}
-              <div className="flex space-x-2 mt-6 justify-center">
-                {manufacturingChallenges.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setActiveChallenge(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      activeChallenge === index ? 'bg-red-600' : 'bg-gray-300'
-                    }`}
-                  />
-                ))}
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
                 {/* Challenge Navigation */}
                 <div className="flex space-x-2 justify-center pt-4">
-                  {manufacturingChallenges.map((_, index) => (
+                  {pageData.challenges.items.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setActiveChallenge(index)}
                       className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                        activeChallenge === index ? 'bg-blue-400' : 'bg-gray-500'
+                        activeChallenge === index ? 'bg-blue-500' : 'bg-gray-300'
                       }`}
                     />
                   ))}
                 </div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
               </div>
             </div>
 
             {/* Image - Right Side */}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            <div className="flex-1 flex justify-center">
-              <div className="relative group max-w-xl">
-                <div className="absolute -inset-8 opacity-30 group-hover:opacity-60 transition-all duration-700">
-                  <div className="absolute -inset-6 bg-gradient-to-r from-red-600/20 via-orange-500/30 to-red-600/20 rounded-3xl blur-2xl"></div>
-                </div>
-                
-                <div className="relative bg-gradient-to-br from-gray-900/10 via-red-900/5 to-gray-900/10 rounded-3xl p-6 backdrop-blur-md border border-white/30 shadow-2xl">
-=======
             <div className="flex-1 flex justify-center items-center">
               <div className="relative group max-w-xl w-full h-full">
-                <div className="relative bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-4 backdrop-blur-sm border border-white/20 shadow-2xl h-full flex items-center">
->>>>>>> Stashed changes
-=======
-            <div className="flex-1 flex justify-center items-center">
-              <div className="relative group max-w-xl w-full h-full">
-                <div className="relative bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-4 backdrop-blur-sm border border-white/20 shadow-2xl h-full flex items-center">
->>>>>>> Stashed changes
-=======
-            <div className="flex-1 flex justify-center items-center">
-              <div className="relative group max-w-xl w-full h-full">
-                <div className="relative bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-4 backdrop-blur-sm border border-white/20 shadow-2xl h-full flex items-center">
->>>>>>> Stashed changes
+                <div className="relative bg-white rounded-2xl p-4 border border-gray-200 shadow-2xl h-full flex items-center">
                   <img 
-                    src="https://images.unsplash.com/photo-1565043666747-69f6646db940?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    src={pageData.challenges.image} 
                     alt="Manufacturing Challenges" 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                    className="w-full h-auto rounded-xl shadow-2xl brightness-105 contrast-110 saturate-105 group-hover:brightness-110 transition-all duration-500"
-=======
                     className="w-full h-full max-h-96 object-cover rounded-xl shadow-lg brightness-110 contrast-110 saturate-110 group-hover:scale-105 transition-all duration-500"
->>>>>>> Stashed changes
-=======
-                    className="w-full h-full max-h-96 object-cover rounded-xl shadow-lg brightness-110 contrast-110 saturate-110 group-hover:scale-105 transition-all duration-500"
->>>>>>> Stashed changes
-=======
-                    className="w-full h-full max-h-96 object-cover rounded-xl shadow-lg brightness-110 contrast-110 saturate-110 group-hover:scale-105 transition-all duration-500"
->>>>>>> Stashed changes
                   />
                 </div>
               </div>
@@ -571,11 +320,10 @@ const Manufacturing = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-              NetSuite <span className="text-cyan-400">Solutions</span>
+              {pageData.solutions.title} <span className="text-cyan-400">Solutions</span>
             </h2>
             <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
-              Comprehensive manufacturing solutions that address every aspect of your operations, 
-              from planning to production to delivery.
+              {pageData.solutions.subtitle}
             </p>
           </div>
 
@@ -583,66 +331,12 @@ const Manufacturing = () => {
             {/* Image - Left Side */}
             <div className="flex-1 flex justify-center">
               <div className="relative group max-w-xl">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                <div className="relative bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-4 backdrop-blur-sm border border-white/20 shadow-2xl">
+                <div className="relative bg-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/20 shadow-2xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    src={pageData.solutions.image} 
                     alt="NetSuite Manufacturing Solutions" 
                     className="w-full h-auto rounded-xl shadow-lg brightness-110 contrast-110 saturate-110 group-hover:scale-105 transition-all duration-500"
                   />
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-                <div className="absolute -inset-8 opacity-30 group-hover:opacity-60 transition-all duration-700">
-                  <div className="absolute -inset-6 bg-gradient-to-r from-blue-600/20 via-cyan-500/30 to-blue-600/20 rounded-3xl blur-2xl"></div>
-                  <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/15 via-blue-500/20 to-cyan-500/15 rounded-2xl blur-xl"></div>
-                  <div className="absolute -inset-2 bg-gradient-to-tr from-white/10 via-blue-300/20 to-white/10 rounded-xl blur-lg"></div>
-                </div>
-                
-                <div className="relative bg-gradient-to-br from-gray-900/10 via-blue-900/5 to-gray-900/10 rounded-3xl p-6 backdrop-blur-md border border-white/30 shadow-2xl group-hover:shadow-blue-500/20 transition-all duration-500">
-                  <div className="relative bg-gradient-to-br from-white/5 via-transparent to-blue-500/5 rounded-2xl p-4 border border-white/20">
-                    <img 
-                      src="/solutions.jpg" 
-                      alt="NetSuite Manufacturing Solutions" 
-                      className="w-full h-110 object-cover rounded-xl shadow-2xl brightness-105 contrast-110 saturate-105 group-hover:brightness-110 group-hover:contrast-115 group-hover:saturate-110 transition-all duration-500 filter drop-shadow-xl"
-                    />
-                    
-                    <div className="absolute inset-4 rounded-xl bg-gradient-to-tr from-blue-500/5 via-transparent via-transparent to-cyan-400/5 pointer-events-none"></div>
-                    <div className="absolute inset-4 rounded-xl bg-gradient-to-bl from-transparent via-white/3 to-transparent pointer-events-none"></div>
-                  </div>
-                  
-                  <div className="absolute top-3 right-3">
-                    <div className="relative">
-                      <div className="w-4 h-4 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse shadow-lg"></div>
-                      <div className="absolute inset-0 w-4 h-4 bg-blue-400/30 rounded-full animate-ping"></div>
-                    </div>
-                  </div>
-                  
-                  <div className="absolute bottom-6 left-6">
-                    <div className="relative">
-                      <div className="w-3 h-3 bg-gradient-to-r from-cyan-300 to-blue-400 rounded-full animate-pulse shadow-md"></div>
-                      <div className="absolute -inset-1 w-5 h-5 bg-cyan-400/20 rounded-full animate-ping"></div>
-                    </div>
-                  </div>
-                  
-                  <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-blue-400/40 rounded-tl-3xl"></div>
-                  <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-cyan-400/40 rounded-tr-3xl"></div>
-                  <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-blue-400/40 rounded-bl-3xl"></div>
-                  <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-cyan-400/40 rounded-br-3xl"></div>
-                </div>
-                
-                <div className="absolute -bottom-3 -right-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-4 py-2 rounded-xl shadow-lg text-sm font-bold opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="flex items-center space-x-2">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                    </svg>
-                    <span>NetSuite Expert</span>
-                  </div>
->>>>>>> Stashed changes
                 </div>
               </div>
             </div>
@@ -657,16 +351,16 @@ const Manufacturing = () => {
                     </svg>
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-3">
-                    {netSuiteSolutions[activeSolution].title}
+                    {pageData.solutions.items[activeSolution].title}
                   </h3>
                   <p className="text-gray-300 mb-6">
-                    {netSuiteSolutions[activeSolution].description}
+                    {pageData.solutions.items[activeSolution].description}
                   </p>
                 </div>
                 
                 <div className="space-y-3 mb-6">
                   <h4 className="font-semibold text-white mb-3">Key Features:</h4>
-                  {netSuiteSolutions[activeSolution].features.map((feature, index) => (
+                  {pageData.solutions.items[activeSolution].features.map((feature, index) => (
                     <div key={index} className="flex items-center space-x-3">
                       <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                       <span className="text-gray-300">{feature}</span>
@@ -679,14 +373,14 @@ const Manufacturing = () => {
                     <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                     </svg>
-                    <span className="text-green-300 font-semibold">Result: {netSuiteSolutions[activeSolution].benefits}</span>
+                    <span className="text-green-300 font-semibold">Result: {pageData.solutions.items[activeSolution].benefits}</span>
                   </div>
                 </div>
               </div>
 
               {/* Solution Navigation */}
               <div className="flex space-x-2 mt-6 justify-center">
-                {netSuiteSolutions.map((_, index) => (
+                {pageData.solutions.items.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setActiveSolution(index)}
@@ -706,15 +400,15 @@ const Manufacturing = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
-              Success <span className="text-blue-600">Stories</span>
+              {pageData.caseStudies.title} <span className="text-blue-600">Stories</span>
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              Real manufacturing companies achieving remarkable results with NetSuite solutions.
+              {pageData.caseStudies.subtitle}
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {caseStudies.map((study, index) => (
+            {pageData.caseStudies.items.map((study, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -771,16 +465,16 @@ const Manufacturing = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-              Implementation <span className="text-cyan-400">Process</span>
+              {pageData.implementation.title} <span className="text-cyan-400">Process</span>
             </h2>
             <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
-              Our proven methodology ensures successful NetSuite implementation for manufacturing companies.
+              {pageData.implementation.subtitle}
             </p>
           </div>
 
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
-              {implementationProcess.map((phase, index) => (
+              {pageData.implementation.items.map((phase, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
@@ -792,7 +486,7 @@ const Manufacturing = () => {
                     <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-white shadow-lg">
                       <span className="text-white font-bold text-lg">{index + 1}</span>
                     </div>
-                    {index < implementationProcess.length - 1 && (
+                    {index < pageData.implementation.items.length - 1 && (
                       <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-blue-400 to-blue-600 transform -translate-y-1/2"></div>
                     )}
                   </div>
@@ -822,41 +516,24 @@ const Manufacturing = () => {
           <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl p-12 text-white text-center">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-                Ready to Transform Your Manufacturing Operations?
+                {pageData.cta.title}
               </h2>
               <p className="text-xl mb-8 leading-relaxed">
-                Join hundreds of manufacturing companies that have streamlined their operations 
-                and improved efficiency with NetSuite. Get started with a free consultation today.
+                {pageData.cta.description}
               </p>
               
               <div className="grid md:grid-cols-3 gap-8 mb-12">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                    </svg>
+                {pageData.cta.features.map((feature, index) => (
+                  <div key={index} className="text-center">
+                    <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={feature.icon} />
+                      </svg>
+                    </div>
+                    <h4 className="text-xl font-bold mb-2">{feature.title}</h4>
+                    <p>{feature.description}</p>
                   </div>
-                  <h4 className="text-xl font-bold mb-2">Free Assessment</h4>
-                  <p>Comprehensive evaluation of your manufacturing processes</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                  <h4 className="text-xl font-bold mb-2">Rapid Implementation</h4>
-                  <p>Get up and running faster with our proven methodology</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <h4 className="text-xl font-bold mb-2">Ongoing Support</h4>
-                  <p>Continuous optimization and support for your success</p>
-                </div>
+                ))}
               </div>
               
               <motion.button
@@ -865,7 +542,7 @@ const Manufacturing = () => {
                 onClick={openContactModal}
                 className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                Schedule Manufacturing Demo
+                {pageData.cta.buttonText}
               </motion.button>
             </div>
           </div>
