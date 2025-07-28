@@ -8,10 +8,11 @@ import Customization from './components/Services/Customization/Customization';
 import Integration from './components/Services/Integration/Integration';
 import About from './pages/About';
 import DynamicPage from './components/DynamicPage';
-import Support from './components/Support/Support';
+import Support from './components/Services/Support/Support';
 import Manufacturing from './components/Industries/Manufacturing/ManufacturingParent';
-import Retail from './components/Industries/Retail/Retail';
+import Retail from  './components/Industries/Retail/Retail';
 import PayrollParent from './components/Payroll/Refactored/PayrollParent';
+import IndustriesParent from './components/industriesParent';
 
 function App() {
   return (
@@ -33,6 +34,8 @@ function App() {
         <Route path="Support" element={<Support />} />
         <Route path="industries/manufacturing" element={<Manufacturing />} />
         <Route path="industries/retail" element={<Retail />} />
+         {/* <Route path="industries/retail" element={<IndustriesParent />} />
+        <Route path="industries/manufacturing" element={<IndustriesParent />} /> */}
       </Route>
     </Routes>
   );

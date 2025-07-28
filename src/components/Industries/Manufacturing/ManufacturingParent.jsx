@@ -7,7 +7,7 @@ import ChallengeSolutionSection from "./ChallengeSolutionSection";
 import CaseStudiesSection from "./CaseStudiesSection";
 import ProcessSection from "./ProcessSection";
 import CtaSection from "./CtaSection";
-import manufacturingUrl from "/data/Manufacturing.json?url";
+import manufacturingUrl from "/data/manufacturing.json?url";
 
 const Manufacturing = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);

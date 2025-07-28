@@ -1,0 +1,137 @@
+{
+  "customizationPage": {
+    "hero": {
+      "title": "NetSuite Customization & Development",
+      "description": "Tailor NetSuite to fit your unique business processes and requirements with our expert customization services.",
+      "ctaButton": {
+        "text": "Talk to an Expert",
+        "icon": "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+      }
+    },
+    "services": {
+      "title": "Our <span>Customization Services</span>",
+      "description": "Transform your NetSuite experience with our comprehensive customization solutions designed to meet your unique business requirements.",
+      "items": [
+        {
+          "title": "Custom Workflows",
+          "description": "Design automated workflows that match your business processes and improve operational efficiency",
+          "gradient": "from-blue-400 to-blue-600"
+        },
+        {
+          "title": "Custom Fields & Forms",
+          "description": "Create custom fields and forms to capture your specific data requirements seamlessly",
+          "gradient": "from-blue-500 to-blue-700"
+        },
+        {
+          "title": "SuiteScript Development",
+          "description": "Advanced scripting solutions to extend NetSuite functionality beyond standard capabilities",
+          "gradient": "from-blue-600 to-blue-800"
+        },
+        {
+          "title": "Custom Reports & Dashboards",
+          "description": "Build tailored reports and interactive dashboards for better business insights and decision-making",
+          "gradient": "from-blue-300 to-blue-500"
+        },
+        {
+          "title": "SuiteApps Development",
+          "description": "Develop custom applications and modules specifically designed for your NetSuite environment",
+          "gradient": "from-blue-700 to-blue-900"
+        },
+        {
+          "title": "Third-Party Integrations",
+          "description": "Connect NetSuite with external systems and applications for seamless data flow and automation",
+          "gradient": "from-sky-400 to-blue-600"
+        }
+      ],
+      "cta": {
+        "text": "Ready to customize your NetSuite experience?",
+        "buttonText": "Get Started Today"
+      }
+    },
+    "midCta": {
+      "title": "Transform Your <span>NetSuite Experience</span>",
+      "description": "Don't let standard NetSuite limitations hold back your business. Our expert customization team can unlock the full potential of your NetSuite system.",
+      "buttonText": "Schedule Consultation"
+    },
+    "process": {
+      "title": "Our <span>Development Process</span>",
+      "steps": [
+        {
+          "step": "1",
+          "title": "Requirements Analysis",
+          "description": "We analyze your business requirements and current NetSuite setup"
+        },
+        {
+          "step": "2",
+          "title": "Solution Design",
+          "description": "Design custom solutions that align with your business goals"
+        },
+        {
+          "step": "3",
+          "title": "Development & Testing",
+          "description": "Develop and thoroughly test all customizations"
+        },
+        {
+          "step": "4",
+          "title": "Deployment & Support",
+          "description": "Deploy solutions and provide ongoing support"
+        }
+      ]
+    },
+    "faq": {
+      "title": "Frequently Asked <span>Questions</span>",
+      "description": "Get answers to common questions about NetSuite customization and development services.",
+      "items": [
+        {
+          "question": "What types of NetSuite customizations can you develop?",
+          "answer": "We can develop a wide range of customizations including custom workflows, forms, fields, reports, dashboards, SuiteScript solutions, SuiteApps, third-party integrations, and complex business process automation. Our team handles everything from simple field additions to complex multi-module customizations."
+        },
+        {
+          "question": "How long does a typical customization project take?",
+          "answer": "Project timelines vary depending on complexity. Simple customizations like custom fields or basic workflows typically take 1-2 weeks. More complex projects involving SuiteScript development, integrations, or custom SuiteApps can take 4-12 weeks. We provide detailed timelines during our initial consultation."
+        },
+        {
+          "question": "Will customizations affect NetSuite upgrades?",
+          "answer": "Our customizations are built following NetSuite best practices to ensure compatibility with future upgrades. We use standard APIs and avoid modifications that could break during updates. We also provide testing and support during NetSuite releases to ensure everything continues working smoothly."
+        },
+        {
+          "question": "What's included in your customization pricing?",
+          "answer": "Our pricing includes requirements analysis, solution design, development, testing, deployment, documentation, and training. We also provide 30 days of post-deployment support. Ongoing maintenance and support packages are available separately."
+        }
+      ],
+      "cta": {
+        "text": "Have more questions about our customization services?",
+        "buttonText": "Contact Our Experts"
+      }
+    },
+    "finalCta": {
+      "title": "Ready to Unlock NetSuite's <span>Full Potential?</span>",
+      "description": "Join hundreds of businesses that have transformed their operations with our expert NetSuite customization services.",
+      "stats": [
+        {
+          "value": "500+",
+          "label": "Custom Solutions Delivered"
+        },
+        {
+          "value": "98%",
+          "label": "Client Satisfaction Rate"
+        },
+        {
+          "value": "24/7",
+          "label": "Support Available"
+        }
+      ],
+      "buttonText": "Start Your Customization Project"
+    },
+    "modal": {
+      "title": "NetSuite Customization Consultation",
+      "subtitle": "Let's discuss your customization needs",
+      "icon": "🚀",
+      "form": {
+        "title": "Get Started Today",
+        "subtitle": "Tell us about your NetSuite customization requirements",
+        "messagePlaceholder": "Describe your current NetSuite setup and what customizations you need..."
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import ContactForm from "../ContactForm";
-import Modal from "../Modal";
+import ContactForm from "../../ContactForm";
+import Modal from "../../Modal";
 
 const BellatrixSupportHero = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
