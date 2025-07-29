@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { 
+  fetchAllServices, 
+  setCurrentService,
+  fetchSolutionData // For backward compatibility
+} from "../Redux/features/services/servicesSlice";
 
 // Import all sections
 import HeroSection from "../components/Solutions/HrPage/HeroSection";
@@ -25,37 +31,36 @@ const DynamicPage = () => {
     demoIdx: 0,
     imgFade: true,
   });
+  const dispatch = useDispatch();
+  
+  const { 
+    allServices, 
+    currentService,
+    loading, 
+    error 
+  } = useSelector((state) => state.services);
 
-  const [solutionData, setSolutionData] = useState(null);
-
+  // Fetch all services on component mount
   useEffect(() => {
-    if (!pageType) return; // تأكيد إن pageType موجود
-    var url = "";
-    if (pageType == "hr") {
-      url = "hr  link";
-    } else if (pageType == "payroll") {
-      url = "payroll link";
-    }
-    const loadData = async () => {
-      try {
-        const response = await fetch(`/data/${pageType}.json`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        console.log(data);
+    dispatch(fetchAllServices());
+  }, [dispatch]);
 
-        const key = `${pageType.toLowerCase()}Solution`;
-        setSolutionData(data[key]);
-      } catch (err) {
-        console.error("Failed to load JSON:", err);
+  // Find and set current service when pageType or services change
+  useEffect(() => {
+    if (pageType && allServices.length > 0) {
+      const matchedService = allServices.find(service => 
+        service.slug === pageType.toLowerCase() || 
+        service.slug?.toLowerCase() === pageType.toLowerCase()
+      );
+      
+      if (matchedService) {
+        console.log('Matched service data:', matchedService);
+        dispatch(setCurrentService(matchedService));
+      } else {
+        console.warn(`No service found for slug: ${pageType}`);
       }
-    };
-
-    loadData();
-  }, [pageType]);
-
-  if (!solutionData) return <div>Loading...</div>;
+    }
+  }, [pageType, allServices, dispatch]);
 
   // Demo control functions
   const handleDemoChange = (newIdx) => {
@@ -70,42 +75,59 @@ const DynamicPage = () => {
   };
 
   const nextDemo = () => {
-    const demoImages = solutionData.demo?.images || [];
+    const demoImages = currentService?.demo?.images || [];
     handleDemoChange((demoState.demoIdx + 1) % demoImages.length);
   };
 
   const prevDemo = () => {
-    const demoImages = solutionData.demo?.images || [];
+    const demoImages = currentService?.demo?.images || [];
     handleDemoChange(
       (demoState.demoIdx - 1 + demoImages.length) % demoImages.length
     );
   };
-  console.log(solutionData.sections.useCases.items);
+
+  // Loading and error states
+  if (loading) {
+    return <div className="flex justify-center items-center min-h-screen">Loading services...</div>;
+  }
+
+  if (error) {
+    return <div className="text-red-500 p-4">Error loading services: {error}</div>;
+  }
+
+  if (!currentService) {
+    return (
+      <div className="text-center p-8">
+        <h2>No data available for this page.</h2>
+        <p>Available services: {allServices.map(s => s.name).join(', ')}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="dynamic-page">
       {/* Hero Section */}
-      {solutionData.sections?.hero?.settings?.show && (
-        <HeroSection data={solutionData.sections.hero} />
+      {currentService.hero?.settings?.show && (
+        <HeroSection data={currentService.hero} />
       )}
 
       {/* Benefits Section */}
-      {solutionData.sections?.benefits?.settings?.show && (
+      {currentService.benefits?.settings?.show && (
         <BenefitsSection
           data={{
-            ...solutionData.sections.benefits,
-            demo: solutionData.demo,
+            ...currentService.benefits,
+            demo: currentService.demo,
           }}
         />
       )}
 
       {/* Pain Points Section */}
       <div style={{ display: "flex", justifyContent: "center" }}>
-        {solutionData.sections?.painPoints?.settings?.show && (
+        {currentService.painPoints?.settings?.show && (
           <div style={{ width: "80%" }}>
             <PainPointsSection
-              painPoints={solutionData.sections.painPoints.items}
-              illustration={solutionData.sections.painPoints.illustration}
+              painPoints={currentService.painPoints.items}
+              illustration={currentService.painPoints.illustration}
             />
           </div>
         )}
@@ -113,20 +135,20 @@ const DynamicPage = () => {
 
       {/* Why Perfect Section (Payroll only) */}
       {pageType === "payroll" &&
-        solutionData.sections?.useCases?.settings?.show && (
-          <WhyPerfectSection data={solutionData.sections.useCases} />
+        currentService.useCases?.settings?.show && (
+          <WhyPerfectSection data={currentService.useCases} />
         )}
 
       {/* How It Works Section */}
-      {solutionData.sections?.howItWorks?.settings?.show && (
+      {currentService.howItWorks?.settings?.show && (
         <HowItWorksSection />
       )}
 
       {/* Key Features Section */}
-      {solutionData.sections?.features?.settings?.show && (
+      {currentService.features?.settings?.show && (
         <KeyFeaturesSection
-          features={solutionData.sections.features.items}
-          demoImages={solutionData.demo?.images || []}
+          features={currentService.features.items}
+          demoImages={currentService.demo?.images || []}
           {...demoState}
           setShowDemo={(show) =>
             setDemoState((prev) => ({ ...prev, showDemo: show }))
@@ -144,16 +166,15 @@ const DynamicPage = () => {
       )}
 
       {/* Core Workflow Stepper */}
-      {solutionData.sections?.workflow?.settings?.show && (
+      {currentService.workflow?.settings?.show && (
         <section className="py-20 bg-white light-section">
           <div className="container mx-auto px-6 max-w-6xl">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-                Payroll System Built for All Industries
+                {currentService.name}
               </h2>
               <p className="text-xl text-gray-600">
-                Streamline your entire payroll lifecycle — from onboarding to
-                salary disbursement — with a secure, intuitive platform.
+                {currentService.description}
               </p>
             </div>
             <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">
@@ -165,32 +186,32 @@ const DynamicPage = () => {
       )}
 
       {/* Use Cases Section */}
-      {solutionData.sections?.useCases?.settings?.show && (
-        <UseCasesSection data={solutionData.sections.useCases} />
+      {currentService.useCases?.settings?.show && (
+        <UseCasesSection data={currentService.useCases} />
       )}
 
       {/* Product Modules Section */}
-      {solutionData.sections?.modules?.settings?.show && (
-        <ProductModulesSection data={solutionData.sections.modules} />
+      {currentService.modules?.settings?.show && (
+        <ProductModulesSection data={currentService.modules} />
       )}
 
       {/* Pricing Section */}
-      {solutionData.sections?.pricing?.settings?.show && (
-        <PricingSection data={solutionData.sections.pricing} />
+      {currentService.pricing?.settings?.show && (
+        <PricingSection data={currentService.pricing} />
       )}
 
       {/* Strong CTA Section */}
-      {solutionData.sections?.cta?.settings?.show && (
-        <StrongCTASection data={solutionData.sections.cta} />
+      {currentService.cta?.settings?.show && (
+        <StrongCTASection data={currentService.cta} />
       )}
 
       {/* FAQ Section */}
-      {solutionData.sections?.faq?.settings?.show && (
-        <FAQSection faqs={solutionData.sections.faq.items} />
+      {currentService.faq?.settings?.show && (
+        <FAQSection faqs={currentService.faq.items} />
       )}
 
       {/* Contact CTA Section */}
-      {solutionData.sections?.contactCTA?.settings?.show && (
+      {currentService.contactCTA?.settings?.show && (
         <ContactCTASection openContactModal={() => setShowContactModal(true)} />
       )}
 
