@@ -450,16 +450,16 @@ const Navbar = ({ industries = [] }) => {
                       onMouseLeave={handleMenuLeave}
                     >
                       <Link
-                        to="/Payroll"
+                        to="/payroll-system"
                         className="block px-5 py-3 text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-all duration-150 text-base font-medium"
                       >
-                        Payroll
+                        Payroll System
                       </Link>
                       <Link
-                        to="/hr"
+                        to="/hr-management"
                         className="block px-5 py-3 text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-all duration-150 text-base font-medium"
                       >
-                        HR
+                       HR Management
                       </Link>
                     </motion.div>
                   )}
@@ -645,16 +645,16 @@ const Navbar = ({ industries = [] }) => {
                     className="mt-2 ml-4 space-y-2"
                   >
                     <Link
-                      to="/Payroll"
+                      to="/payroll-system"
                       className="block px-4 py-3 text-sm text-white/70 rounded-lg hover:bg-white/5 hover:text-white border border-white/5 backdrop-blur-sm transition-all duration-300"
                     >
-                      Payroll
+                     Payroll System
                     </Link>
                     <Link
-                      to="/hr"
+                      to="/hr-management"
                       className="block px-4 py-3 text-sm text-white/70 rounded-lg hover:bg-white/5 hover:text-white border border-white/5 backdrop-blur-sm transition-all duration-300"
                     >
-                      HR
+                   Hr Management
                     </Link>
                   </motion.div>
                 )}
