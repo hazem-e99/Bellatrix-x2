@@ -11,17 +11,21 @@ const CTASection = ({ data, onContactClick }) => (
           </p>
           
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {data.offers.map((offer, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-md border border-gray-200">
-                  <svg className="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={offer.icon} />
-                  </svg>
+            {Array.isArray(data.offers) && data.offers.length > 0 ? (
+              data.offers.map((offer, index) => (
+                <div key={index} className="text-center">
+                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-md border border-gray-200">
+                    <svg className="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={offer.icon} />
+                    </svg>
+                  </div>
+                  <h4 className="text-xl font-bold mb-2 text-gray-800">{offer.title}</h4>
+                  <p className="text-gray-600">{offer.description}</p>
                 </div>
-                <h4 className="text-xl font-bold mb-2 text-gray-800">{offer.title}</h4>
-                <p className="text-gray-600">{offer.description}</p>
-              </div>
-            ))}
+              ))
+            ) : (
+              <div className="col-span-full text-gray-400 italic">No offers available.</div>
+            )}
           </div>
           
           <button

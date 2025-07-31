@@ -18,6 +18,7 @@ import Support from './components/Services/Support/Support';
 // Industry Components
 import Manufacturing from './components/Industries/Manufacturing/ManufacturingParent';
 import Retail from './components/Industries/Retail/Retail';
+import IndustriesParent from './components/industriesParent.jsx';
 
 // Wrapper component to handle dynamic page loading
 const DynamicPageWrapper = ({ children }) => {
@@ -88,6 +89,8 @@ function App() {
         <Route path="industries">
           <Route path="manufacturing" element={<Manufacturing />} />
           <Route path="retail" element={<Retail />} />
+          {/* Dynamic industry route */}
+          <Route path=":slug" element={<IndustriesParent />} />
         </Route>
         
         {/* Dynamic page route - handles all dynamic content */}

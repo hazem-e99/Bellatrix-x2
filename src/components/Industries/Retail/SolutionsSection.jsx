@@ -1,15 +1,14 @@
-// import SectionHeader from './shared/SectionHeader';
 // import Card from './shared/Card';
 
 const SolutionsSection = ({ data, activeIndex, setActiveIndex }) => (
   <section className="bg-gray-50 py-20 light-section">
     <div className="container mx-auto px-6">
-      <SectionHeader 
-        title="NetSuite"
-        highlight="Solutions"
-        subtitle={data.subtitle}
-        textColor="gray"
-      />
+      <div className="text-center mb-16">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          NetSuite <span className="text-blue-600">Solutions</span>
+        </h2>
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto">{data.subtitle}</p>
+      </div>
 
       <div className="flex flex-col lg:flex-row items-center gap-12">
         <div className="flex-1 flex justify-center">
@@ -25,10 +24,11 @@ const SolutionsSection = ({ data, activeIndex, setActiveIndex }) => (
         </div>
 
         <div className="flex-1">
-          <Card 
-            item={data.items[activeIndex]} 
-            type="solution" 
-          />
+          <div className="bg-white rounded-xl shadow p-6 mb-4">
+            <h3 className="text-xl font-semibold mb-2">{data.items[activeIndex]?.title}</h3>
+            <p className="text-gray-700 mb-2">{data.items[activeIndex]?.description}</p>
+            {/* Add more fields as needed */}
+          </div>
           
           <div className="flex space-x-2 mt-6 justify-center">
             {data.items.map((_, index) => (

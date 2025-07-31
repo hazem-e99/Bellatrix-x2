@@ -23,9 +23,13 @@ const ProcessPhase = ({ phase, index, totalPhases }) => (
       </div>
       <p className="text-gray-300 text-sm mb-3">{phase.description}</p>
       <div className="space-y-1">
-        {phase.deliverables.map((deliverable, i) => (
-          <div key={i} className="text-xs text-gray-400">• {deliverable}</div>
-        ))}
+        {Array.isArray(phase.deliverables) ? (
+          phase.deliverables.map((deliverable, i) => (
+            <div key={i} className="text-xs text-gray-400">• {deliverable}</div>
+          ))
+        ) : (
+          <div className="text-xs text-gray-400 italic">No deliverables listed.</div>
+        )}
       </div>
     </div>
   </motion.div>
